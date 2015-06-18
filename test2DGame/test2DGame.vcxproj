@@ -55,11 +55,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;zdll.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,13 +72,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;zdll.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -85,19 +89,25 @@
   <ItemGroup>
     <ClInclude Include="d3dUtility.h" />
     <ClInclude Include="Game2DSprite.h" />
+    <ClInclude Include="GameMap.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="test2DGame.h" />
+    <ClInclude Include="TinyXML-2\tinyxml2.h" />
+    <ClInclude Include="TMXParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
+    <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="test2DGame.cpp" />
+    <ClCompile Include="TinyXML-2\tinyxml2.cpp" />
+    <ClCompile Include="TMXParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test2DGame.rc" />

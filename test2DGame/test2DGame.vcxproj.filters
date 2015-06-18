@@ -22,6 +22,15 @@
     <Filter Include="Images">
       <UniqueIdentifier>{51f3e882-7526-4f92-8873-e68fbc1b7458}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\MapClass">
+      <UniqueIdentifier>{af0d9cc8-616c-406c-a6d6-708abd9177e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XMLParser">
+      <UniqueIdentifier>{9364d10f-6425-4c1f-9963-ada7a768a280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TMXParser">
+      <UniqueIdentifier>{ca70a013-526a-499b-ae5f-8b4351a64d3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -45,6 +54,15 @@
     <ClInclude Include="Game2DSprite.h">
       <Filter>Source Files\SpriteClass</Filter>
     </ClInclude>
+    <ClInclude Include="GameMap.h">
+      <Filter>Source Files\MapClass</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML-2\tinyxml2.h">
+      <Filter>Source Files\XMLParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TMXParser.h">
+      <Filter>Source Files\TMXParser</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -58,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="Game2DSprite.cpp">
       <Filter>Source Files\SpriteClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMap.cpp">
+      <Filter>Source Files\MapClass</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML-2\tinyxml2.cpp">
+      <Filter>Source Files\XMLParser</Filter>
+    </ClCompile>
+    <ClCompile Include="TMXParser.cpp">
+      <Filter>Source Files\TMXParser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -22,3 +22,6 @@
 
 #include "d3dUtility.h"
 #include "Game2DSprite.h"
+#include "GameMap.h"
+#include "TMXParser.h"
+#include "tinyxml2.h"

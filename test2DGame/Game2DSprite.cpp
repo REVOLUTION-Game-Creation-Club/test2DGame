@@ -69,6 +69,16 @@ void Game2DSprite::TranslateSprite(FLOAT x, FLOAT y)
 	if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
 }
 
+void Game2DSprite::SetSpriteRect(RECT _spriteRect)
+{
+	spriteRect = _spriteRect;
+}
+
+void Game2DSprite::SetSpritePos(D3DXVECTOR3 _pos)
+{
+	spritePosition = _pos;
+}
+
 char* Game2DSprite::ConvertWcharToChar(wchar_t* str)
 {
 	//반환할 char* 변수 선언

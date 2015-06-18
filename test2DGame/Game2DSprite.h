@@ -11,6 +11,8 @@ public:
 
 	void DrawSprite();
 	void TranslateSprite(FLOAT x, FLOAT y);
+	void SetSpriteRect(RECT _spriteRect);
+	void SetSpritePos(D3DXVECTOR3 _pos);
 
 private:
 	wchar_t* ConvertCharToWchar(char* str);
