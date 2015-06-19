@@ -1,6 +1,6 @@
 #pragma once
 #include "Game2DSprite.h"
-
+#include "TMXParser.h"
 class GameMap
 {
 public:
@@ -10,9 +10,7 @@ public:
 	void DrawMap();
 
 private:
-	unsigned int mapWidth;
-	unsigned int mapHeight;
-	unsigned int tileWidth;
-	unsigned int tileHeight;
+	MapData* mapData;
+	TMXParser* tmxFile;
 };
 

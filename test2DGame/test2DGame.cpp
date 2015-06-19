@@ -53,10 +53,9 @@ bool Setup()
 {
 	RECT rt = { 0, 0, 136, 192 };
 	testSprite = new Game2DSprite(Device, "Images/player.png", rt);
-	testGameMap = new GameMap("GameResources/test2.tmx");
-	testTmxparser = new TMXParser("GameResources/test3.tmx");
-	testTmxparser->TestFunc();
-
+	testGameMap = new GameMap("GameResources/test3.tmx");
+	
+	
 	return true;
 }
 
