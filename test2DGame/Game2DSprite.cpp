@@ -79,6 +79,22 @@ void Game2DSprite::SetSpritePos(D3DXVECTOR3 _pos)
 	spritePosition = _pos;
 }
 
+void Game2DSprite::BeginSpriteForMAP()
+{
+	spriteObject->Begin(D3DXSPRITE_ALPHABLEND);
+}
+
+void Game2DSprite::EndSpriteForMAP()
+{
+	spriteObject->End();
+}
+// must Begin and End func
+void Game2DSprite::DrawSpriteForMAP()
+{
+	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, nullptr, &spritePosition, spriteAlphaColor);
+	if (hr != S_OK) MessageBox(0, L"DrawSprite() - FAILED", 0, 0);
+}
+
 char* Game2DSprite::ConvertWcharToChar(wchar_t* str)
 {
 	//반환할 char* 변수 선언

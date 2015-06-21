@@ -16,6 +16,9 @@ struct MapData
 	vector<vector<int>> vec_layers;
 };
 
+//
+//Tiled Map Editor Version 0.12.1 의 tmx file 로 test 되었음을 알립니다. 
+//
 class TMXParser
 {
 public:
@@ -28,7 +31,10 @@ private:
 	tinyxml2::XMLDocument xmlDoc;
 	MapData mapData;
 
+	int tileOffset;
+
 	void ReadMapData();
+	void ReadCustomProperties();
 	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx);
 	
 };

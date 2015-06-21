@@ -10,6 +10,9 @@ public:
 	~Game2DSprite();
 
 	void DrawSprite();
+	void DrawSpriteForMAP();
+	void BeginSpriteForMAP();
+	void EndSpriteForMAP();
 	void TranslateSprite(FLOAT x, FLOAT y);
 	void SetSpriteRect(RECT _spriteRect);
 	void SetSpritePos(D3DXVECTOR3 _pos);

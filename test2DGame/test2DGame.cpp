@@ -50,10 +50,11 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 
 bool Setup()
-{
+{	//136, 192
 	RECT rt = { 0, 0, 136, 192 };
 	testSprite = new Game2DSprite(Device, "Images/player.png", rt);
-	testGameMap = new GameMap("GameResources/test3.tmx");
+	RECT rt2 = { 32, 0, 64, 32 };
+	testGameMap = new GameMap("GameResources/test3.tmx", Device, "GameResources/tileb.png", rt2);
 	
 	
 	return true;
@@ -74,7 +75,9 @@ bool Display(float timeDelta)
 		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
 		Device->BeginScene();
 
-		testSprite->DrawSprite();
+		
+		testGameMap->DrawMap(); // order : 0
+ 		testSprite->DrawSprite(); // order : 1
 
 		Device->EndScene();
 		// Swap the back and front buffers.

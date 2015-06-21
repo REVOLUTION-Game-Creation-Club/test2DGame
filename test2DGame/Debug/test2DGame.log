@@ -1,2 +1,5 @@
 ﻿  test2DGame.cpp
+  GameMap.cpp
+d:\programming_workspace(all)\visualstudio_all_projects\test2dgame\test2dgame\gamemap.cpp(36): warning C4244: 'argument' : conversion from 'int' to 'FLOAT', possible loss of data
+  Generating Code...
   test2DGame.vcxproj -> D:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\Debug\test2DGame.exe
