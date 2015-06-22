@@ -18,6 +18,7 @@ TMXParser::TMXParser(const char* _xmlFileName)
 
 	//test
 	//ReadCustomProperties();
+	tileGidOffset = -1;
 	ReadMapData();
 
 }
@@ -61,19 +62,19 @@ void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx)
 	{
 		if (strcmp(_element->Value(), "tile") == 0)
 		{	// tile atrribute gid 는 Map witdh , height 를 tile size로 나눈 값을 의미. 
-			mapData.vec_layers[_layerIdx].push_back(atoi(_element->Attribute("gid")) - 1);
+			mapData.vec_layers[_layerIdx].push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();
 	}
 }
 //
-// test
+// test func
 //
 void TMXParser::ReadCustomProperties()
 {
 	const char* isFirstTileBlank = xmlDoc.RootElement()->FirstChildElement("properties")->FirstChildElement("property")->Attribute("value");
-	if (strcmp(isFirstTileBlank, "true") == 0) tileOffset = 0;
-	else tileOffset = 0;
+	if (strcmp(isFirstTileBlank, "true") == 0) tileGidOffset = 0;
+	else tileGidOffset = 0;
 
 }

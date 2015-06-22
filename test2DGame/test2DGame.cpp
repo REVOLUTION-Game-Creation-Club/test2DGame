@@ -51,10 +51,10 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 bool Setup()
 {	//136, 192
-	RECT rt = { 0, 0, 136, 192 };
+	RECT rt = { 0, 0, 136, 96 };
 	testSprite = new Game2DSprite(Device, "Images/player.png", rt);
 	RECT rt2 = { 32, 0, 64, 32 };
-	testGameMap = new GameMap("GameResources/test3.tmx", Device, "GameResources/tileb.png", rt2);
+	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", rt2);
 	
 	
 	return true;
@@ -101,7 +101,7 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 			::DestroyWindow(hwnd);
-		if (wParam == VK_LEFT)
+		if (wParam == VK_RIGHT)
 		{
 			testSprite->TranslateSprite(10, 0);
 		}

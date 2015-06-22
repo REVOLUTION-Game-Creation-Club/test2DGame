@@ -2,13 +2,19 @@
 
 
 GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
-				 char* _spriteFileName, RECT _rect)
+	char* _spriteFileName, RECT _defaultRect)
 {
 	if (_tmxFileName != nullptr) tmxFile = new TMXParser(_tmxFileName);
 	else return;
 
 	mapData = tmxFile->GetMapData();
-	spriteObject = new Game2DSprite(_d3dDevice, _spriteFileName, _rect);
+	mapLayers = mapData->vec_layers.size();
+	// tmx map layers 갯수 만큼 map sprite 생성.
+	for (int idx = 1; idx <= mapLayers; ++idx)
+	{
+		vec_tileMapSprites.push_back(new Game2DSprite(_d3dDevice, _spriteFileName, _defaultRect));
+	}
+	
 	renderRect = { 0, 0, 0, 0 };
 }
 
@@ -18,29 +24,37 @@ GameMap::~GameMap()
 	delete tmxFile;
 }
 
-// 0번째 레이어에 대한 내용을 그리는걸로 test 중.
+
 void GameMap::DrawMap()
 {
-	spriteObject->BeginSpriteForMAP();
+	for (int idx = 0; idx < mapLayers; ++idx)
+		DrawMapLyaers(idx);
+}
+// layer 별로 sprite를 만들어 각각의 내용을 그려서 중첩시킨다.
+void GameMap::DrawMapLyaers(const int layerIdx)
+{
+	vec_tileMapSprites[layerIdx]->BeginSpriteForMAP();
 
 	int gid = 0;
 	int tileIdx = 0;
-	for (int y = 0; y < mapData->mapHeight; y++)
-		for (int x = 0; x < mapData->mapWidth; x++)
+	for (int y = 0; y < mapData->mapHeight; ++y)
+		for (int x = 0; x < mapData->mapWidth; ++x)
 		{
-			gid = mapData->vec_layers[0].at(tileIdx);
-			tileIdx++;
-			CalcRenderRect(gid);
 
-			spriteObject->SetSpriteRect(renderRect);
-			spriteObject->SetSpritePos(D3DXVECTOR3(x * mapData->tileWidth, y * mapData->tileHeight , 0));
-			spriteObject->DrawSpriteForMAP();
+			gid = mapData->vec_layers[layerIdx].at(tileIdx);
+			CalcRenderRect(gid);
+			tileIdx++;
+
+			vec_tileMapSprites[layerIdx]->SetSpriteRect(renderRect);
+			vec_tileMapSprites[layerIdx]->SetSpritePos(D3DXVECTOR3(x * mapData->tileWidth, y * mapData->tileHeight, 0));
+			vec_tileMapSprites[layerIdx]->DrawSpriteForMAP();
+
 		}
 
-	spriteObject->EndSpriteForMAP();
+	vec_tileMapSprites[layerIdx]->EndSpriteForMAP();
 }
 
-void GameMap::CalcRenderRect(int _gid)
+void GameMap::CalcRenderRect(const int _gid)
 {
 	int tileInterval = mapData->imageWidth / mapData->tileWidth;
 	if (_gid == 0)
@@ -57,6 +71,4 @@ void GameMap::CalcRenderRect(int _gid)
 		renderRect.right = (_gid % tileInterval) * mapData->tileWidth + mapData->tileWidth;
 		renderRect.bottom = ((_gid / tileInterval) ) * mapData->tileHeight + mapData->tileHeight;
 	}
-
-	
 }
