@@ -31,6 +31,12 @@
     <Filter Include="Source Files\TMXParser">
       <UniqueIdentifier>{ca70a013-526a-499b-ae5f-8b4351a64d3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AnimationClass">
+      <UniqueIdentifier>{42eaa7c2-d70f-4c1b-bbe7-adb8dcfc8adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectFactory">
+      <UniqueIdentifier>{2f38a1c0-7869-47d9-83c9-d8960f4fbb39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -63,6 +69,12 @@
     <ClInclude Include="TMXParser.h">
       <Filter>Source Files\TMXParser</Filter>
     </ClInclude>
+    <ClInclude Include="ChracterAnimation.h">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Source Files\GameObjectFactory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -86,6 +98,12 @@
     <ClCompile Include="TMXParser.cpp">
       <Filter>Source Files\TMXParser</Filter>
     </ClCompile>
+    <ClCompile Include="ChracterAnimation.cpp">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source Files\GameObjectFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test2DGame.rc">
@@ -99,7 +117,7 @@
     <Image Include="test2DGame.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Images\player.png">
+    <Image Include="GameResources\ch00.png">
       <Filter>Images</Filter>
     </Image>
   </ItemGroup>

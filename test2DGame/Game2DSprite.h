@@ -13,7 +13,7 @@ public:
 	void DrawSpriteForMAP();
 	void BeginSpriteForMAP();
 	void EndSpriteForMAP();
-	void TranslateSprite(FLOAT x, FLOAT y);
+	void TranslateSprite(FLOAT _x, FLOAT _y);
 	void SetSpriteRect(RECT _spriteRect);
 	void SetSpritePos(D3DXVECTOR3 _pos);
 
@@ -29,6 +29,7 @@ private:
 	char* spriteName;
 	RECT spriteRect;
 	D3DXVECTOR3 spritePosition;
+	D3DXVECTOR3 spriteCenterPos;
 	D3DXCOLOR spriteAlphaColor;
 
 	D3DXMATRIX accumuMatrix;

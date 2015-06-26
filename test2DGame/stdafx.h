@@ -25,3 +25,4 @@
 #include "GameMap.h"
 #include "TMXParser.h"
 #include "tinyxml2.h"
+#include"ChracterAnimation.h"

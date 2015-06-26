@@ -87,9 +87,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChracterAnimation.h" />
     <ClInclude Include="d3dUtility.h" />
     <ClInclude Include="Game2DSprite.h" />
     <ClInclude Include="GameMap.h" />
+    <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -98,9 +100,11 @@
     <ClInclude Include="TMXParser.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChracterAnimation.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
     <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -113,7 +117,7 @@
     <ResourceCompile Include="test2DGame.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Images\player.png" />
+    <Image Include="GameResources\ch00.png" />
     <Image Include="small.ico" />
     <Image Include="test2DGame.ico" />
   </ItemGroup>

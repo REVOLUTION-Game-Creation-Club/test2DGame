@@ -8,9 +8,11 @@
 // Globals
 //
 IDirect3DDevice9* Device = 0;
-Game2DSprite* testSprite;
+//tests
+
 GameMap* testGameMap;
 TMXParser* testTmxparser;
+ChracterAnimation* chAni;
 //
 // Framework Functions Prototype
 //
@@ -50,12 +52,13 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 
 bool Setup()
-{	//136, 192
-	RECT rt = { 0, 0, 136, 96 };
-	testSprite = new Game2DSprite(Device, "Images/player.png", rt);
+{	//같은 32x32 텍스처인데 어째서 캐릭터는 일부분이 짤리는가?... -> left 값 42로 하면 된다는게 어이탈출...
+	chAni = new ChracterAnimation();
+	
 	RECT rt2 = { 32, 0, 64, 32 };
 	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", rt2);
 	
+
 	
 	return true;
 }
@@ -77,8 +80,7 @@ bool Display(float timeDelta)
 
 		
 		testGameMap->DrawMap(); // order : 0
- 		testSprite->DrawSprite(); // order : 1
-
+		
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
@@ -101,11 +103,10 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 			::DestroyWindow(hwnd);
-		if (wParam == VK_RIGHT)
-		{
-			testSprite->TranslateSprite(10, 0);
-		}
+		
 		break;
 	}
+	
+
 	return ::DefWindowProc(hwnd, msg, wParam, lParam);
 }

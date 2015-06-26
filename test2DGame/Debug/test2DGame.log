@@ -1,9 +1,7 @@
 ﻿  stdafx.cpp
-  TMXParser.cpp
-  GameMap.cpp
-d:\programming_workspace(all)\visualstudio_all_projects\test2dgame\test2dgame\gamemap.cpp(49): warning C4244: 'argument' : conversion from 'int' to 'FLOAT', possible loss of data
+  GameObjectFactory.cpp
+  ChracterAnimation.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
   test2DGame.cpp
-  d3dUtility.cpp
   test2DGame.vcxproj -> D:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\Debug\test2DGame.exe

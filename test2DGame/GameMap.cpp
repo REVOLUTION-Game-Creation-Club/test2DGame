@@ -21,7 +21,7 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 
 GameMap::~GameMap()
 {
-	delete tmxFile;
+	if (tmxFile != nullptr) delete tmxFile;	
 }
 
 
@@ -56,7 +56,8 @@ void GameMap::DrawMapLyaers(const int layerIdx)
 
 void GameMap::CalcRenderRect(const int _gid)
 {
-	int tileInterval = mapData->imageWidth / mapData->tileWidth;
+	int tileIntervalX = mapData->imageWidth / mapData->tileWidth;
+	int tileIntervalY = mapData->imageWidth / mapData->tileHeight;
 	if (_gid == 0)
 	{
 		renderRect.left = 0;
@@ -66,9 +67,9 @@ void GameMap::CalcRenderRect(const int _gid)
 	}
 	else
 	{   
-		renderRect.left = ((_gid % tileInterval) * mapData->tileWidth);
-		renderRect.top = ((_gid / tileInterval) * mapData->tileHeight);
-		renderRect.right = (_gid % tileInterval) * mapData->tileWidth + mapData->tileWidth;
-		renderRect.bottom = ((_gid / tileInterval) ) * mapData->tileHeight + mapData->tileHeight;
+		renderRect.left = ((_gid % tileIntervalX) * mapData->tileWidth);
+		renderRect.top = ((_gid / tileIntervalY) * mapData->tileHeight);
+		renderRect.right = (_gid % tileIntervalX) * mapData->tileWidth + mapData->tileWidth;
+		renderRect.bottom = ((_gid / tileIntervalY)) * mapData->tileHeight + mapData->tileHeight;
 	}
 }

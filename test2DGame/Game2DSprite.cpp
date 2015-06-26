@@ -7,6 +7,7 @@ Game2DSprite::Game2DSprite(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, 
 	spriteName = _spriteFileName;
 	spriteRect = _rect;
 	spritePosition = { 0, 0, 0 };
+	spriteCenterPos = { 0, 0, 0 };
 	spriteAlphaColor = { 1, 1, 1, 1 };
 
 	D3DXMatrixIdentity(&accumuMatrix);
@@ -18,8 +19,8 @@ Game2DSprite::Game2DSprite(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, 
 
 Game2DSprite::~Game2DSprite()
 {
-	spriteTexture2D->Release();
-	spriteObject->Release();
+	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
+	if (spriteObject != nullptr) spriteObject->Release();
 	if (spriteName != nullptr) delete spriteName;
 	if (d3d9Device != nullptr) delete d3d9Device;
 }
@@ -54,16 +55,16 @@ void Game2DSprite::DrawSprite()
 {
 	spriteObject->Begin(D3DXSPRITE_ALPHABLEND);
 
-	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, nullptr, &spritePosition, spriteAlphaColor);
+	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, &spriteCenterPos, &spritePosition, spriteAlphaColor);
 	if (hr != S_OK) MessageBox(0, L"DrawSprite() - FAILED", 0, 0);
 	
 	spriteObject->End();
 }
 
-void Game2DSprite::TranslateSprite(FLOAT x, FLOAT y)
+void Game2DSprite::TranslateSprite(FLOAT _x, FLOAT _y)
 {
 	D3DXMATRIX matrix;
-	accumuMatrix *= *(D3DXMatrixTranslation(&matrix, x, y, 0));
+	accumuMatrix *= *(D3DXMatrixTranslation(&matrix, _x, _y, 0));
 
 	HRESULT hr = spriteObject->SetTransform(&accumuMatrix);
 	if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
