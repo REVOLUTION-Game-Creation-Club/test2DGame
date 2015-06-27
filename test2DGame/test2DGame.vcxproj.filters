@@ -37,6 +37,12 @@
     <Filter Include="Source Files\GameObjectFactory">
       <UniqueIdentifier>{2f38a1c0-7869-47d9-83c9-d8960f4fbb39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{e24a3d30-4f33-44a9-b8ed-2010bf21c882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\PlayerClass">
+      <UniqueIdentifier>{4abde77a-00f9-42b9-8684-885933d7fecb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +81,15 @@
     <ClInclude Include="GameObjectFactory.h">
       <Filter>Source Files\GameObjectFactory</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\GameObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\GameObjects\PlayerClass</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFactory.h">
+      <Filter>Source Files\GameObjects\PlayerClass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -103,6 +118,15 @@
     </ClCompile>
     <ClCompile Include="GameObjectFactory.cpp">
       <Filter>Source Files\GameObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\GameObjects\PlayerClass</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFactory.cpp">
+      <Filter>Source Files\GameObjects\PlayerClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

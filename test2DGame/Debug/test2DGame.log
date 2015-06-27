@@ -1,7 +1,6 @@
 ﻿  stdafx.cpp
-  GameObjectFactory.cpp
-  ChracterAnimation.cpp
-  Generating Code...
   Skipping... (no relevant changes detected)
   test2DGame.cpp
+  PlayerFactory.cpp
+  GameObjectFactory.cpp
   test2DGame.vcxproj -> D:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\Debug\test2DGame.exe

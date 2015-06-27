@@ -26,3 +26,7 @@
 #include "TMXParser.h"
 #include "tinyxml2.h"
 #include"ChracterAnimation.h"
+#include "GameObjectFactory.h"
+#include "GameObject.h"
+#include "Player.h"
+#include "PlayerFactory.h"

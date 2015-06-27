@@ -13,6 +13,10 @@ IDirect3DDevice9* Device = 0;
 GameMap* testGameMap;
 TMXParser* testTmxparser;
 ChracterAnimation* chAni;
+
+Game2DSprite* playerSprite;
+GameObjectFactory* playerFactory;
+GameObject* playerObject;
 //
 // Framework Functions Prototype
 //
@@ -58,7 +62,10 @@ bool Setup()
 	RECT rt2 = { 32, 0, 64, 32 };
 	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", rt2);
 	
-
+	playerSprite = new Game2DSprite(Device, "GameResources/ch01.png", RECT{ 0, 0, 42, 32 });
+	playerFactory = new PlayerFactory();
+	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
+	playerObject->SetSpriteObject(playerSprite);
 	
 	return true;
 }
@@ -80,7 +87,8 @@ bool Display(float timeDelta)
 
 		
 		testGameMap->DrawMap(); // order : 0
-		
+		playerObject->Draw();
+
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
