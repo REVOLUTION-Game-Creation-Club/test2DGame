@@ -10,10 +10,9 @@ Game2DSprite::Game2DSprite(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, 
 	spriteCenterPos = { 0, 0, 0 };
 	spriteAlphaColor = { 1, 1, 1, 1 };
 
-	D3DXMatrixIdentity(&accumuMatrix);
-
 	CreateSprite();
 	CreateTexture2D();
+	
 }
 
 
@@ -36,24 +35,11 @@ void Game2DSprite::CreateTexture2D()
 {
 	HRESULT hr = D3DXCreateTextureFromFile(d3d9Device, ConvertCharToWchar(spriteName), &spriteTexture2D);
 	if (hr != S_OK) MessageBox(0, L"CreateTexture2D() - FAILED", 0, 0);
-	/*D3DXCreateTextureFromFileEx(d3d9Device, ConvertCharToWchar(spriteName),
-		D3DX_DEFAULT,
-		D3DX_DEFAULT,
-		D3DX_DEFAULT,
-		0,
-		D3DFMT_FROM_FILE,
-		D3DPOOL_MANAGED,
-		0x01,
-		0x01,
-		0x00FFFFFF,
-		nullptr,
-		nullptr,
-		&spriteTexture2D);*/
 }
 
 void Game2DSprite::DrawSprite()
 {
-	spriteObject->Begin(D3DXSPRITE_ALPHABLEND);
+	spriteObject->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_OBJECTSPACE);
 
 	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, &spriteCenterPos, &spritePosition, spriteAlphaColor);
 	if (hr != S_OK) MessageBox(0, L"DrawSprite() - FAILED", 0, 0);
@@ -63,11 +49,17 @@ void Game2DSprite::DrawSprite()
 
 void Game2DSprite::TranslateSprite(FLOAT _x, FLOAT _y)
 {
-	D3DXMATRIX matrix;
-	accumuMatrix *= *(D3DXMatrixTranslation(&matrix, _x, _y, 0));
+	//SetTransForm
+	D3DXMATRIX setTransMatrix;
+	D3DXMatrixTranslation(&setTransMatrix, _x, _y, 0);
 
-	HRESULT hr = spriteObject->SetTransform(&accumuMatrix);
+	HRESULT hr = spriteObject->SetTransform(&setTransMatrix);
 	if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
+	
+	// GetTransForm
+	D3DXMATRIX getTransMatrix;
+	spriteObject->GetTransform(&getTransMatrix);
+	spritePosition += D3DXVECTOR3(getTransMatrix._41, getTransMatrix._42, 0.0f);
 }
 
 void Game2DSprite::SetSpriteRect(RECT _spriteRect)
@@ -79,10 +71,14 @@ void Game2DSprite::SetSpritePos(D3DXVECTOR3 _pos)
 {
 	spritePosition = _pos;
 }
+D3DXVECTOR3 Game2DSprite::GetSpritePos()
+{
+	return spritePosition;
+}
 
 void Game2DSprite::BeginSpriteForMAP()
 {
-	spriteObject->Begin(D3DXSPRITE_ALPHABLEND);
+	spriteObject->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_OBJECTSPACE);
 }
 
 void Game2DSprite::EndSpriteForMAP()

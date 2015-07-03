@@ -87,7 +87,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChracterAnimation.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CharacterAnimation.h" />
     <ClInclude Include="d3dUtility.h" />
     <ClInclude Include="Game2DSprite.h" />
     <ClInclude Include="GameMap.h" />
@@ -103,7 +104,8 @@
     <ClInclude Include="TMXParser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChracterAnimation.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CharacterAnimation.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
     <ClCompile Include="GameMap.cpp" />

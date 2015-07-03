@@ -43,6 +43,9 @@
     <Filter Include="Source Files\GameObjects\PlayerClass">
       <UniqueIdentifier>{4abde77a-00f9-42b9-8684-885933d7fecb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CameraClass">
+      <UniqueIdentifier>{c95b1d51-0350-4d02-a16c-bcb73e5dc40e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,9 +78,6 @@
     <ClInclude Include="TMXParser.h">
       <Filter>Source Files\TMXParser</Filter>
     </ClInclude>
-    <ClInclude Include="ChracterAnimation.h">
-      <Filter>Source Files\AnimationClass</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjectFactory.h">
       <Filter>Source Files\GameObjectFactory</Filter>
     </ClInclude>
@@ -89,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="PlayerFactory.h">
       <Filter>Source Files\GameObjects\PlayerClass</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterAnimation.h">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\CameraClass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +119,6 @@
     <ClCompile Include="TMXParser.cpp">
       <Filter>Source Files\TMXParser</Filter>
     </ClCompile>
-    <ClCompile Include="ChracterAnimation.cpp">
-      <Filter>Source Files\AnimationClass</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectFactory.cpp">
       <Filter>Source Files\GameObjectFactory</Filter>
     </ClCompile>
@@ -127,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="PlayerFactory.cpp">
       <Filter>Source Files\GameObjects\PlayerClass</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterAnimation.cpp">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\CameraClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

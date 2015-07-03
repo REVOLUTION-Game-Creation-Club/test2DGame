@@ -3,6 +3,8 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+#define DEGREE_TO_RADIAN 0.01745329251f
+
 class Game2DSprite
 {
 public:
@@ -16,6 +18,7 @@ public:
 	void TranslateSprite(FLOAT _x, FLOAT _y);
 	void SetSpriteRect(RECT _spriteRect);
 	void SetSpritePos(D3DXVECTOR3 _pos);
+	D3DXVECTOR3 GetSpritePos();
 
 private:
 	wchar_t* ConvertCharToWchar(char* str);
@@ -31,7 +34,5 @@ private:
 	D3DXVECTOR3 spritePosition;
 	D3DXVECTOR3 spriteCenterPos;
 	D3DXCOLOR spriteAlphaColor;
-
-	D3DXMATRIX accumuMatrix;
 };
 

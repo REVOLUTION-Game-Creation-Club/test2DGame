@@ -24,6 +24,13 @@ GameMap::~GameMap()
 	if (tmxFile != nullptr) delete tmxFile;	
 }
 
+void GameMap::Move(FLOAT _x, FLOAT _y)
+{
+	for (int idx = 0; idx < mapLayers; ++idx)
+	{
+		vec_tileMapSprites[idx]->TranslateSprite(_x, _y);
+	}
+}
 
 void GameMap::DrawMap()
 {

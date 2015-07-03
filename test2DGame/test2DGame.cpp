@@ -8,15 +8,16 @@
 // Globals
 //
 IDirect3DDevice9* Device = 0;
+//
 //tests
-
+//
 GameMap* testGameMap;
 TMXParser* testTmxparser;
-ChracterAnimation* chAni;
 
 Game2DSprite* playerSprite;
 GameObjectFactory* playerFactory;
 GameObject* playerObject;
+Camera TheCamera(Camera::LANDOBJECT);
 //
 // Framework Functions Prototype
 //
@@ -45,6 +46,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 		return 0;
 	}
 
+
 	d3d::EnterMsgLoop(Display);
 
 	Cleanup();
@@ -56,17 +58,25 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 
 bool Setup()
-{	//같은 32x32 텍스처인데 어째서 캐릭터는 일부분이 짤리는가?... -> left 값 42로 하면 된다는게 어이탈출...
-	chAni = new ChracterAnimation();
-	
+{	
+	//
+	// Set projection matrix.
+	//
+	D3DXMATRIX proj;
+	D3DXMatrixOrthoOffCenterLH(&proj, 0.0f, 800, 600.0f, 0.0f, 0.0f, 1.0f);
+	Device->SetTransform(D3DTS_PROJECTION, &proj);
+
+	//
+	// test
+	//
 	RECT rt2 = { 32, 0, 64, 32 };
 	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", rt2);
 	
-	playerSprite = new Game2DSprite(Device, "GameResources/ch01.png", RECT{ 0, 0, 42, 32 });
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
+	playerSprite = new Game2DSprite(Device, "GameResources/ch01.png", RECT{ 0, 0, 42, 32 });
 	playerObject->SetSpriteObject(playerSprite);
-	
+
 	return true;
 }
 
@@ -84,10 +94,9 @@ bool Display(float timeDelta)
 		// the depth buffer to a value of 1.0 - D3DCLEAR_ZBUFFER: 1.0f.
 		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
 		Device->BeginScene();
-
 		
 		testGameMap->DrawMap(); // order : 0
-		playerObject->Draw();
+		playerObject->Draw(); // order : 1
 
 		Device->EndScene();
 		// Swap the back and front buffers.
@@ -111,6 +120,27 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
 			::DestroyWindow(hwnd);
+		if (wParam == VK_LEFT)
+		{
+			playerObject->Move(-1, 0);	
+		}
+		if (wParam == VK_RIGHT)
+		{
+			playerObject->Move(1, 0);
+			D3DXMATRIX mat;
+			D3DXMatrixTranslation(&mat, -50.0f, 0.0f, 0.0f);
+			Device->SetTransform(D3DTS_VIEW, &mat);
+		}
+		if (wParam == VK_UP)
+		{
+			playerObject->Move(0, -1);
+		
+		}
+		if (wParam == VK_DOWN)
+		{
+			playerObject->Move(0, 1);
+		
+		}
 		
 		break;
 	}

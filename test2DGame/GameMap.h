@@ -16,7 +16,7 @@ public:
 	~GameMap();
 
 	void DrawMap();
-
+	void Move(FLOAT _x, FLOAT _y);
 private:
 	MapData* mapData;
 	TMXParser* tmxFile;
