@@ -60,9 +60,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test2DGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="d3dUtility.h">
       <Filter>D3D9XUtil</Filter>
     </ClInclude>
@@ -90,18 +87,18 @@
     <ClInclude Include="PlayerFactory.h">
       <Filter>Source Files\GameObjects\PlayerClass</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterAnimation.h">
-      <Filter>Source Files\AnimationClass</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Simple2DCamera.h">
       <Filter>Source Files\CameraClass</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source Files\AnimationClass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test2DGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="d3dUtility.cpp">
@@ -131,11 +128,14 @@
     <ClCompile Include="PlayerFactory.cpp">
       <Filter>Source Files\GameObjects\PlayerClass</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterAnimation.cpp">
-      <Filter>Source Files\AnimationClass</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="Simple2DCamera.cpp">
       <Filter>Source Files\CameraClass</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\AnimationClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
