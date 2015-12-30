@@ -27,7 +27,8 @@
 #include "tinyxml2.h"
 #include "Animation.h"
 #include "GameObjectFactory.h"
-#include "GameObject.h"
+#include "GameObject.h"5
 #include "Player.h"
 #include "PlayerFactory.h"
 #include "Simple2DCamera.h"
+#include "AntTweakBar.h"

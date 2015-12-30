@@ -9,6 +9,6 @@ public:
 	virtual ~PlayerFactory();
 
 private:
-	virtual GameObject* CreateGameObject();
+	virtual GameObject* CreateGameObject() override;
 };
 

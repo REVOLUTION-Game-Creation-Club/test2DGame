@@ -2,6 +2,9 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+#define VIEW_HALF_WIDTH 800/2
+#define VIEW_HALF_HEIGHT 680/2
+
 class Simple2DCamera
 {
 public:

@@ -14,12 +14,13 @@
     <ProjectGuid>{7ED06F37-9011-43D8-8390-BAE2E0DF8719}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>test2DGame</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -55,13 +56,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\include;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;zdll.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;zdll.lib;SDL2.lib;AntTweakBar64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

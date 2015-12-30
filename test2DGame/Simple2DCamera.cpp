@@ -24,6 +24,11 @@ Simple2DCamera* Simple2DCamera::GetInstance()
 void Simple2DCamera::Init()
 {
 	cameraPosition = { 0, 0, 0 };
+
+	D3DXMATRIX matLookAt;
+	D3DXMatrixTranslation(&matLookAt, VIEW_HALF_WIDTH, VIEW_HALF_HEIGHT, 0.0f);
+
+	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }
 
 void Simple2DCamera::SetDevice(IDirect3DDevice9* _device)
@@ -32,6 +37,7 @@ void Simple2DCamera::SetDevice(IDirect3DDevice9* _device)
 	else MessageBox(0, L"Simple2DCamera SetDevice() - devicePtr failed", 0, 0);
 }
 
+//test func ( 아직 수정이 필요하다. )
 void Simple2DCamera::Move(FLOAT _x, FLOAT _y)
 {
 	D3DXMATRIX setTransMat;
@@ -49,7 +55,7 @@ void Simple2DCamera::FollowPlayer(FLOAT playerX, FLOAT playerY)
 	cameraPosition = D3DXVECTOR3(playerX, playerY, 0.0f);
 
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, -playerX, -playerY, 0.0f);
+	D3DXMatrixTranslation(&matLookAt, -playerX + VIEW_HALF_WIDTH, -playerY + VIEW_HALF_HEIGHT, 0.0f);
 	
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }

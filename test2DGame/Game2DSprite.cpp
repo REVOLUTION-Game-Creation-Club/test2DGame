@@ -50,17 +50,18 @@ void Game2DSprite::DrawSprite()
 void Game2DSprite::TranslateSprite(FLOAT _x, FLOAT _y)
 {
 	//SetTransForm
-	//D3DXMATRIX setTransMatrix;
-	//D3DXMatrixTranslation(&setTransMatrix, _x, _y, 0);
+	D3DXMATRIX setTransMatrix;
+	D3DXMatrixTranslation(&setTransMatrix, _x, _y, 0);
 
-	//HRESULT hr = spriteObject->SetTransform(&setTransMatrix);
-	//if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
+	HRESULT hr = spriteObject->SetTransform(&setTransMatrix);
+	if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
 	
-	// GetTransForm
-	//D3DXMATRIX getTransMatrix;
-	//spriteObject->GetTransform(&getTransMatrix);
+	//GetTransForm
+	D3DXMATRIX getTransMatrix;
+	spriteObject->GetTransform(&getTransMatrix);
 	//spritePosition += D3DXVECTOR3(getTransMatrix._41, getTransMatrix._42, 0.0f);
 	spritePosition += D3DXVECTOR3(_x, _y, 0.0f);
+
 }
 
 void Game2DSprite::SetSpriteRect(RECT _spriteRect)

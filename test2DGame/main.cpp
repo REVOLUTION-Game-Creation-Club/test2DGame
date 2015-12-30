@@ -6,7 +6,7 @@
 //
 IDirect3DDevice9* Device = 0;
 //
-//tests
+//test variables for 2d game class..
 //
 GameMap* testGameMap;
 TMXParser* testTmxparser;
@@ -18,6 +18,9 @@ GameObject* playerObject;
 Simple2DCamera* mainCamera;
 
 Animation* playerTestAni;
+
+// test variables for antTweakBar( gui )
+TwBar* testTwBar;
 
 //
 // Framework Functions Prototype
@@ -64,15 +67,15 @@ bool Setup()
 	// Set projection matrix.
 	//
 	D3DXMATRIX proj;
-	D3DXMatrixOrthoOffCenterLH(&proj, 0.0f, 400, 300.0f, 0.0f, 0.0f, 1.0f);
+	D3DXMatrixOrthoOffCenterLH(&proj, 0.0f, 800.0f, 680.0f, 0.0f, 0.0f, 1.0f);
 	Device->SetTransform(D3DTS_PROJECTION, &proj);
 
 	//
-	// test
+	// test for 2d game class
 	//
-	RECT rt2 = { 32, 0, 64, 32 };
-	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", rt2);
-	
+	RECT mapDefaultRect = { 0, 0, 0, 0 };
+	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", mapDefaultRect);
+
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
 	playerSprite = new Game2DSprite(Device, "GameResources/ch01.png", RECT{ 0, 0, 32, 42 });
@@ -83,9 +86,17 @@ bool Setup()
 	playerTestAni->SetDrawInfos(DrawInfo{ 96, 128, 0, 32, 0, 0, 42, 200 });
 
 	mainCamera = Simple2DCamera::GetInstance();
-	mainCamera->GetInstance()->Init();
 	mainCamera->SetDevice(Device);
+	mainCamera->Init();
 
+	//testMap offset pos 
+	testGameMap->Move(-400.0f, -340.0f);
+
+	//test for antTweakBar( gui lib )
+	TwInit(TW_DIRECT3D9, Device);
+	TwWindowSize(200.0f , 150.0f);
+	testTwBar = TwNewBar("Test_TwNewBar");
+	
 	return true;
 }
 
@@ -108,6 +119,9 @@ bool Display(float timeDelta)
 		playerObject->Draw(); // order : 1
 		playerTestAni->DrawFrames();
 
+		//antTweakBar draw
+		TwDraw();
+
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
@@ -128,12 +142,13 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_KEYDOWN:
-		if (wParam == VK_ESCAPE)
-			::DestroyWindow(hwnd);
+		if (wParam == VK_ESCAPE) ::DestroyWindow(hwnd);
+			
 		if (wParam == VK_LEFT) playerObject->Move(-1, 0);
 		else if (wParam == VK_RIGHT) playerObject->Move(1, 0);
 		else if (wParam == VK_UP) playerObject->Move(0, -1);
 		else if (wParam == VK_DOWN) playerObject->Move(0, 1);
+		
 		mainCamera->GetInstance()->FollowPlayer(playerObject->GetObjectPostion().x, playerObject->GetObjectPostion().y);
 		break;
 	}
