@@ -42,10 +42,17 @@ bool d3d::InitD3D(
 		return false;
 	}
 		
+	
+	BOOL fullscreen = FALSE; // Set to TRUE to run in fullscreen
+	DWORD style = fullscreen ? WS_POPUP : WS_OVERLAPPEDWINDOW;
+	RECT windowRect = { 0, 0, width, height };
+	AdjustWindowRect(&windowRect, style, FALSE);
+	
 	HWND hwnd = 0;
 	hwnd = ::CreateWindow(L"Direct3D9App", L"Direct3D9App",
-		WS_OVERLAPPEDWINDOW,
-		0, 0, width, height,
+		style,
+		0, 0, windowRect.right - windowRect.left,
+		windowRect.bottom - windowRect.top,
 		0 /*parent hwnd*/, 0 /* menu */, hInstance, 0 /*extra*/); 
 
 	if( !hwnd )
@@ -98,7 +105,7 @@ bool d3d::InitD3D(
 	d3dpp.hDeviceWindow              = hwnd;
 	d3dpp.Windowed                   = windowed;
 	d3dpp.EnableAutoDepthStencil     = true; 
-	d3dpp.AutoDepthStencilFormat     = D3DFMT_D24S8;
+	d3dpp.AutoDepthStencilFormat     = D3DFMT_D24S8; //D3DFMT_D16
 	d3dpp.Flags                      = 0;
 	d3dpp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
 	d3dpp.PresentationInterval       = D3DPRESENT_INTERVAL_IMMEDIATE;
@@ -133,7 +140,7 @@ bool d3d::InitD3D(
 			return false;
 		}
 	}
-
+	
 	d3d9->Release(); // done with d3d9 object
 	
 	return true;

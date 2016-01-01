@@ -21,14 +21,18 @@ Simple2DCamera* Simple2DCamera::GetInstance()
 	else return instance;
 }
 
-void Simple2DCamera::Init()
+void Simple2DCamera::Init(float _viewWidth, float _viewHeight)
 {
 	cameraPosition = { 0, 0, 0 };
 
+	viewHalfWidth = _viewWidth / 2;
+	viewHalfHeight = _viewHeight / 2;
+
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, VIEW_HALF_WIDTH, VIEW_HALF_HEIGHT, 0.0f);
+	D3DXMatrixTranslation(&matLookAt, viewHalfWidth, viewHalfHeight, 0.0f);
 
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
+
 }
 
 void Simple2DCamera::SetDevice(IDirect3DDevice9* _device)
@@ -55,7 +59,7 @@ void Simple2DCamera::FollowPlayer(FLOAT playerX, FLOAT playerY)
 	cameraPosition = D3DXVECTOR3(playerX, playerY, 0.0f);
 
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, -playerX + VIEW_HALF_WIDTH, -playerY + VIEW_HALF_HEIGHT, 0.0f);
+	D3DXMatrixTranslation(&matLookAt, -playerX + viewHalfWidth, -playerY + viewHalfHeight, 0.0f);
 	
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }

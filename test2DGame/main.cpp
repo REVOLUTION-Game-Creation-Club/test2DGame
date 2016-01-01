@@ -19,8 +19,8 @@ Simple2DCamera* mainCamera;
 
 Animation* playerTestAni;
 
-// test variables for antTweakBar( gui )
-TwBar* testTwBar;
+//gui test
+TwBar* twBar;
 
 //
 // Framework Functions Prototype
@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	int showCmd)
 {
 	if (!d3d::InitD3D(hinstance,
-		800, 680, true, D3DDEVTYPE_HAL, &Device))
+		800, 640, true, D3DDEVTYPE_HAL, &Device))
 	{
 		::MessageBox(0, L"InitD3D() - FAILED", 0, 0);
 		return 0;
@@ -72,7 +72,7 @@ bool Setup()
 
 	//
 	// test for 2d game class
-	//
+	
 	RECT mapDefaultRect = { 0, 0, 0, 0 };
 	testGameMap = new GameMap("GameResources/test5.tmx", Device, "GameResources/tileb.png", mapDefaultRect);
 
@@ -87,22 +87,21 @@ bool Setup()
 
 	mainCamera = Simple2DCamera::GetInstance();
 	mainCamera->SetDevice(Device);
-	mainCamera->Init();
+	mainCamera->Init(800.0f/2, 680.0f/2);
 
 	//testMap offset pos 
 	testGameMap->Move(-400.0f, -340.0f);
 
-	//test for antTweakBar( gui lib )
+	//gui test
 	TwInit(TW_DIRECT3D9, Device);
-	TwWindowSize(200.0f , 150.0f);
-	testTwBar = TwNewBar("Test_TwNewBar");
+	twBar = TwNewBar("testTWBAR");
 	
 	return true;
 }
 
 void Cleanup()
 {
-	// Nothing to cleanup in this sample.
+	TwTerminate();
 }
 
 bool Display(float timeDelta)
@@ -119,7 +118,7 @@ bool Display(float timeDelta)
 		playerObject->Draw(); // order : 1
 		playerTestAni->DrawFrames();
 
-		//antTweakBar draw
+		//gui test
 		TwDraw();
 
 		Device->EndScene();
@@ -134,6 +133,8 @@ bool Display(float timeDelta)
 //
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+
+	if (TwEventWin(hwnd, msg, wParam, lParam)) return 0;
 
 	switch (msg)
 	{
@@ -150,6 +151,9 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		else if (wParam == VK_DOWN) playerObject->Move(0, 1);
 		
 		mainCamera->GetInstance()->FollowPlayer(playerObject->GetObjectPostion().x, playerObject->GetObjectPostion().y);
+		break;
+	case WM_SIZE:
+		
 		break;
 	}
 	

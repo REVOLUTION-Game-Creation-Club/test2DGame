@@ -1,0 +1,11 @@
+﻿d3dUtility.obj : error LNK2019: unresolved external symbol Direct3DCreate9 referenced in function "bool __cdecl d3d::InitD3D(struct HINSTANCE__ *,int,int,bool,enum _D3DDEVTYPE,struct IDirect3DDevice9 * *)" (?InitD3D@d3d@@YA_NPEAUHINSTANCE__@@HH_NW4_D3DDEVTYPE@@PEAPEAUIDirect3DDevice9@@@Z)
+Game2DSprite.obj : error LNK2019: unresolved external symbol D3DXMatrixTranslation referenced in function "public: void __cdecl Game2DSprite::TranslateSprite(float,float)" (?TranslateSprite@Game2DSprite@@QEAAXMM@Z)
+Simple2DCamera.obj : error LNK2001: unresolved external symbol D3DXMatrixTranslation
+Game2DSprite.obj : error LNK2019: unresolved external symbol D3DXCreateSprite referenced in function "private: void __cdecl Game2DSprite::CreateSprite(void)" (?CreateSprite@Game2DSprite@@AEAAXXZ)
+Game2DSprite.obj : error LNK2019: unresolved external symbol D3DXCreateTextureFromFileW referenced in function "private: void __cdecl Game2DSprite::CreateTexture2D(void)" (?CreateTexture2D@Game2DSprite@@AEAAXXZ)
+main.obj : error LNK2019: unresolved external symbol D3DXMatrixOrthoOffCenterLH referenced in function "bool __cdecl Setup(void)" (?Setup@@YA_NXZ)
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\d3d9.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\d3dx9.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib\zdll.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86\SDL2.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\x64\Debug\test2DGame.exe : fatal error LNK1120: 5 unresolved externals
