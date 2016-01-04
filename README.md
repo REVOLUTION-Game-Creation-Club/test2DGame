@@ -15,3 +15,4 @@
 
 * 2d tile set 을 활용한 tile base 게임.
 * 현재 tiled 파일 포맷은 tmx parser를 구현, 그외 sprite 클래스 및 sprites packer & unpacker 제작을 목표로 하고있음.
+* GUI를 위해 antTweakBar lib을 사용하고 있다. 
