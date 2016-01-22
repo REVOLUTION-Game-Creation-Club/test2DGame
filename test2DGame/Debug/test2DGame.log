@@ -1,2 +1,6 @@
-﻿  d3dUtility.cpp
+﻿  stdafx.cpp
+  WorldMap.cpp
+e:\programming_workspace(all)\visualstudio_all_projects\test2dgame\test2dgame\worldmap.cpp(21): warning C4154: deletion of an array expression; conversion to pointer supplied
+  main.cpp
+  Generating Code...
   test2DGame.vcxproj -> E:\Programming_WorkSpace(ALL)\visualStudio_All_Projects\test2DGame\Debug\test2DGame.exe

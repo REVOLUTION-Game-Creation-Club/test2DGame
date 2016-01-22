@@ -54,7 +54,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -183,15 +183,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\include;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\include;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;zdll.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\zlib128-dll\lib;D:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;AntTweakBar64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -251,6 +251,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="TinyXML-2\tinyxml2.h" />
     <ClInclude Include="TMXParser.h" />
+    <ClInclude Include="WorldMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -273,6 +274,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TinyXML-2\tinyxml2.cpp" />
     <ClCompile Include="TMXParser.cpp" />
+    <ClCompile Include="WorldMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test2DGame.rc" />

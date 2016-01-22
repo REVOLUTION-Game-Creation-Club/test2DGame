@@ -8,6 +8,7 @@ Player::Player()
 
 Player::~Player()
 {
+	delete spriteObject;
 }
 
 void Player::Draw()

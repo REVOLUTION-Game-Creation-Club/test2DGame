@@ -22,6 +22,15 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 GameMap::~GameMap()
 {
 	if (tmxFile != nullptr) delete tmxFile;	
+	if (mapData != nullptr) delete mapData;
+	
+	vector<Game2DSprite*>::iterator idx = vec_tileMapSprites.begin();
+	while (idx != vec_tileMapSprites.end())
+	{
+		(*idx)->~Game2DSprite();
+		++idx;
+	}
+	vec_tileMapSprites.clear();
 }
 
 void GameMap::Move(FLOAT _x, FLOAT _y)

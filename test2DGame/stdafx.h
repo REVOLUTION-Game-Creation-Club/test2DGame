@@ -31,6 +31,7 @@
 #include "Player.h"
 #include "PlayerFactory.h"
 #include "Simple2DCamera.h"
+#include "WorldMap.h"
 
 //gui lib
 #include "AntTweakBar.h"

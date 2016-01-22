@@ -9,6 +9,7 @@ Game2DSprite::Game2DSprite(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, 
 	spritePosition = { 0, 0, 0 };
 	spriteCenterPos = { 0, 0, 0 };
 	spriteAlphaColor = { 1, 1, 1, 1 };
+	D3DXMatrixIdentity(&transMatrix);
 
 	CreateSprite();
 	CreateTexture2D();
@@ -41,7 +42,7 @@ void Game2DSprite::DrawSprite()
 {
 	spriteObject->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_OBJECTSPACE);
 
-	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, &spriteCenterPos, &spritePosition, spriteAlphaColor);
+	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, &spriteCenterPos, NULL, spriteAlphaColor);
 	if (hr != S_OK) MessageBox(0, L"DrawSprite() - FAILED", 0, 0);
 	
 	spriteObject->End();
@@ -50,17 +51,19 @@ void Game2DSprite::DrawSprite()
 void Game2DSprite::TranslateSprite(FLOAT _x, FLOAT _y)
 {
 	//SetTransForm
-	D3DXMATRIX setTransMatrix;
-	D3DXMatrixTranslation(&setTransMatrix, _x, _y, 0);
+	D3DXMATRIX temp;
+	D3DXMatrixTranslation(&temp, _x, _y, 0);
+	transMatrix._41 += temp._41;
+	transMatrix._42 += temp._42;
 
-	HRESULT hr = spriteObject->SetTransform(&setTransMatrix);
+	HRESULT hr = spriteObject->SetTransform(&transMatrix);
 	if (hr != S_OK) MessageBox(0, L"TransformSprite() - FAILED", 0, 0);
 	
 	//GetTransForm
-	D3DXMATRIX getTransMatrix;
-	spriteObject->GetTransform(&getTransMatrix);
+	//D3DXMATRIX getTransMatrix;
+	//spriteObject->GetTransform(&getTransMatrix);
 	//spritePosition += D3DXVECTOR3(getTransMatrix._41, getTransMatrix._42, 0.0f);
-	spritePosition += D3DXVECTOR3(_x, _y, 0.0f);
+	spritePosition +=D3DXVECTOR3(_x, _y, 0.0f);
 
 }
 
@@ -90,7 +93,7 @@ void Game2DSprite::EndSpriteForMAP()
 // must Begin and End func
 void Game2DSprite::DrawSpriteForMAP()
 {
-	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, nullptr, &spritePosition, spriteAlphaColor);
+	HRESULT hr = spriteObject->Draw(spriteTexture2D, &spriteRect, &spriteCenterPos, &spritePosition, spriteAlphaColor);
 	if (hr != S_OK) MessageBox(0, L"DrawSprite() - FAILED", 0, 0);
 }
 

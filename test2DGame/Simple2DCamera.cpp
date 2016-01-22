@@ -9,6 +9,8 @@ Simple2DCamera::Simple2DCamera()
 
 Simple2DCamera::~Simple2DCamera()
 {
+	if (instance != nullptr) delete instance;
+	if (device != nullptr) delete device;
 }
 
 Simple2DCamera* Simple2DCamera::GetInstance()

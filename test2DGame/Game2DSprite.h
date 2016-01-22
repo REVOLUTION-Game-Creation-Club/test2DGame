@@ -34,5 +34,6 @@ private:
 	D3DXVECTOR3 spritePosition;
 	D3DXVECTOR3 spriteCenterPos;
 	D3DXCOLOR spriteAlphaColor;
+	D3DXMATRIX transMatrix;
 };
 
