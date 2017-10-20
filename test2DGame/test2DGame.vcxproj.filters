@@ -46,6 +46,12 @@
     <Filter Include="Source Files\CameraClass">
       <UniqueIdentifier>{c95b1d51-0350-4d02-a16c-bcb73e5dc40e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{8c465864-8a22-4a0b-a016-aaeea31c5052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SpriteClass\base">
+      <UniqueIdentifier>{5c9e7eee-d2cc-41ab-bd60-dde09b1088c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -62,9 +68,6 @@
     </ClInclude>
     <ClInclude Include="d3dUtility.h">
       <Filter>D3D9XUtil</Filter>
-    </ClInclude>
-    <ClInclude Include="Game2DSprite.h">
-      <Filter>Source Files\SpriteClass</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
       <Filter>Source Files\MapClass</Filter>
@@ -99,6 +102,21 @@
     <ClInclude Include="WorldMap.h">
       <Filter>Source Files\MapClass</Filter>
     </ClInclude>
+    <ClInclude Include="kojeomDebugLogger.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2DSprite.h">
+      <Filter>Source Files\SpriteClass\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Player2DSprite.h">
+      <Filter>Source Files\SpriteClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMap2DSprite.h">
+      <Filter>Source Files\SpriteClass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -106,9 +124,6 @@
     </ClCompile>
     <ClCompile Include="d3dUtility.cpp">
       <Filter>D3D9XUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="Game2DSprite.cpp">
-      <Filter>Source Files\SpriteClass</Filter>
     </ClCompile>
     <ClCompile Include="GameMap.cpp">
       <Filter>Source Files\MapClass</Filter>
@@ -142,6 +157,21 @@
     </ClCompile>
     <ClCompile Include="WorldMap.cpp">
       <Filter>Source Files\MapClass</Filter>
+    </ClCompile>
+    <ClCompile Include="kojeomDebugLogger.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Game2DSprite.cpp">
+      <Filter>Source Files\SpriteClass\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Player2DSprite.cpp">
+      <Filter>Source Files\SpriteClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMap2DSprite.cpp">
+      <Filter>Source Files\SpriteClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

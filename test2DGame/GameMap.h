@@ -1,5 +1,5 @@
 #pragma once
-#include "Game2DSprite.h"
+#include "GameMap2DSprite.h"
 #include "TMXParser.h"
 #include <vector>
 
@@ -20,11 +20,11 @@ public:
 private:
 	MapData* mapData;
 	TMXParser* tmxFile;
-	vector<Game2DSprite*> vec_tileMapSprites;
+	vector<GameMap2DSprite*> tileMapSprites;
 	RECT renderRect;
 	int mapLayers;
 
-	void DrawMapLyaers(const int layerIdx);
+	void DrawMapLyaers(const int _layerIdx);
 	void CalcRenderRect(const int _gid);
 };
 

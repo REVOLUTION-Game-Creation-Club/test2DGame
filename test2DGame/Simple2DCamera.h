@@ -1,12 +1,11 @@
 #pragma once
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "kojeomDebugLogger.h"
 
 class Simple2DCamera
 {
 public:
-	
-
 	void Move(FLOAT _x, FLOAT _y);
 	void FollowPlayer(FLOAT playerX, FLOAT playerY);
 	void SetDevice(IDirect3DDevice9* _device);

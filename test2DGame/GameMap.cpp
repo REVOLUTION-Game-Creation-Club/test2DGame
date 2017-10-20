@@ -8,11 +8,13 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 	else return;
 
 	mapData = tmxFile->GetMapData();
-	mapLayers = mapData->vec_layers.size();
+	mapLayers = mapData->layers.size();
 	// tmx map layers 갯수 만큼 map sprite 생성.
 	for (int idx = 1; idx <= mapLayers; ++idx)
 	{
-		vec_tileMapSprites.push_back(new Game2DSprite(_d3dDevice, _spriteFileName, _defaultRect));
+		GameMap2DSprite* spr = new GameMap2DSprite();
+		spr->Init(_d3dDevice, _spriteFileName, _defaultRect);
+		tileMapSprites.push_back(spr);
 	}
 	
 	renderRect = { 0, 0, 0, 0 };
@@ -24,20 +26,20 @@ GameMap::~GameMap()
 	if (tmxFile != nullptr) delete tmxFile;	
 	if (mapData != nullptr) delete mapData;
 	
-	vector<Game2DSprite*>::iterator idx = vec_tileMapSprites.begin();
-	while (idx != vec_tileMapSprites.end())
+	vector<GameMap2DSprite*>::iterator idx = tileMapSprites.begin();
+	while (idx != tileMapSprites.end())
 	{
-		(*idx)->~Game2DSprite();
+		delete (*idx);
 		++idx;
 	}
-	vec_tileMapSprites.clear();
+	tileMapSprites.clear();
 }
 
 void GameMap::Move(FLOAT _x, FLOAT _y)
 {
 	for (int idx = 0; idx < mapLayers; ++idx)
 	{
-		vec_tileMapSprites[idx]->TranslateSprite(_x, _y);
+		tileMapSprites[idx]->TranslateSprite(_x, _y);
 	}
 }
 
@@ -47,28 +49,22 @@ void GameMap::DrawMap()
 		DrawMapLyaers(idx);
 }
 // layer 별로 sprite를 만들어 각각의 내용을 그려서 중첩시킨다.
-void GameMap::DrawMapLyaers(const int layerIdx)
+void GameMap::DrawMapLyaers(const int _layerIdx)
 {
-	vec_tileMapSprites[layerIdx]->BeginSpriteForMAP();
-
 	int gid = 0;
 	int tileIdx = 0;
 	for (int y = 0; y < mapData->mapHeight; ++y)
 		for (int x = 0; x < mapData->mapWidth; ++x)
 		{
-
-			gid = mapData->vec_layers[layerIdx].at(tileIdx);
+			gid = mapData->layers[_layerIdx].at(tileIdx);
 			CalcRenderRect(gid);
 			tileIdx++;
-
-			vec_tileMapSprites[layerIdx]->SetSpriteRect(renderRect);
-			vec_tileMapSprites[layerIdx]->SetSpritePos(D3DXVECTOR3(x * mapData->tileWidth, y * mapData->tileHeight, 0));
-			vec_tileMapSprites[layerIdx]->DrawSpriteForMAP();
-
+			tileMapSprites[_layerIdx]->SetSpriteRect(renderRect);
+			tileMapSprites[_layerIdx]->SetSpritePos(D3DXVECTOR3(x * mapData->tileWidth, y * mapData->tileHeight, 0));
+			tileMapSprites[_layerIdx]->DrawSprite();
 		}
-
-	vec_tileMapSprites[layerIdx]->EndSpriteForMAP();
 }
+	
 
 void GameMap::CalcRenderRect(const int _gid)
 {

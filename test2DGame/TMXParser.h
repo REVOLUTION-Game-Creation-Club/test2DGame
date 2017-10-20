@@ -14,7 +14,7 @@ struct MapData
 	int imageWidth;
 	int imageHeight;
 	//tmx 파일 맵 layer 정보를 저장하며, 0 to N 순서로 tile layer를 렌더링합니다. ( 0이 가장 먼저 그려짐. )
-	vector<vector<int>> vec_layers;
+	vector<vector<int>> layers;
 };
 
 //

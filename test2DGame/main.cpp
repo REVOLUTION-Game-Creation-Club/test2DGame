@@ -72,7 +72,8 @@ bool Setup()
 	
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
-	playerSprite = new Game2DSprite(Device, "GameResources/ch01.png", RECT{ 0, 0, 32, 42 });
+	playerSprite = new Player2DSprite();
+	playerSprite->Init(Device, "GameResources/ch01.png", RECT{ 0, 0, 32, 42 });
 	playerObject->SetSpriteObject(playerSprite);
 
 	playerTestAni = new Animation();

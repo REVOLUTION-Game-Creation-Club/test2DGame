@@ -21,7 +21,6 @@
 // TODO: reference additional headers your program requires here
 
 #include "d3dUtility.h"
-#include "Game2DSprite.h"
 #include "GameMap.h"
 #include "TMXParser.h"
 #include "tinyxml2.h"
@@ -32,6 +31,9 @@
 #include "PlayerFactory.h"
 #include "Simple2DCamera.h"
 #include "WorldMap.h"
+
+// 2d sprite
+#include "Player2DSprite.h"
 
 //gui lib
 #include "AntTweakBar.h"

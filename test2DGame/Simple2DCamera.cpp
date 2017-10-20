@@ -40,7 +40,7 @@ void Simple2DCamera::Init(float _viewWidth, float _viewHeight)
 void Simple2DCamera::SetDevice(IDirect3DDevice9* _device)
 {
 	if (_device != nullptr) device = _device;
-	else MessageBox(0, L"Simple2DCamera SetDevice() - devicePtr failed", 0, 0);
+	else kojeomDebugLogger::Log(L"Simple2DCamera SetDevice() - devicePtr failed");
 }
 
 //test func ( 아직 수정이 필요하다. )

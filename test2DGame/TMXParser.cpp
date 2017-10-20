@@ -57,12 +57,12 @@ void TMXParser::ReadMapData()
 //
 void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx)
 {
-	mapData.vec_layers.push_back(vector<int>());
+	mapData.layers.push_back(vector<int>());
 	while (_element != nullptr)
 	{
 		if (strcmp(_element->Value(), "tile") == 0)
 		{	// tile atrribute gid 는 Map witdh , height 를 tile size로 나눈 값을 의미. 
-			mapData.vec_layers[_layerIdx].push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
+			mapData.layers[_layerIdx].push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();
