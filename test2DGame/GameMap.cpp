@@ -16,8 +16,6 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 		spr->Init(_d3dDevice, _spriteFileName, _defaultRect);
 		tileMapSprites.push_back(spr);
 	}
-	
-	renderRect = { 0, 0, 0, 0 };
 }
 
 
@@ -51,23 +49,25 @@ void GameMap::DrawMap()
 // layer 별로 sprite를 만들어 각각의 내용을 그려서 중첩시킨다.
 void GameMap::DrawMapLyaers(const int _layerIdx)
 {
+	tileMapSprites[_layerIdx]->BeginDraw();
 	int gid = 0;
 	int tileIdx = 0;
 	for (int y = 0; y < mapData->mapHeight; ++y)
 		for (int x = 0; x < mapData->mapWidth; ++x)
 		{
 			gid = mapData->layers[_layerIdx].at(tileIdx);
-			CalcRenderRect(gid);
-			tileIdx++;
-			tileMapSprites[_layerIdx]->SetSpriteRect(renderRect);
+			tileMapSprites[_layerIdx]->SetSpriteRect(CalcRenderRect(gid));
 			tileMapSprites[_layerIdx]->SetSpritePos(D3DXVECTOR3(x * mapData->tileWidth, y * mapData->tileHeight, 0));
 			tileMapSprites[_layerIdx]->DrawSprite();
+			tileIdx++;
 		}
+	tileMapSprites[_layerIdx]->EndDraw();
 }
 	
 
-void GameMap::CalcRenderRect(const int _gid)
+RECT GameMap::CalcRenderRect(const int _gid)
 {
+	RECT renderRect = { 0,0,0,0 };
 	int tileIntervalX = mapData->imageWidth / mapData->tileWidth;
 	int tileIntervalY = mapData->imageWidth / mapData->tileHeight;
 	if (_gid == 0)
@@ -84,4 +84,5 @@ void GameMap::CalcRenderRect(const int _gid)
 		renderRect.right = (_gid % tileIntervalX) * mapData->tileWidth + mapData->tileWidth;
 		renderRect.bottom = ((_gid / tileIntervalY)) * mapData->tileHeight + mapData->tileHeight;
 	}
+	return renderRect;
 }

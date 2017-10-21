@@ -21,10 +21,9 @@ private:
 	MapData* mapData;
 	TMXParser* tmxFile;
 	vector<GameMap2DSprite*> tileMapSprites;
-	RECT renderRect;
 	int mapLayers;
 
 	void DrawMapLyaers(const int _layerIdx);
-	void CalcRenderRect(const int _gid);
+	RECT CalcRenderRect(const int _gid);
 };
 

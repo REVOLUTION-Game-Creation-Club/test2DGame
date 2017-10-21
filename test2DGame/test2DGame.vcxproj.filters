@@ -93,9 +93,6 @@
     <ClInclude Include="Simple2DCamera.h">
       <Filter>Source Files\CameraClass</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Source Files\AnimationClass</Filter>
     </ClInclude>
@@ -116,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="GameMap2DSprite.h">
       <Filter>Source Files\SpriteClass</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
