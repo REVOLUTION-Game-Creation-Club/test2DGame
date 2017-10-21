@@ -1,3 +1,9 @@
+*.ilk
+*.pdb
+*.ipch
+*.tlog
+*.lastbuildstate
+
 # Compiled Object files
 *.slo
 *.lo
