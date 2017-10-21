@@ -18,6 +18,7 @@ TMXParser::TMXParser(const char* _xmlFileName)
 
 	//test
 	//ReadCustomProperties();
+	// 예전에 작업해놓은건데, gid값에 왜 -1을 더하는걸까.
 	tileGidOffset = -1;
 	ReadMapData();
 
@@ -26,7 +27,7 @@ TMXParser::TMXParser(const char* _xmlFileName)
 
 TMXParser::~TMXParser()
 {
-	
+	mapData.Release();
 }
 
 MapData* TMXParser::GetMapData()

@@ -8,7 +8,7 @@ public:
 	PlayerFactory();
 	virtual ~PlayerFactory();
 
-private:
-	virtual GameObject* CreateGameObject() override;
+protected:
+	GameObject* CreateGameObject() override;
 };
 

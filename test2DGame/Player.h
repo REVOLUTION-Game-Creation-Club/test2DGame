@@ -7,9 +7,9 @@ public:
 	Player();
 	virtual ~Player();
 
-	virtual void Update() override;
-	virtual void SetSpriteObject(Game2DSprite* _spriteObject) override;
-	virtual D3DXVECTOR3 GetObjectPostion() override;
-	virtual void Move(FLOAT _x, FLOAT _y) override;
+	void Update() override;
+	void SetSpriteObject(Game2DSprite* _spriteObject) override;
+	D3DXVECTOR3 GetObjectPostion() override;
+	void Move(FLOAT _x, FLOAT _y) override;
 };
 

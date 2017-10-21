@@ -2,7 +2,13 @@
 #include "GameObject.h"
 #include "Player.h"
 
-enum GAMEOBJECT_TYPE { PLAYER, ENEMY, NPC, BUILDING };
+enum GAMEOBJECT_TYPE
+{ 
+	PLAYER = 0,
+	ENEMY = 1,
+	NPC = 2,
+	BUILDING = 3 
+};
 
 class GameObjectFactory
 {
@@ -11,7 +17,7 @@ public:
 	virtual ~GameObjectFactory();
 	GameObject* ProduceGameObject(GAMEOBJECT_TYPE _gameObjectType);
 
-private:
+protected:
 	//factory method
 	virtual GameObject* CreateGameObject() = 0;
 };

@@ -97,6 +97,8 @@ void Cleanup()
 {
 	TwTerminate();
 	delete worldMap;
+	delete playerObject;
+	delete playerFactory;
 }
 
 bool Display(float timeDelta)

@@ -11,8 +11,6 @@ GameMap2DSprite::~GameMap2DSprite()
 {
 	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
 	if (spriteObject != nullptr) spriteObject->Release();
-	if (spriteName != nullptr) delete spriteName;
-	if (d3d9Device != nullptr) delete d3d9Device;
 }
 
 void GameMap2DSprite::Init(IDirect3DDevice9 * _d3dDevice, char * _spriteFileName, RECT _rect)

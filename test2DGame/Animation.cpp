@@ -9,7 +9,7 @@ Animation::Animation()
 
 Animation::~Animation()
 {
-	if (spriteObject != nullptr) delete spriteObject;
+	//if (spriteObject != nullptr) delete spriteObject;
 }
 
 void Animation::SetSpriteObject(Game2DSprite* _spriteObject)

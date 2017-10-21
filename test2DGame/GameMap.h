@@ -19,7 +19,7 @@ public:
 	void Move(FLOAT _x, FLOAT _y);
 private:
 	MapData* mapData;
-	TMXParser* tmxFile;
+	TMXParser* tmxParser;
 	vector<GameMap2DSprite*> tileMapSprites;
 	int mapLayers;
 

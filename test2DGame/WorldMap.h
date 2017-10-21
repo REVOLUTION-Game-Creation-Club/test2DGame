@@ -11,7 +11,7 @@ public:
 
 private:
 	IDirect3DDevice9* device;
-	GameMap* testGameMaps[2];
+	GameMap* gameMaps[2];
 	RECT mapDefaultRect;
 };
 

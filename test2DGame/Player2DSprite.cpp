@@ -9,8 +9,6 @@ Player2DSprite::~Player2DSprite()
 {
 	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
 	if (spriteObject != nullptr) spriteObject->Release();
-	if (spriteName != nullptr) delete spriteName;
-	if (d3d9Device != nullptr) delete d3d9Device;
 }
 
 void Player2DSprite::Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect) {

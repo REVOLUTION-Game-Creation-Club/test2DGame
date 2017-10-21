@@ -4,10 +4,10 @@
 GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 	char* _spriteFileName, RECT _defaultRect)
 {
-	if (_tmxFileName != nullptr) tmxFile = new TMXParser(_tmxFileName);
+	if (_tmxFileName != nullptr) tmxParser = new TMXParser(_tmxFileName);
 	else return;
 
-	mapData = tmxFile->GetMapData();
+	mapData = tmxParser->GetMapData();
 	mapLayers = mapData->layers.size();
 	// tmx map layers 갯수 만큼 map sprite 생성.
 	for (int idx = 1; idx <= mapLayers; ++idx)
@@ -21,14 +21,10 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 
 GameMap::~GameMap()
 {
-	if (tmxFile != nullptr) delete tmxFile;	
-	if (mapData != nullptr) delete mapData;
-	
-	vector<GameMap2DSprite*>::iterator idx = tileMapSprites.begin();
-	while (idx != tileMapSprites.end())
+	if (tmxParser != nullptr) delete tmxParser;	
+	for each (auto map2dSprite in tileMapSprites)
 	{
-		delete (*idx);
-		++idx;
+		map2dSprite->~GameMap2DSprite();
 	}
 	tileMapSprites.clear();
 }
@@ -79,10 +75,12 @@ RECT GameMap::CalcRenderRect(const int _gid)
 	}
 	else
 	{   
-		renderRect.left = ((_gid % tileIntervalX) * mapData->tileWidth);
-		renderRect.top = ((_gid / tileIntervalY) * mapData->tileHeight);
-		renderRect.right = (_gid % tileIntervalX) * mapData->tileWidth + mapData->tileWidth;
-		renderRect.bottom = ((_gid / tileIntervalY)) * mapData->tileHeight + mapData->tileHeight;
+		int leftVal = ((_gid % tileIntervalX) * mapData->tileWidth);
+		int topVal = ((_gid / tileIntervalY) * mapData->tileHeight);
+		renderRect.left = leftVal;
+		renderRect.top = topVal;
+		renderRect.right = leftVal + mapData->tileWidth;
+		renderRect.bottom = topVal + mapData->tileHeight;
 	}
 	return renderRect;
 }
