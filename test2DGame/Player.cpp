@@ -11,14 +11,9 @@ Player::~Player()
 	delete spriteObject;
 }
 
-void Player::Draw()
-{
-	spriteObject->DrawSprite();
-}
-
 void Player::Update()
 {
-
+	spriteObject->DrawSprite();
 }
 
 void Player::SetSpriteObject(Game2DSprite* _spriteObject)

@@ -110,7 +110,7 @@ bool Display(float timeDelta)
 		Device->BeginScene();
 
 		worldMap->Update(); // order : 0
-		playerObject->Draw(); // order : 1
+		playerObject->Update(); // order : 1
 		playerTestAni->DrawFrames();
 
 		//gui test
