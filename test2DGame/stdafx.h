@@ -38,6 +38,9 @@
 //gui lib
 #include "AntTweakBar.h"
 
+//
+#include "GameSoundManager.h"
+
 
 // windows 
 #include <Windows.h>
