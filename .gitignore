@@ -383,3 +383,11 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+/test2DGame/Debug/test2DGame.tlog/*.tlog
+/test2DGame/Debug/test2DGame.tlog/*.lastbuildstate
+/test2DGame/Debug/*.pdb
+/test2DGame/Debug/*.log
+/test2DGame/Debug/*.idb
+/Debug/*.pdb
+/Debug/*.ilk
+/ipch
