@@ -55,6 +55,9 @@
     <Filter Include="Source Files\SoundClass">
       <UniqueIdentifier>{a37b95d8-15fa-476c-9497-d9435f79719c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SoundClass\soundFiles">
+      <UniqueIdentifier>{e19436f2-8f25-4694-a80e-ce6fd74defe2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -120,6 +123,12 @@
     <ClInclude Include="main.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameSoundManager.h">
+      <Filter>Source Files\SoundClass</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveFile.h">
+      <Filter>Source Files\SoundClass\soundFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -175,6 +184,12 @@
     </ClCompile>
     <ClCompile Include="GameMap2DSprite.cpp">
       <Filter>Source Files\SpriteClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSoundManager.cpp">
+      <Filter>Source Files\SoundClass</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveFile.cpp">
+      <Filter>Source Files\SoundClass\soundFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

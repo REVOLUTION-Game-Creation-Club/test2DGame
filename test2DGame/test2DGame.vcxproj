@@ -243,6 +243,7 @@
     <ClInclude Include="GameMap2DSprite.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameSoundManager.h" />
     <ClInclude Include="kojeomDebugLogger.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player2DSprite.h" />
@@ -255,6 +256,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="TinyXML-2\tinyxml2.h" />
     <ClInclude Include="TMXParser.h" />
+    <ClInclude Include="WaveFile.h" />
     <ClInclude Include="WorldMap.h" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +267,7 @@
     <ClCompile Include="GameMap2DSprite.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameSoundManager.cpp" />
     <ClCompile Include="kojeomDebugLogger.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player2DSprite.cpp" />
@@ -282,6 +285,7 @@
     <ClCompile Include="StringUtil.cpp" />
     <ClCompile Include="TinyXML-2\tinyxml2.cpp" />
     <ClCompile Include="TMXParser.cpp" />
+    <ClCompile Include="WaveFile.cpp" />
     <ClCompile Include="WorldMap.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,9 @@ Simple2DCamera* mainCamera;
 
 Animation* playerTestAni;
 
+// sound test
+GameSoundManager* gameSoundManager;
+
 //gui test
 TwBar* twBar;
 
@@ -86,9 +89,12 @@ bool Setup()
 
 	worldMap = new WorldMap(Device);
 
+	gameSoundManager = new GameSoundManager();
+	gameSoundManager->PlayGameSound(GAME_SOUND_TYPE::BGM_MAIN, 0.2f);
+
 	//gui test
 	TwInit(TW_DIRECT3D9, Device);
-	twBar = TwNewBar("testTWBAR");
+	twBar = TwNewBar("TEST_GUI_WINDOW");
 	
 	return true;
 }
