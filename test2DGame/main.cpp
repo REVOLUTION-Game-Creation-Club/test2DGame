@@ -50,7 +50,6 @@ int WINAPI WinMain(HINSTANCE hinstance,
 		return 0;
 	}
 
-
 	d3d::EnterMsgLoop(Display);
 
 	Cleanup();
@@ -95,7 +94,7 @@ bool Setup()
 	//gui test
 	TwInit(TW_DIRECT3D9, Device);
 	twBar = TwNewBar("TEST_GUI_WINDOW");
-	
+
 	return true;
 }
 
@@ -136,9 +135,9 @@ bool Display(float timeDelta)
 //
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-
 	if (TwEventWin(hwnd, msg, wParam, lParam)) return 0;
-
+	float x, y;
+	Ray ray;
 	switch (msg)
 	{
 	case WM_DESTROY:
@@ -152,11 +151,18 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		else if (wParam == VK_RIGHT) playerObject->Move(32, 0);
 		else if (wParam == VK_UP) playerObject->Move(0, -32);
 		else if (wParam == VK_DOWN) playerObject->Move(0, 32);
-		
+	
 		mainCamera->GetInstance()->FollowPlayer(playerObject->GetObjectPostion().x, playerObject->GetObjectPostion().y);
 		break;
+	case WM_LBUTTONDOWN:
+		POINT mousePoint;
+		GetCursorPos(&mousePoint);
+		ScreenToClient(hwnd, &mousePoint);
+		// ray test.
+		ray = KojeomGameUI::CalcPickingRay(mousePoint.x, mousePoint.y, Device);
+		kojeomDebugLogger::MessageBoxLog(L"마우스 왼쪽 버튼 클릭.");
+		break;
 	case WM_SIZE:
-		
 		break;
 	}
 	

@@ -19,9 +19,6 @@
     <Filter Include="Source Files\SpriteClass">
       <UniqueIdentifier>{5e9bc8ce-4922-466f-a597-4470a2fb8b50}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Images">
-      <UniqueIdentifier>{51f3e882-7526-4f92-8873-e68fbc1b7458}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\MapClass">
       <UniqueIdentifier>{af0d9cc8-616c-406c-a6d6-708abd9177e8}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,15 @@
     </Filter>
     <Filter Include="Source Files\SoundClass\soundFiles">
       <UniqueIdentifier>{e19436f2-8f25-4694-a80e-ce6fd74defe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{51f3e882-7526-4f92-8873-e68fbc1b7458}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameState">
+      <UniqueIdentifier>{be282c8a-6476-4b0f-8224-cafe886c6ab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameUI">
+      <UniqueIdentifier>{cd7126af-6dc8-410d-bb1f-84de6ee16cb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,12 @@
     <ClInclude Include="WaveFile.h">
       <Filter>Source Files\SoundClass\soundFiles</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="KojeomGameUI.h">
+      <Filter>Source Files\GameUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -191,6 +203,9 @@
     <ClCompile Include="WaveFile.cpp">
       <Filter>Source Files\SoundClass\soundFiles</Filter>
     </ClCompile>
+    <ClCompile Include="KojeomGameUI.cpp">
+      <Filter>Source Files\GameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test2DGame.rc">
@@ -205,7 +220,7 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="GameResources\ch00.png">
-      <Filter>Images</Filter>
+      <Filter>Textures</Filter>
     </Image>
   </ItemGroup>
 </Project>

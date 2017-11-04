@@ -31,17 +31,11 @@
 #include "PlayerFactory.h"
 #include "Simple2DCamera.h"
 #include "WorldMap.h"
-
+#include "KojeomGameUI.h"
 // 2d sprite
 #include "Player2DSprite.h"
 
-//gui lib
+//gui lib - test
 #include "AntTweakBar.h"
-
-//
+// SoundManager.
 #include "GameSoundManager.h"
-
-
-// windows 
-#include <Windows.h>
-

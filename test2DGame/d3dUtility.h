@@ -15,7 +15,6 @@
 
 #include <d3dx9.h>
 #include <string>
-
 namespace d3d
 {
 	bool InitD3D(
