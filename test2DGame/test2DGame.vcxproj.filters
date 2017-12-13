@@ -153,6 +153,9 @@
     <ClInclude Include="Box2DCollider.h">
       <Filter>Source Files\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>Source Files\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -222,6 +225,9 @@
       <Filter>Source Files\Collider\base</Filter>
     </ClCompile>
     <ClCompile Include="Box2DCollider.cpp">
+      <Filter>Source Files\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderManager.cpp">
       <Filter>Source Files\Collider</Filter>
     </ClCompile>
   </ItemGroup>

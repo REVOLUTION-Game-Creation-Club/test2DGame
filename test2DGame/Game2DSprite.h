@@ -16,6 +16,7 @@ public:
 	virtual void DrawSprite() = 0;
 	virtual void TranslateSprite(FLOAT _x, FLOAT _y) = 0;
 	virtual void SetSpriteRect(RECT _spriteRect) = 0;
+	virtual RECT GetSpriteRect() = 0;
 	virtual void SetSpritePos(D3DXVECTOR3 _pos) = 0;
 	virtual D3DXVECTOR3 GetSpritePos() = 0;
 

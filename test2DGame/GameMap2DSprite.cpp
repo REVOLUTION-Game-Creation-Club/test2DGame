@@ -70,6 +70,11 @@ void GameMap2DSprite::SetSpritePos(D3DXVECTOR3 _pos)
 	spritePosition = _pos;
 }
 
+RECT GameMap2DSprite::GetSpriteRect()
+{
+	return spriteRect;
+}
+
 D3DXVECTOR3 GameMap2DSprite::GetSpritePos()
 {
 	return spritePosition;

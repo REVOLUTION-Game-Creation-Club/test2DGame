@@ -11,6 +11,7 @@ public:
 	void TranslateSprite(FLOAT _x, FLOAT _y) override;
 	void SetSpriteRect(RECT _spriteRect) override;
 	void SetSpritePos(D3DXVECTOR3 _pos) override;
+	RECT GetSpriteRect() override;
 	D3DXVECTOR3 GetSpritePos() override;
 protected:
 	void CreateSprite() override;
