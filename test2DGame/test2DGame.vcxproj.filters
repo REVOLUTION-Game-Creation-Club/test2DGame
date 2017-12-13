@@ -64,6 +64,12 @@
     <Filter Include="Source Files\GameUI">
       <UniqueIdentifier>{cd7126af-6dc8-410d-bb1f-84de6ee16cb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collider">
+      <UniqueIdentifier>{cd2e1bbd-9b28-4931-b486-7a0fc9b11b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collider\base">
+      <UniqueIdentifier>{b52c06dd-590a-48ef-ab91-49fc8dc434b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -141,6 +147,12 @@
     <ClInclude Include="KojeomGameUI.h">
       <Filter>Source Files\GameUI</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Source Files\Collider\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Box2DCollider.h">
+      <Filter>Source Files\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -205,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="KojeomGameUI.cpp">
       <Filter>Source Files\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Collider\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Box2DCollider.cpp">
+      <Filter>Source Files\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

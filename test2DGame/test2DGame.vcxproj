@@ -241,6 +241,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Box2DCollider.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="d3dUtility.h" />
     <ClInclude Include="Game2DSprite.h" />
     <ClInclude Include="GameMap.h" />
@@ -267,6 +269,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Box2DCollider.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
     <ClCompile Include="GameMap.cpp" />
