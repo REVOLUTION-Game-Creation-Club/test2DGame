@@ -52,7 +52,6 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	d3d::EnterMsgLoop(Display);
 
 	Cleanup();
-	ImGui_ImplDX9_Shutdown();
 	Device->Release();
 
 	return 0;
@@ -91,19 +90,23 @@ bool Setup()
 	gameSoundManager->PlayGameSound(GAME_SOUND_TYPE::BGM_MAIN, 0.2f);
 
 	//twgui test
-	TwInit(TW_DIRECT3D9, Device);
-	twBar = TwNewBar("TEST_GUI_WINDOW");
+	//TwInit(TW_DIRECT3D9, Device);
+	//twBar = TwNewBar("TEST_GUI_WINDOW");
 
 	return true;
 }
 
+// 프로그램 종료 시 호출되는 클린업.
 void Cleanup()
 {
 	//twgui release..
-	TwTerminate();
+	//TwTerminate();
+
 	delete worldMap;
 	delete playerObject;
 	delete playerFactory;
+	//imgui shutdown..
+	ImGui_ImplDX9_Shutdown();
 }
 
 bool Display(float timeDelta)
@@ -121,7 +124,7 @@ bool Display(float timeDelta)
 		playerTestAni->DrawFrames();
 
 		// twgui test
-		TwDraw();
+		//TwDraw();
 
 		// imgui test
 		ImGui_ImplDX9_NewFrame();
@@ -135,17 +138,20 @@ bool Display(float timeDelta)
 			ImGui::Text("WantCaptureMouse TRUE");
 		else
 			ImGui::Text("WantCaptureMouse FALSE");
-		ImGui::Button("ClickButton");
+		if (ImGui::Button("ClickButton"))
+		{
+		}
+		
 		ImGui::End();
 		ImGui::EndFrame();
-
+		
 		ImGui::Render();
 
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
 
-		//ImGui_ImplDX9_InvalidateDeviceObjects();
+		ImGui_ImplDX9_InvalidateDeviceObjects();
 		//ImGui_ImplDX9_CreateDeviceObjects();
 	}
 	return true;
@@ -156,9 +162,15 @@ bool Display(float timeDelta)
 //
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	if (TwEventWin(hwnd, msg, wParam, lParam)) return 0;
+	// tw gui 
+	//if (TwEventWin(hwnd, msg, wParam, lParam)) return 0;
+
+	//ray 캐스팅 테스트용 변수.
 	float x, y;
 	Ray ray;
+	// imgui 
+	ImGui_ImplWin32_WndProcHandler(hwnd, msg, wParam, lParam);
+
 	switch (msg)
 	{
 	case WM_DESTROY:

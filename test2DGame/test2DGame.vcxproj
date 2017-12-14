@@ -130,7 +130,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories);.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -187,7 +187,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\include;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\include;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories);.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
