@@ -140,8 +140,8 @@ bool d3d::InitD3D(
 			return false;
 		}
 	}
-
-	ImGui_ImplDX9_Init(hwnd, *device);
+	// gui init..
+	KojeomGameUI::Init(hwnd, *device);
 	
 	d3d9->Release(); // done with d3d9 object
 	return true;

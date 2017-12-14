@@ -37,7 +37,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	int showCmd)
 {
 	if (!d3d::InitD3D(hinstance,
-		800, 640, true, D3DDEVTYPE_HAL, &Device))
+		1024, 768, true, D3DDEVTYPE_HAL, &Device))
 	{
 		::MessageBox(0, L"InitD3D() - FAILED", 0, 0);
 		return 0;
@@ -105,8 +105,8 @@ void Cleanup()
 	delete worldMap;
 	delete playerObject;
 	delete playerFactory;
-	//imgui shutdown..
-	ImGui_ImplDX9_Shutdown();
+	//gui shutdown..
+	KojeomGameUI::Release();
 }
 
 bool Display(float timeDelta)
@@ -127,7 +127,10 @@ bool Display(float timeDelta)
 		//TwDraw();
 
 		// imgui test
-		ImGui_ImplDX9_NewFrame();
+		KojeomGameUI::NewFrame();
+		//////////////////////////////////////
+		/////////// gui test codes..//////////
+		//////////////////////////////////////
 		ImGui::Begin("test");
 		ImGui::SetWindowSize(ImVec2(384, 256));
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
@@ -138,21 +141,19 @@ bool Display(float timeDelta)
 			ImGui::Text("WantCaptureMouse TRUE");
 		else
 			ImGui::Text("WantCaptureMouse FALSE");
+
 		if (ImGui::Button("ClickButton"))
 		{
+			// to do..
 		}
-		
 		ImGui::End();
-		ImGui::EndFrame();
-		
-		ImGui::Render();
+		////////////////////////////////////
+		KojeomGameUI::EndFrame();
+		KojeomGameUI::Render();
 
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
-
-		ImGui_ImplDX9_InvalidateDeviceObjects();
-		//ImGui_ImplDX9_CreateDeviceObjects();
 	}
 	return true;
 }
@@ -168,8 +169,8 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	//ray 캐스팅 테스트용 변수.
 	float x, y;
 	Ray ray;
-	// imgui 
-	ImGui_ImplWin32_WndProcHandler(hwnd, msg, wParam, lParam);
+	// gui input..
+	KojeomGameUI::InputProcess(hwnd, msg, wParam, lParam);
 
 	switch (msg)
 	{
@@ -196,8 +197,7 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		//kojeomDebugLogger::MessageBoxLog(L"마우스 왼쪽 버튼 클릭.");
 		break;
 	case WM_SIZE:
-		ImGui_ImplDX9_InvalidateDeviceObjects();
-		ImGui_ImplDX9_CreateDeviceObjects();
+		KojeomGameUI::ResetRendering();
 		break;
 	}
 	

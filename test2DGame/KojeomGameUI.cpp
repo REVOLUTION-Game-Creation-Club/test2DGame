@@ -11,6 +11,42 @@ KojeomGameUI::~KojeomGameUI()
 {
 }
 
+void KojeomGameUI::Init(void* hwnd, IDirect3DDevice9* device)
+{
+	ImGui_ImplDX9_Init(hwnd, device);
+}
+
+void KojeomGameUI::ResetRendering()
+{
+	ImGui_ImplDX9_InvalidateDeviceObjects();
+	ImGui_ImplDX9_CreateDeviceObjects();
+}
+
+void KojeomGameUI::Release()
+{
+	ImGui_ImplDX9_Shutdown();
+}
+
+void KojeomGameUI::NewFrame()
+{
+	ImGui_ImplDX9_NewFrame();
+}
+
+void KojeomGameUI::EndFrame()
+{
+	ImGui::EndFrame();
+}
+
+void KojeomGameUI::Render()
+{
+	ImGui::Render();
+}
+
+void KojeomGameUI::InputProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
+}
+
 Ray KojeomGameUI::CalcPickingRay(int x, int y ,IDirect3DDevice9* device)
 {
 	float px = 0.0f;
