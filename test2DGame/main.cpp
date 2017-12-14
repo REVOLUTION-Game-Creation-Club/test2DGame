@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "main.h"
-
 //
 // Globals
 //
@@ -53,7 +52,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	d3d::EnterMsgLoop(Display);
 
 	Cleanup();
-
+	ImGui_ImplDX9_Shutdown();
 	Device->Release();
 
 	return 0;
@@ -91,7 +90,7 @@ bool Setup()
 	gameSoundManager = new GameSoundManager();
 	gameSoundManager->PlayGameSound(GAME_SOUND_TYPE::BGM_MAIN, 0.2f);
 
-	//gui test
+	//twgui test
 	TwInit(TW_DIRECT3D9, Device);
 	twBar = TwNewBar("TEST_GUI_WINDOW");
 
@@ -100,6 +99,7 @@ bool Setup()
 
 void Cleanup()
 {
+	//twgui release..
 	TwTerminate();
 	delete worldMap;
 	delete playerObject;
@@ -120,12 +120,33 @@ bool Display(float timeDelta)
 		playerObject->Update(); // order : 1
 		playerTestAni->DrawFrames();
 
-		//gui test
+		// twgui test
 		TwDraw();
+
+		// imgui test
+		ImGui_ImplDX9_NewFrame();
+		ImGui::Begin("test");
+		ImGui::SetWindowSize(ImVec2(384, 256));
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::Text("Hello from another window!");
+
+		bool isWantCaptureMouse = ImGui::GetIO().WantCaptureMouse;
+		if (isWantCaptureMouse)
+			ImGui::Text("WantCaptureMouse TRUE");
+		else
+			ImGui::Text("WantCaptureMouse FALSE");
+		ImGui::Button("ClickButton");
+		ImGui::End();
+		ImGui::EndFrame();
+
+		ImGui::Render();
 
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
+
+		//ImGui_ImplDX9_InvalidateDeviceObjects();
+		//ImGui_ImplDX9_CreateDeviceObjects();
 	}
 	return true;
 }
@@ -155,14 +176,16 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		mainCamera->GetInstance()->FollowPlayer(playerObject->GetObjectPostion().x, playerObject->GetObjectPostion().y);
 		break;
 	case WM_LBUTTONDOWN:
-		POINT mousePoint;
-		GetCursorPos(&mousePoint);
-		ScreenToClient(hwnd, &mousePoint);
-		// ray test.
-		ray = KojeomGameUI::CalcPickingRay(mousePoint.x, mousePoint.y, Device);
-		kojeomDebugLogger::MessageBoxLog(L"마우스 왼쪽 버튼 클릭.");
+		//POINT mousePoint;
+		//GetCursorPos(&mousePoint);
+		//ScreenToClient(hwnd, &mousePoint);
+		//// ray test.
+		//ray = KojeomGameUI::CalcPickingRay(mousePoint.x, mousePoint.y, Device);
+		//kojeomDebugLogger::MessageBoxLog(L"마우스 왼쪽 버튼 클릭.");
 		break;
 	case WM_SIZE:
+		ImGui_ImplDX9_InvalidateDeviceObjects();
+		ImGui_ImplDX9_CreateDeviceObjects();
 		break;
 	}
 	

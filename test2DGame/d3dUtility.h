@@ -13,6 +13,7 @@
 #ifndef __d3dUtilityH__
 #define __d3dUtilityH__
 
+#include "imgui/imgui_impl_dx9.h"
 #include <d3dx9.h>
 #include <string>
 namespace d3d
