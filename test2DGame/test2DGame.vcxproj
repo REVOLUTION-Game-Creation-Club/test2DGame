@@ -246,6 +246,7 @@
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="d3dUtility.h" />
     <ClInclude Include="Game2DSprite.h" />
+    <ClInclude Include="GameCommonSprite.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMap2DSprite.h" />
     <ClInclude Include="GameObject.h" />
@@ -261,6 +262,7 @@
     <ClInclude Include="imgui\stb_truetype.h" />
     <ClInclude Include="kojeomDebugLogger.h" />
     <ClInclude Include="KojeomGameUI.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player2DSprite.h" />
     <ClInclude Include="PlayerFactory.h" />
@@ -282,6 +284,7 @@
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
+    <ClCompile Include="GameCommonSprite.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMap2DSprite.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -293,6 +296,7 @@
     <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
     <ClCompile Include="kojeomDebugLogger.cpp" />
     <ClCompile Include="KojeomGameUI.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player2DSprite.cpp" />
     <ClCompile Include="PlayerFactory.cpp" />

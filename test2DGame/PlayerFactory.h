@@ -6,9 +6,9 @@ class PlayerFactory : public GameObjectFactory
 {
 public:
 	PlayerFactory();
-	virtual ~PlayerFactory();
+	~PlayerFactory() override;
 
 protected:
-	GameObject* CreateGameObject() override;
+	virtual GameObject* CreateGameObject() override;
 };
 

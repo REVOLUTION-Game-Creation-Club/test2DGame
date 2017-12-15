@@ -1,24 +1,20 @@
 #pragma once
 #include "Game2DSprite.h"
-class GameMap2DSprite :
+class GameCommonSprite :
 	public Game2DSprite
 {
 public:
-	GameMap2DSprite();
-	~GameMap2DSprite() override;
-
-	virtual void Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect);
+	GameCommonSprite();
+	~GameCommonSprite();
+	// Inherited via Game2DSprite
+	virtual void Init(IDirect3DDevice9 * _d3dDevice, char * _spriteFileName, RECT _rect) override;
 	virtual void DrawSprite() override;
-	virtual void BeginDraw();
-	virtual void EndDraw();
 	virtual void TranslateSprite(FLOAT _x, FLOAT _y) override;
 	virtual void SetSpriteRect(RECT _spriteRect) override;
-	virtual void SetSpritePos(D3DXVECTOR3 _pos) override;
 	virtual RECT GetSpriteRect() override;
+	virtual void SetSpritePos(D3DXVECTOR3 _pos) override;
 	virtual D3DXVECTOR3 GetSpritePos() override;
-protected:
 	virtual void CreateSprite() override;
 	virtual void CreateTexture2D() override;
-
 };
 
