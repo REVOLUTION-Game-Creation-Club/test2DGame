@@ -7,6 +7,7 @@ Player2DSprite::Player2DSprite()
 }
 Player2DSprite::~Player2DSprite()
 {
+	printf("Player2DSprite release...\n");
 	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
 	if (spriteObject != nullptr) spriteObject->Release();
 }

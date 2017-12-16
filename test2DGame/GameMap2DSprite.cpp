@@ -9,6 +9,7 @@ GameMap2DSprite::GameMap2DSprite()
 
 GameMap2DSprite::~GameMap2DSprite()
 {
+	printf("GameMap2DSprite release...\n");
 	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
 	if (spriteObject != nullptr) spriteObject->Release();
 }

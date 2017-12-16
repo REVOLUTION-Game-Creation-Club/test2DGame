@@ -245,6 +245,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="d3dUtility.h" />
+    <ClInclude Include="FilePath.h" />
     <ClInclude Include="Game2DSprite.h" />
     <ClInclude Include="GameCommonSprite.h" />
     <ClInclude Include="GameMap.h" />

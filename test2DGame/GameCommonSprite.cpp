@@ -9,6 +9,7 @@ GameCommonSprite::GameCommonSprite()
 
 GameCommonSprite::~GameCommonSprite()
 {
+	printf("GameCommonseSpirte release...\n");
 	if (spriteTexture2D != nullptr) spriteTexture2D->Release();
 	if (spriteObject != nullptr) spriteObject->Release();
 }

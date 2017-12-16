@@ -1,4 +1,5 @@
 #pragma once
+#include "FilePath.h"
 #include "GameState.h"
 #include "GameCommonSprite.h"
 class MainMenuState :
@@ -15,7 +16,7 @@ private:
 	GameCommonSprite spr_bg;
 	GameCommonSprite spr_foreGroundTrees;
 	GameCommonSprite spr_backGroundTress;
-	GameCommonSprite spr_moutainFar;
-	GameCommonSprite spr_someMoutains;
+	GameCommonSprite spr_mountainFar;
+	GameCommonSprite spr_mountains;
 };
 

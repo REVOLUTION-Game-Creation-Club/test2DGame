@@ -79,6 +79,9 @@
     <Filter Include="Source Files\GameState\base">
       <UniqueIdentifier>{521b2d35-fb43-42a8-973c-8e9583df4aa0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="File">
+      <UniqueIdentifier>{c3d9c48b-794b-4b9d-aa86-be5bf474a28f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="GameCommonSprite.h">
       <Filter>Source Files\SpriteClass</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePath.h">
+      <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
