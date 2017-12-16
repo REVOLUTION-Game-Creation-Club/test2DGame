@@ -284,6 +284,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
+    <ClCompile Include="FilePath.cpp" />
     <ClCompile Include="Game2DSprite.cpp" />
     <ClCompile Include="GameCommonSprite.cpp" />
     <ClCompile Include="GameMap.cpp" />

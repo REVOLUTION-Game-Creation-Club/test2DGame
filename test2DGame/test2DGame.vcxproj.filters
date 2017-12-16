@@ -79,7 +79,7 @@
     <Filter Include="Source Files\GameState\base">
       <UniqueIdentifier>{521b2d35-fb43-42a8-973c-8e9583df4aa0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="File">
+    <Filter Include="Source Files\File">
       <UniqueIdentifier>{c3d9c48b-794b-4b9d-aa86-be5bf474a28f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -196,7 +196,7 @@
       <Filter>Source Files\SpriteClass</Filter>
     </ClInclude>
     <ClInclude Include="FilePath.h">
-      <Filter>File</Filter>
+      <Filter>Source Files\File</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="GameCommonSprite.cpp">
       <Filter>Source Files\SpriteClass</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePath.cpp">
+      <Filter>Source Files\File</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

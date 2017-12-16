@@ -2,26 +2,22 @@
 class FilePath
 {
 public:
-	
-	static FilePath* GetInstance()
-	{
-		if (instance == nullptr) instance = new FilePath();
-		return instance;
-	}
-private:
-	static FilePath* instance;
-	FilePath()
-	{
-		mainmenu_bg = "";
-		mainmenu_foregroundTrees = "";
-		mainmenu_backgroundTrees = "";
-		mainmenu_mountainFar = "";
-		mainmenu_mountains = "";
-	};
+	static FilePath* GetInstance();
+	// mainmenu
 	char* mainmenu_bg;
 	char* mainmenu_foregroundTrees;
 	char* mainmenu_backgroundTrees;
 	char* mainmenu_mountainFar;
 	char* mainmenu_mountains;
-};
-FilePath* FilePath::instance = nullptr;
+	// test
+	char* chacracter01;
+	// test
+	char* tileMap;
+	// test
+	char* tmxFile_0;
+	char* tmxFile_1;
+	~FilePath();
+private:
+	static FilePath* instance;
+	FilePath();
+}; 

@@ -1,6 +1,6 @@
 #pragma once
 #include "GameMap.h"
-
+#include "FilePath.h"
 #define MAX_GAME_MAP 2
 class WorldMap
 {
