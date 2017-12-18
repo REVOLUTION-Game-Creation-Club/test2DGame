@@ -9,6 +9,7 @@ public:
 	char* mainmenu_backgroundTrees;
 	char* mainmenu_mountainFar;
 	char* mainmenu_mountains;
+	char* mainmenu_title;
 	// test
 	char* chacracter01;
 	// test
@@ -17,8 +18,6 @@ public:
 	char* tmxFile_0;
 	char* tmxFile_1;
 	~FilePath();
-
-	void Test();
 private:
 	static FilePath* instance;
 	FilePath();

@@ -19,5 +19,6 @@ private:
 	GameCommonSprite spr_backGroundTress;
 	GameCommonSprite spr_mountainFar;
 	GameCommonSprite spr_mountains;
+	GameCommonSprite spr_title;
 };
 

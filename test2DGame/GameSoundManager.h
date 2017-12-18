@@ -14,7 +14,7 @@ enum GAME_SOUND_TYPE
 class GameSoundManager
 {
 public:
-	GameSoundManager();
+	static GameSoundManager* GetInstance();
 	~GameSoundManager();
 
 	void PlayGameSound(GAME_SOUND_TYPE type, const float volume);
@@ -26,6 +26,7 @@ private:
 	ALuint buffers[SOUND_TOTAL_NUM];
 	ALuint sources[SOUND_TOTAL_NUM];
 	WaveFile* gameSounds[SOUND_TOTAL_NUM];
-
+	GameSoundManager();
+	static GameSoundManager* instance;
 };
 

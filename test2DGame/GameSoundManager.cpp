@@ -1,6 +1,6 @@
 #include "GameSoundManager.h"
 
-
+GameSoundManager* GameSoundManager::instance = nullptr;
 
 GameSoundManager::GameSoundManager()
 {
@@ -29,6 +29,11 @@ GameSoundManager::GameSoundManager()
 	alGenSources(SOUND_TOTAL_NUM, sources);
 	// soruce와 buffer의 각 원소를 1:1로 매칭.
 	alSourcei(sources[0], AL_BUFFER, buffers[0]);
+}
+GameSoundManager * GameSoundManager::GetInstance()
+{
+	if (instance == nullptr) instance = new GameSoundManager();
+	return instance;
 }
 GameSoundManager::~GameSoundManager()
 {

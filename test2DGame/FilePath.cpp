@@ -19,6 +19,7 @@ FilePath::FilePath()
 	mainmenu_backgroundTrees = "GameResources//textures//mainmenu//background-trees.png";
 	mainmenu_mountainFar = "GameResources//textures//mainmenu//montain-far.png";
 	mainmenu_mountains = "GameResources//textures//mainmenu//mountains.png";
+	mainmenu_title = "GameResources//textures//mainmenu//title.png";
 	//
 	chacracter01 = "GameResources//textures//character//ch01.png";
 	//
@@ -26,4 +27,6 @@ FilePath::FilePath()
 	//
 	tmxFile_0 = "GameResources//test00.tmx";
 	tmxFile_1 = "GameResources//test01.tmx";
+	//
+	
 };

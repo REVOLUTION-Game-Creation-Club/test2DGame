@@ -24,6 +24,7 @@ public:
 	
 	//
 	static void UIBegin(const char* name, bool* p_open = NULL, ImGuiWindowFlags flags = 0);
+	static void UIBegin(const char* name, bool* p_open, const ImVec2& size_on_first_use, float bg_alpha_override, ImGuiWindowFlags flags);
 	static void UIEnd();
 	static bool UIButton(const char* label, const ImVec2 size);
 	static void UISetWindowPos(const ImVec2& pos, ImGuiCond cond = 0);

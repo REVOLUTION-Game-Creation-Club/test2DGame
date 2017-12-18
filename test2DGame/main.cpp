@@ -6,8 +6,6 @@
 IDirect3DDevice9* Device = 0;
 // camera
 Simple2DCamera* mainCamera;
-// sound test
-GameSoundManager* gameSoundManager;
 
 //gui test
 TwBar* twBar;
@@ -69,9 +67,6 @@ bool Setup()
 	mainCamera = Simple2DCamera::GetInstance();
 	mainCamera->SetDevice(Device);
 	mainCamera->Init(1024.0f, 768.0);
-
-	gameSoundManager = new GameSoundManager();
-	//gameSoundManager->PlayGameSound(GAME_SOUND_TYPE::BGM_MAIN, 0.2f);
 
 	//twgui test
 	//TwInit(TW_DIRECT3D9, Device);

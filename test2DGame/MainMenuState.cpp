@@ -27,6 +27,10 @@ void MainMenuState::Init(IDirect3DDevice9* _d3dDevice)
 	spr_mountains.Init(_d3dDevice,
 		FilePath::GetInstance()->mainmenu_mountains,
 		RECT{0, 0, 2720, 800}, 2720, 800);
+	spr_title.Init(_d3dDevice,
+		FilePath::GetInstance()->mainmenu_title,
+		RECT {0, 0, 514, 105}, 514, 105);
+	spr_title.TranslateSprite(256.0f, 192.0f);
 }
 
 void MainMenuState::Update()
@@ -36,11 +40,15 @@ void MainMenuState::Update()
 	spr_backGroundTress.DrawSprite();
 	spr_foreGroundTrees.DrawSprite();
 	spr_mountains.DrawSprite();
+	spr_title.DrawSprite();
 
-	//KojeomGameUI::UIBegin("mainmenu");
-	//KojeomGameUI::UISetWindowPos(ImVec2(512, 480));
-	//KojeomGameUI::UIButton("", ImVec2(384, 96));
-	//KojeomGameUI::UIEnd();
+	KojeomGameUI::UIBegin("mainmenu", 0, ImVec2(0,0), 0,
+		ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
+		ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
+	KojeomGameUI::UISetWindowPos(ImVec2(384, 480));
+	KojeomGameUI::UISetWindowSize(ImVec2(384, 128));
+	KojeomGameUI::UIButton("Game Start", ImVec2(384, 96));
+	KojeomGameUI::UIEnd();
 }
 
 void MainMenuState::Release()

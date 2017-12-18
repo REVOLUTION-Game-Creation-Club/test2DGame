@@ -14,6 +14,7 @@ public:
 	virtual RECT GetSpriteRect() override;
 	virtual void SetSpritePos(D3DXVECTOR3 _pos) override;
 	virtual D3DXVECTOR3 GetSpritePos() override;
+protected:
 	virtual void CreateSprite() override;
 	virtual void CreateTexture2D() override;
 };

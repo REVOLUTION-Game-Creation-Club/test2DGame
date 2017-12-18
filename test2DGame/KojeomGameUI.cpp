@@ -51,7 +51,11 @@ void KojeomGameUI::InputProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 void KojeomGameUI::UIBegin(const char* name, bool* p_open,  ImGuiWindowFlags flags)
 {
 	ImGui::Begin(name, p_open, flags);
-	
+}
+
+void KojeomGameUI::UIBegin(const char * name, bool * p_open, const ImVec2 & size_on_first_use, float bg_alpha_override, ImGuiWindowFlags flags)
+{
+	ImGui::Begin(name, p_open, size_on_first_use, bg_alpha_override, flags);
 }
 
 void KojeomGameUI::UIEnd()
