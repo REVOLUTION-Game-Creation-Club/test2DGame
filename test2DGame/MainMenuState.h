@@ -2,6 +2,7 @@
 #include "FilePath.h"
 #include "GameState.h"
 #include "GameCommonSprite.h"
+#include "KojeomGameUI.h"
 class MainMenuState :
 	public GameState
 {

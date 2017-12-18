@@ -10,7 +10,8 @@ public:
 	~GameStateManager();
 
 	void InsertState(GameState* state);
-	GameState* GetCurrentState();
+	void PopState();
+	GameState* const GetCurrentState();
 private:
 	stack<GameState*> gamestates;
 };

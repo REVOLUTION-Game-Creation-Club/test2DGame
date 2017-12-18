@@ -21,6 +21,14 @@ public:
 	static void EndFrame();
 	static void Render();
 	static void InputProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	
+	//
+	static void UIBegin(const char* name, bool* p_open = NULL, ImGuiWindowFlags flags = 0);
+	static void UIEnd();
+	static bool UIButton(const char* label, const ImVec2 size);
+	static void UISetWindowPos(const ImVec2& pos, ImGuiCond cond = 0);
+	static void UISetWindowSize(const ImVec2& size, ImGuiCond cond = 0);
+
 	Ray static CalcPickingRay(int x, int y, IDirect3DDevice9* device);
 };
 

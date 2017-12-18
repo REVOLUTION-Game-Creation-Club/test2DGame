@@ -198,6 +198,12 @@
     <ClInclude Include="FilePath.h">
       <Filter>Source Files\File</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateManager.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameState.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -292,6 +298,12 @@
     </ClCompile>
     <ClCompile Include="FilePath.cpp">
       <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameState.cpp">
+      <Filter>Source Files\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>Source Files\GameState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

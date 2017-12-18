@@ -2,7 +2,7 @@
 
 
 GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
-	char* _spriteFileName, RECT _defaultRect)
+	char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight)
 {
 	if (_tmxFileName != nullptr) tmxParser = new TMXParser(_tmxFileName);
 	else return;
@@ -13,7 +13,7 @@ GameMap::GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
 	for (int idx = 1; idx <= mapLayers; ++idx)
 	{
 		GameMap2DSprite* spr = new GameMap2DSprite();
-		spr->Init(_d3dDevice, _spriteFileName, _defaultRect);
+		spr->Init(_d3dDevice, _spriteFileName, _defaultRect, textureWidth, textureHeight);
 		tileMapSprites.push_back(spr);
 	}
 }

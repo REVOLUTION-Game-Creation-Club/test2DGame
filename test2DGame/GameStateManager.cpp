@@ -13,9 +13,16 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::InsertState(GameState * state)
 {
+	gamestates.push(state);
 }
 
-GameState * GameStateManager::GetCurrentState()
+void GameStateManager::PopState()
 {
-	return nullptr;
+	gamestates.top()->Release();
+	gamestates.pop();
+}
+
+GameState* const GameStateManager::GetCurrentState()
+{
+	return gamestates.top();
 }

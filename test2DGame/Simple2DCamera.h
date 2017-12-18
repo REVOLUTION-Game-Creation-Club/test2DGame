@@ -12,6 +12,8 @@ public:
 	void Init(float _viewWidth, float _viewHeight);
 	static Simple2DCamera* GetInstance();
 
+	float GetViewWidth();
+	float GetViewHeight();
 private:
 	Simple2DCamera();
 	~Simple2DCamera();
@@ -20,7 +22,6 @@ private:
 	D3DXVECTOR3 cameraPosition;
 	IDirect3DDevice9* device;
 
-	float viewHalfWidth;
-	float viewHalfHeight;
+	float viewWidth;
+	float viewHeight;;
 };
-

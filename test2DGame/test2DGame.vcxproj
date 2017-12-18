@@ -254,6 +254,7 @@
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameSoundManager.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx9.h" />
@@ -261,6 +262,7 @@
     <ClInclude Include="imgui\stb_rect_pack.h" />
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
+    <ClInclude Include="InGameState.h" />
     <ClInclude Include="kojeomDebugLogger.h" />
     <ClInclude Include="KojeomGameUI.h" />
     <ClInclude Include="MainMenuState.h" />
@@ -292,10 +294,12 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameSoundManager.cpp" />
+    <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
     <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="InGameState.cpp" />
     <ClCompile Include="kojeomDebugLogger.cpp" />
     <ClCompile Include="KojeomGameUI.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

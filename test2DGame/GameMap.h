@@ -12,7 +12,7 @@ class GameMap
 {
 public:
 	GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
-			char* _spriteFileName, RECT _defaultRect);
+			char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight);
 	~GameMap();
 
 	void DrawMap();

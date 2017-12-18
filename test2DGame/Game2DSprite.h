@@ -12,7 +12,8 @@ public:
 	Game2DSprite();
 	virtual ~Game2DSprite();
 
-	virtual void Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect) = 0;
+	virtual void Init(IDirect3DDevice9* _d3dDevice,
+		char* _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight) = 0;
 	virtual void DrawSprite() = 0;
 	virtual void TranslateSprite(FLOAT _x, FLOAT _y) = 0;
 	virtual void SetSpriteRect(RECT _spriteRect) = 0;
@@ -33,5 +34,8 @@ protected:
 	D3DXVECTOR3 spriteCenterPos;
 	D3DXCOLOR spriteAlphaColor;
 	D3DXMATRIX transMatrix;
+	
+	unsigned int texturePixelWidth;
+	unsigned int texturePixelHeight;
 };
 

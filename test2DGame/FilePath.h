@@ -17,6 +17,8 @@ public:
 	char* tmxFile_0;
 	char* tmxFile_1;
 	~FilePath();
+
+	void Test();
 private:
 	static FilePath* instance;
 	FilePath();

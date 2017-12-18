@@ -39,3 +39,11 @@
 #include "AntTweakBar.h"
 // SoundManager.
 #include "GameSoundManager.h"
+//
+#include "kojeomDebugLogger.h"
+#include "imgui\imgui_impl_dx9.h"
+#include "FilePath.h"
+// gamestate
+#include "GameStateManager.h"
+#include "InGameState.h"
+#include "MainMenuState.h"

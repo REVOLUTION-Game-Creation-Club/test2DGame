@@ -14,7 +14,7 @@ GameMap2DSprite::~GameMap2DSprite()
 	if (spriteObject != nullptr) spriteObject->Release();
 }
 
-void GameMap2DSprite::Init(IDirect3DDevice9 * _d3dDevice, char * _spriteFileName, RECT _rect)
+void GameMap2DSprite::Init(IDirect3DDevice9 * _d3dDevice, char * _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight)
 {
 	d3d9Device = _d3dDevice;
 	spriteName = _spriteFileName;
@@ -23,6 +23,9 @@ void GameMap2DSprite::Init(IDirect3DDevice9 * _d3dDevice, char * _spriteFileName
 	spriteCenterPos = { 0, 0, 0 };
 	spriteAlphaColor = { 1, 1, 1, 1 };
 	D3DXMatrixIdentity(&transMatrix);
+
+	texturePixelWidth = textureWidth;
+	texturePixelHeight = textureHeight;
 
 	CreateSprite();
 	CreateTexture2D();
@@ -89,6 +92,9 @@ void GameMap2DSprite::CreateSprite()
 
 void GameMap2DSprite::CreateTexture2D()
 {
-	HRESULT hr = D3DXCreateTextureFromFile(d3d9Device, StringUtil::ConvertCharToWchar(spriteName), &spriteTexture2D);
+	HRESULT hr = D3DXCreateTextureFromFileEx(d3d9Device,
+		StringUtil::ConvertCharToWchar(spriteName), texturePixelWidth,
+		texturePixelHeight, 0, D3DUSAGE_RENDERTARGET, D3DFORMAT::D3DFMT_UNKNOWN,
+		D3DPOOL::D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &spriteTexture2D);
 	if (hr != S_OK) kojeomDebugLogger::MessageBoxLog(L"CreateTexture2D() - FAILED");
 }

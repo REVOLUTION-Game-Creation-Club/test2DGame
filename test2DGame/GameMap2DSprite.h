@@ -7,7 +7,7 @@ public:
 	GameMap2DSprite();
 	~GameMap2DSprite() override;
 
-	virtual void Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect);
+	virtual void Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight);
 	virtual void DrawSprite() override;
 	virtual void BeginDraw();
 	virtual void EndDraw();
