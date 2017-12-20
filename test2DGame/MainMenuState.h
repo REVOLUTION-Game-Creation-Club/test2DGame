@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include "GameCommonSprite.h"
 #include "KojeomGameUI.h"
+#include "GameStateManager.h"
 class MainMenuState :
 	public GameState
 {

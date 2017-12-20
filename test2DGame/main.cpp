@@ -13,7 +13,6 @@ TwBar* twBar;
 // game state.
 MainMenuState* mainmenuState;
 InGameState* ingameState;
-GameStateManager stateManager;
 
 //
 // Framework Functions Prototype
@@ -77,7 +76,8 @@ bool Setup()
 	mainmenuState = new MainMenuState();
 	mainmenuState->Init(Device);
 
-	stateManager.InsertState(mainmenuState);
+	GameStateManager::GetInstance()->InsertState(ingameState);
+	GameStateManager::GetInstance()->InsertState(mainmenuState);
 	return true;
 }
 
@@ -106,13 +106,16 @@ bool Display(float timeDelta)
 
 		// imgui test
 		KojeomGameUI::NewFrame();
-		stateManager.GetCurrentState()->Update();
+		GameStateManager::GetInstance()->GetCurrentState()->Update();
 		KojeomGameUI::EndFrame();
 		KojeomGameUI::Render();
 
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
+
+		//late 
+		GameStateManager::GetInstance()->LatePopState();
 	}
 	return true;
 }
