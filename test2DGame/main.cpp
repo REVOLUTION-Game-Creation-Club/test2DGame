@@ -7,13 +7,6 @@ IDirect3DDevice9* Device = 0;
 // camera
 Simple2DCamera* mainCamera;
 
-//gui test
-TwBar* twBar;
-
-// game state.
-MainMenuState* mainmenuState;
-InGameState* ingameState;
-
 //
 // Framework Functions Prototype
 //
@@ -67,26 +60,16 @@ bool Setup()
 	mainCamera->SetDevice(Device);
 	mainCamera->Init(1024.0f, 768.0);
 
-	//twgui test
-	//TwInit(TW_DIRECT3D9, Device);
-	//twBar = TwNewBar("TEST_GUI_WINDOW");
-
-	ingameState = new InGameState();
-	ingameState->Init(Device);
-	mainmenuState = new MainMenuState();
-	mainmenuState->Init(Device);
-
-	GameStateManager::GetInstance()->InsertState(ingameState);
-	GameStateManager::GetInstance()->InsertState(mainmenuState);
+	//
+	KojeomD3DUtil::GetInstance()->SetD3DDevice(Device);
+	//
+	GameStateManager::GetInstance()->InsertState(GAME_STATE::MAIN_MENU);
 	return true;
 }
 
 // 프로그램 종료 시 호출되는 클린업.
 void Cleanup()
 {
-	//twgui release..
-	//TwTerminate();
-
 	//gui shutdown..
 	KojeomGameUI::Release();
 }
@@ -100,10 +83,6 @@ bool Display(float timeDelta)
 		// the depth buffer to a value of 1.0 - D3DCLEAR_ZBUFFER: 1.0f.
 		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
 		Device->BeginScene();
-		
-		// twgui test
-		//TwDraw();
-
 		// imgui test
 		KojeomGameUI::NewFrame();
 		GameStateManager::GetInstance()->GetCurrentState()->Update();
@@ -125,9 +104,6 @@ bool Display(float timeDelta)
 //
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	// tw gui 
-	//if (TwEventWin(hwnd, msg, wParam, lParam)) return 0;
-
 	//ray 캐스팅 테스트용 변수.
 	float x, y;
 	Ray ray;

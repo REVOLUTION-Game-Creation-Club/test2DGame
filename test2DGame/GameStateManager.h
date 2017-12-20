@@ -1,5 +1,8 @@
 #pragma once
 #include "GameState.h"
+#include "MainMenuState.h"
+#include "InGameState.h"
+#include "KojeomD3DUtil.h"
 #include <stack>
 using namespace std;
 
@@ -13,7 +16,7 @@ class GameStateManager
 public:
 	~GameStateManager();
 	static GameStateManager* GetInstance();
-	void InsertState(GameState* state);
+	void InsertState(GAME_STATE stateType);
 	void LatePopState();
 	GameState* const GetCurrentState();
 
@@ -23,6 +26,8 @@ private:
 	void PopState();
 	stack<GameState*> gamestates;
 	static GameStateManager* instance;
-	
+
+	GameState* mainmenuState;
+	GameState* ingameState;
 };
 

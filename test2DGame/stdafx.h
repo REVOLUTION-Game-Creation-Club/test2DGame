@@ -47,3 +47,6 @@
 #include "GameStateManager.h"
 #include "InGameState.h"
 #include "MainMenuState.h"
+
+//
+#include "KojeomD3DUtil.h"

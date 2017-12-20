@@ -204,6 +204,9 @@
     <ClInclude Include="InGameState.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
+    <ClInclude Include="KojeomD3DUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -304,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
       <Filter>Source Files\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="KojeomD3DUtil.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,11 @@ GameStateManager* GameStateManager::instance = nullptr;
 
 GameStateManager::GameStateManager()
 {
+	ingameState = new InGameState();
+	mainmenuState = new MainMenuState();
 
+	ingameState->Init(KojeomD3DUtil::GetInstance()->GetD3DDevice());
+	mainmenuState->Init(KojeomD3DUtil::GetInstance()->GetD3DDevice());
 }
 
 
@@ -18,9 +22,16 @@ GameStateManager * GameStateManager::GetInstance()
 	return instance;
 }
 
-void GameStateManager::InsertState(GameState * state)
+void GameStateManager::InsertState(GAME_STATE stateType)
 {
-	gamestates.push(state);
+	switch (stateType) {
+	case GAME_STATE::INGAME:
+		gamestates.push(ingameState);
+		break;
+	case GAME_STATE::MAIN_MENU:
+		gamestates.push(mainmenuState);
+		break;
+	}
 }
 
 void GameStateManager::LatePopState()
