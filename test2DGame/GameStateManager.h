@@ -8,8 +8,9 @@ using namespace std;
 
 enum GAME_STATE 
 {
-	MAIN_MENU = 0,
-	INGAME = 1
+	NONE = 0,
+	MAIN_MENU = 1,
+	INGAME = 2
 };
 class GameStateManager
 {
@@ -17,13 +18,11 @@ public:
 	~GameStateManager();
 	static GameStateManager* GetInstance();
 	void InsertState(GAME_STATE stateType);
-	void LatePopState();
+	void PopState();
 	GameState* const GetCurrentState();
-
-	bool nextStateFlag = false;
 private:
 	GameStateManager();
-	void PopState();
+	
 	stack<GameState*> gamestates;
 	static GameStateManager* instance;
 

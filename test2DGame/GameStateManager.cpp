@@ -31,17 +31,12 @@ void GameStateManager::InsertState(GAME_STATE stateType)
 	case GAME_STATE::MAIN_MENU:
 		gamestates.push(mainmenuState);
 		break;
+	case GAME_STATE::NONE:
+		// none..
+		break;
 	}
 }
 
-void GameStateManager::LatePopState()
-{
-	if (nextStateFlag)
-	{
-		PopState();
-		nextStateFlag = false;
-	}
-}
 
 void GameStateManager::PopState()
 {
@@ -51,5 +46,7 @@ void GameStateManager::PopState()
 
 GameState* const GameStateManager::GetCurrentState()
 {
-	return gamestates.top();
+	if(gamestates.size() > 0) return gamestates.top();
+	else return nullptr;
+	
 }

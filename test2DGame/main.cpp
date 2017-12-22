@@ -85,16 +85,14 @@ bool Display(float timeDelta)
 		Device->BeginScene();
 		// imgui test
 		KojeomGameUI::NewFrame();
-		GameStateManager::GetInstance()->GetCurrentState()->Update();
+		GameState* curState = GameStateManager::GetInstance()->GetCurrentState();
+		if (curState != nullptr) curState->Update();
 		KojeomGameUI::EndFrame();
 		KojeomGameUI::Render();
 
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
-
-		//late 
-		GameStateManager::GetInstance()->LatePopState();
 	}
 	return true;
 }

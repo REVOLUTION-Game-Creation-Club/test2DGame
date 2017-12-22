@@ -50,7 +50,7 @@ void MainMenuState::Update()
 	if (KojeomGameUI::UIButton("Game Start", ImVec2(384, 96)))
 	{
 		// to do
-		GameStateManager::GetInstance()->nextStateFlag = true;
+		GameStateManager::GetInstance()->PopState();
 	};
 	KojeomGameUI::UIEnd();
 }
