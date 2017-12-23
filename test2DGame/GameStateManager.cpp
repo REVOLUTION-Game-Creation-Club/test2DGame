@@ -48,5 +48,4 @@ GameState* const GameStateManager::GetCurrentState()
 {
 	if(gamestates.size() > 0) return gamestates.top();
 	else return nullptr;
-	
 }

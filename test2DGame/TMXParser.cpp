@@ -45,7 +45,7 @@ void TMXParser::ReadMapData()
 		if (strcmp(element->Value(), "layer") == 0)
 		{
 			originElement = element;
-			ReadLayerData(element, layerIdx);
+			ReadLayerData(element, layerIdx, element->Attribute("name"));
 			element = originElement;
 			
 			layerIdx++;
@@ -56,14 +56,15 @@ void TMXParser::ReadMapData()
 //
 // tmx file 에서 tile gid 값은 첫번째 tile이 비어있는 경우와 그렇지 않은경우에 차이가 있다. - log
 //
-void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx)
+void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName)
 {
-	mapData.layers.push_back(vector<int>());
+	mapData.layers.push_back(MapLayerInfo());
 	while (_element != nullptr)
 	{
 		if (strcmp(_element->Value(), "tile") == 0)
 		{	// tile atrribute gid 는 Map witdh , height 를 tile size로 나눈 값을 의미. 
-			mapData.layers[_layerIdx].push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
+			mapData.layers[_layerIdx].tileGIDs.push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
+			mapData.layers[_layerIdx].name = _layerName;
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();

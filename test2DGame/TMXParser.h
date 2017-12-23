@@ -5,6 +5,17 @@
 
 using namespace std;
 
+struct MapLayerInfo
+{
+public:
+	string name;
+	vector<int> tileGIDs;
+	void Release()
+	{
+		tileGIDs.clear();
+	}
+};
+
 struct MapData
 {
 public:
@@ -15,7 +26,7 @@ public:
 	int imageWidth;
 	int imageHeight;
 	//tmx 파일 맵 layer 정보를 저장하며, 0 to N 순서로 tile layer를 렌더링합니다. ( 0이 가장 먼저 그려짐. )
-	vector<vector<int>> layers;
+	vector<MapLayerInfo> layers;
 	void Release()
 	{
 		layers.clear();
@@ -40,7 +51,7 @@ private:
 
 	void ReadMapData();
 	void ReadCustomProperties();
-	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx);
+	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName);
 	
 };
 
