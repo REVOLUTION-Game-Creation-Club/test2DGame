@@ -204,8 +204,11 @@
     <ClInclude Include="InGameState.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
+    <ClInclude Include="KojeomGraphicUtil.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
     <ClInclude Include="KojeomD3DUtil.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -309,7 +312,10 @@
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
     <ClCompile Include="KojeomD3DUtil.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="KojeomGraphicUtil.cpp">
+      <Filter>Source Files\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

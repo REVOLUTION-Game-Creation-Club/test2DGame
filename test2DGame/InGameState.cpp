@@ -36,6 +36,19 @@ void InGameState::Update()
 	worldMap->Update(); // order : 0
 	playerObject->Update(); // order : 1
 	playerTestAni.DrawFrames();
+
+	//collision box 그려주기. 
+	KojeomGameUI::PushStyleColor(ImGuiCol_::ImGuiCol_WindowBg, ImVec4(0.8f, 1.0f, 0.7f, 0.6f));
+	KojeomGameUI::UIBegin("test", 0,
+		ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
+	
+	float playerPosX = playerObject->GetObjectPostion().x;
+	float playerPosY = playerObject->GetObjectPostion().y;
+	KojeomGameUI::UISetWindowPos(ImVec2(playerPosX, playerPosY));
+	KojeomGameUI::UISetWindowSize(ImVec2(32.0f, 32.0f), 0);
+	//
+	KojeomGameUI::UIEnd();
+	KojeomGameUI::PopStyleColor(1);
 }
 
 void InGameState::Release()

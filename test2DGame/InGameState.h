@@ -7,6 +7,7 @@
 #include "GameObjectFactory.h"
 #include "Animation.h"
 #include "Simple2DCamera.h"
+#include "KojeomGameUI.h"
 class InGameState :
 	public GameState
 {

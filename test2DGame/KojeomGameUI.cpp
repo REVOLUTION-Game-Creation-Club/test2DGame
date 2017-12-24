@@ -47,6 +47,16 @@ void KojeomGameUI::InputProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
 }
 
+void KojeomGameUI::PopStyleColor(int count)
+{
+	ImGui::PopStyleColor(count);
+}
+
+void KojeomGameUI::PushStyleColor(ImGuiCol idx, const ImVec4 & col)
+{
+	ImGui::PushStyleColor(idx, col);
+}
+
 
 void KojeomGameUI::UIBegin(const char* name, bool* p_open,  ImGuiWindowFlags flags)
 {

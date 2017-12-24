@@ -1,5 +1,8 @@
 #pragma once
 #include <d3dx9.h>
+
+// DirectX9 Device를 가지고 있는 클래스.
+// 기능 테스트에 사용하려고 쓰는 임시클래스. 
 class KojeomD3DUtil
 {
 public:

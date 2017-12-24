@@ -21,7 +21,9 @@ public:
 	static void EndFrame();
 	static void Render();
 	static void InputProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-	
+	static void PopStyleColor(int count);
+	static void PushStyleColor(ImGuiCol idx, const ImVec4& col);
+
 	//
 	static void UIBegin(const char* name, bool* p_open = NULL, ImGuiWindowFlags flags = 0);
 	static void UIBegin(const char* name, bool* p_open, const ImVec2& size_on_first_use, float bg_alpha_override, ImGuiWindowFlags flags);

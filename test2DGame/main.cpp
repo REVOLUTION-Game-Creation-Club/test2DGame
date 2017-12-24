@@ -93,6 +93,8 @@ bool Display(float timeDelta)
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
+
+		
 	}
 	return true;
 }
