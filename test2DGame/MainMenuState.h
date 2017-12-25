@@ -13,7 +13,7 @@ public:
 	virtual void Init(IDirect3DDevice9* _d3dDevice) override;
 	virtual void Update() override;
 	virtual void Release() override;
-
+	virtual void InputUpdate(UINT msg, WPARAM wParam) override;
 private:
 	GameCommonSprite spr_bg;
 	GameCommonSprite spr_foreGroundTrees;

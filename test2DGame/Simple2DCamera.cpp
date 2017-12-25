@@ -63,10 +63,10 @@ void Simple2DCamera::Move(FLOAT _x, FLOAT _y)
 
 void Simple2DCamera::FollowPlayer(FLOAT playerX, FLOAT playerY)
 {
-	cameraPosition = D3DXVECTOR3(playerX, playerY, 0.0f);
+	cameraPosition += D3DXVECTOR3(playerX, playerY, 0.0f);
 
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, -playerX, -playerY, 0.0f);
+	D3DXMatrixTranslation(&matLookAt, cameraPosition.x, cameraPosition.y, 0.0f);
 	
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }

@@ -36,19 +36,6 @@ void InGameState::Update()
 	worldMap->Update(); // order : 0
 	playerObject->Update(); // order : 1
 	playerTestAni.DrawFrames();
-
-	//collision box 그려주기. 
-	KojeomGameUI::PushStyleColor(ImGuiCol_::ImGuiCol_WindowBg, ImVec4(0.8f, 1.0f, 0.7f, 0.6f));
-	KojeomGameUI::UIBegin("test", 0,
-		ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
-	
-	float playerPosX = playerObject->GetObjectPostion().x;
-	float playerPosY = playerObject->GetObjectPostion().y;
-	KojeomGameUI::UISetWindowPos(ImVec2(playerPosX, playerPosY));
-	KojeomGameUI::UISetWindowSize(ImVec2(32.0f, 32.0f), 0);
-	//
-	KojeomGameUI::UIEnd();
-	KojeomGameUI::PopStyleColor(1);
 }
 
 void InGameState::Release()
@@ -56,4 +43,38 @@ void InGameState::Release()
 	delete worldMap;
 	delete playerObject;
 	delete playerFactory;
+}
+
+void InGameState::InputUpdate(UINT msg, WPARAM wParam)
+{
+	float moveX = 0.0f, moveY = 0.0f;
+	switch (msg)
+	{
+	case WM_KEYDOWN:
+		if (wParam == VK_LEFT)
+		{
+			moveX = -32.0f;
+			moveY = 0.0f;
+		}
+		else if (wParam == VK_RIGHT)
+		{
+			moveX = 32.0f;
+			moveY = 0.0f;
+		}
+		else if (wParam == VK_UP)
+		{
+			moveX = 0.0f;
+			moveY = -32.0f;
+		}
+		else if (wParam == VK_DOWN)
+		{
+			moveX = 0.0f;
+			moveY = 32.0f;
+		}
+		playerObject->Move(moveX, moveY);
+		Simple2DCamera::GetInstance()->FollowPlayer(
+			-moveX,
+			-moveY);
+		break;
+	}
 }

@@ -4,6 +4,7 @@
 // Globals
 //
 IDirect3DDevice9* Device = 0;
+bool isGameSetupEnd = false;
 // camera
 Simple2DCamera* mainCamera;
 
@@ -64,6 +65,8 @@ bool Setup()
 	KojeomD3DUtil::GetInstance()->SetD3DDevice(Device);
 	//
 	GameStateManager::GetInstance()->InsertState(GAME_STATE::MAIN_MENU);
+	//
+	isGameSetupEnd = true;
 	return true;
 }
 
@@ -107,9 +110,15 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	//ray 캐스팅 테스트용 변수.
 	float x, y;
 	Ray ray;
-	// gui input..
-	KojeomGameUI::InputProcess(hwnd, msg, wParam, lParam);
-
+	if (isGameSetupEnd)
+	{
+		// gui input process..
+		KojeomGameUI::InputProcess(hwnd, msg, wParam, lParam);
+		// 현재 game state에 대한 입력처리.
+		GameState* curState = GameStateManager::GetInstance()->GetCurrentState();
+		if (curState != nullptr) curState->InputUpdate(msg, wParam);
+	}
+	
 	switch (msg)
 	{
 	case WM_DESTROY:
@@ -118,13 +127,6 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) ::DestroyWindow(hwnd);
-			
-		//if (wParam == VK_LEFT) playerObject->Move(-32, 0);
-		//else if (wParam == VK_RIGHT) playerObject->Move(32, 0);
-		//else if (wParam == VK_UP) playerObject->Move(0, -32);
-		//else if (wParam == VK_DOWN) playerObject->Move(0, 32);
-	
-		//mainCamera->GetInstance()->FollowPlayer(playerObject->GetObjectPostion().x, playerObject->GetObjectPostion().y);
 		break;
 	case WM_LBUTTONDOWN:
 		//POINT mousePoint;
@@ -138,7 +140,5 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		KojeomGameUI::ResetRendering();
 		break;
 	}
-	
-
 	return ::DefWindowProc(hwnd, msg, wParam, lParam);
 }

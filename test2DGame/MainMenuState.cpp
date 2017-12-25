@@ -59,3 +59,7 @@ void MainMenuState::Release()
 {
 	// to do
 }
+
+void MainMenuState::InputUpdate(UINT msg, WPARAM wParam)
+{
+}
