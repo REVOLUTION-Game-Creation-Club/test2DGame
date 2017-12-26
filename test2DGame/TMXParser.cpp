@@ -50,6 +50,12 @@ void TMXParser::ReadMapData()
 			
 			layerIdx++;
 		}
+		else if (strcmp(element->Value(), "objectgroup") == 0)
+		{
+			originElement = element;
+			ReadColliderData(element);
+			element = originElement;
+		}
 		element = element->NextSiblingElement();
 	}
 }
@@ -65,6 +71,25 @@ void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, str
 		{	// tile atrribute gid 는 Map witdh , height 를 tile size로 나눈 값을 의미. 
 			mapData.layers[_layerIdx].tileGIDs.push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
 			mapData.layers[_layerIdx].name = _layerName;
+			_element = _element->NextSiblingElement();
+		}
+		else _element = _element->FirstChildElement();
+	}
+}
+void TMXParser::ReadColliderData(tinyxml2::XMLElement * _element)
+{
+	while (_element != nullptr)
+	{
+		if (strcmp(_element->Value(), "object") == 0)
+		{
+			MapColliderObject mapCollObj;
+			mapCollObj.id = atoi(_element->Attribute("id"));
+			mapCollObj.name = _element->Attribute("name");
+			mapCollObj.x = atoi(_element->Attribute("x"));
+			mapCollObj.y = atoi(_element->Attribute("y"));
+			mapCollObj.width = atoi(_element->Attribute("width"));
+			mapCollObj.height = atoi(_element->Attribute("height"));
+			mapData.collObjects.push_back(mapCollObj);
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();

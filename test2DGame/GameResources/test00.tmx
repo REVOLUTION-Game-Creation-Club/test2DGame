@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="27">
  <tileset firstgid="1" name="tileb" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="textures/tilemap/tileb.png" width="512" height="512"/>
  </tileset>
@@ -263,6 +263,16 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup color="#ff0000" name="mapCollider">
+  <object id="16" name="tree_0" x="0" y="0" width="64" height="512"/>
+  <object id="18" name="tree_5" x="320" y="320" width="96" height="192"/>
+  <object id="19" name="tree_6" x="416" y="416" width="96" height="96"/>
+  <object id="20" name="tree_4" x="352" y="256" width="64" height="64"/>
+  <object id="21" name="tree_1" x="192" y="0" width="160" height="96"/>
+  <object id="22" name="tree_2" x="352" y="0" width="64" height="160"/>
+  <object id="23" name="tree_3" x="416" y="0" width="96" height="64"/>
+  <object id="24" name="tree_7" x="64" y="320" width="32" height="192"/>
+ </objectgroup>
  <layer name="Shop" width="16" height="16">
   <data>
    <tile gid="0"/>
