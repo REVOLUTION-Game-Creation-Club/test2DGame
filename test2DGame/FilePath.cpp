@@ -23,7 +23,7 @@ FilePath::FilePath()
 	//
 	chacracter01 = "GameResources//textures//character//ch01.png";
 	//
-	tileMap = "GameResources//textures//tilemap//tileb.png";
+	tileMapSprite = "GameResources//textures//tilemap//tileb.png";
 	//
 	tmxFile_0 = "GameResources//test00.tmx";
 	tmxFile_1 = "GameResources//test01.tmx";

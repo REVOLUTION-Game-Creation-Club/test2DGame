@@ -13,7 +13,7 @@ public:
 	// test
 	char* chacracter01;
 	// test
-	char* tileMap;
+	char* tileMapSprite;
 	// test
 	char* tmxFile_0;
 	char* tmxFile_1;

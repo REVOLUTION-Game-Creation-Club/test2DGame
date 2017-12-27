@@ -1,42 +1,53 @@
 #include "TMXParser.h"
 
+TMXParser* TMXParser::instance = nullptr;
 
-TMXParser::TMXParser(const char* _xmlFileName)
+TMXParser::TMXParser()
 {	
-	if (_xmlFileName != nullptr) xmlDoc.LoadFile(_xmlFileName);
-
-	mapData.mapWidth = atoi(xmlDoc.FirstChildElement()->Attribute("width"));
-	mapData.mapHeight = atoi(xmlDoc.FirstChildElement()->Attribute("height"));
-
-	mapData.tileWidth = atoi(xmlDoc.FirstChildElement()->Attribute("tilewidth"));
-	mapData.tileHeight = atoi(xmlDoc.FirstChildElement()->Attribute("tileheight"));
-
-	mapData.imageWidth = atoi(xmlDoc.RootElement()->FirstChildElement("tileset")->
-					   FirstChildElement()->Attribute("width"));
-	mapData.imageHeight = atoi(xmlDoc.RootElement()->FirstChildElement("tileset")->
-					   FirstChildElement()->Attribute("height"));
-
-	//test
-	//ReadCustomProperties();
 	// 예전에 작업해놓은건데, gid값에 왜 -1을 더하는걸까.
 	tileGidOffset = -1;
-	ReadMapData();
-
+	// 게임 맵 로드.
+	ReadMapData(FilePath::GetInstance()->tmxFile_0, TMX_MAP_TYPE::GAME_MAP_0);
+	ReadMapData(FilePath::GetInstance()->tmxFile_1, TMX_MAP_TYPE::GAME_MAP_1);
 }
 
 
 TMXParser::~TMXParser()
 {
-	mapData.Release();
+	for each (auto data in mapData)
+	{
+		data.Release();
+	}
 }
 
-MapData* TMXParser::GetMapData()
+MapData TMXParser::GetMapData(TMX_MAP_TYPE mapType)
 {
-	return &mapData;
+	return mapData[mapType];
 }
 
-void TMXParser::ReadMapData()
+TMXParser * TMXParser::GetInstance()
 {
+	if (instance == nullptr) instance = new TMXParser();
+	return instance;
+}
+
+void TMXParser::ReadMapData(const char* _xmlFileName, TMX_MAP_TYPE mapType)
+{
+
+	tinyxml2::XMLDocument xmlDoc;
+	if (_xmlFileName != nullptr) xmlDoc.LoadFile(_xmlFileName);
+
+	mapData[mapType].mapWidth = atoi(xmlDoc.FirstChildElement()->Attribute("width"));
+	mapData[mapType].mapHeight = atoi(xmlDoc.FirstChildElement()->Attribute("height"));
+
+	mapData[mapType].tileWidth = atoi(xmlDoc.FirstChildElement()->Attribute("tilewidth"));
+	mapData[mapType].tileHeight = atoi(xmlDoc.FirstChildElement()->Attribute("tileheight"));
+
+	mapData[mapType].imageWidth = atoi(xmlDoc.RootElement()->FirstChildElement("tileset")->
+		FirstChildElement()->Attribute("width"));
+	mapData[mapType].imageHeight = atoi(xmlDoc.RootElement()->FirstChildElement("tileset")->
+		FirstChildElement()->Attribute("height"));
+
 	tinyxml2::XMLElement* element = xmlDoc.RootElement()->FirstChildElement();
 	tinyxml2::XMLElement* originElement = element;
 	int layerIdx = 0;
@@ -45,7 +56,7 @@ void TMXParser::ReadMapData()
 		if (strcmp(element->Value(), "layer") == 0)
 		{
 			originElement = element;
-			ReadLayerData(element, layerIdx, element->Attribute("name"));
+			ReadLayerData(element, layerIdx, element->Attribute("name"), mapType);
 			element = originElement;
 			
 			layerIdx++;
@@ -53,7 +64,7 @@ void TMXParser::ReadMapData()
 		else if (strcmp(element->Value(), "objectgroup") == 0)
 		{
 			originElement = element;
-			ReadColliderData(element);
+			ReadColliderData(element, mapType);
 			element = originElement;
 		}
 		element = element->NextSiblingElement();
@@ -62,21 +73,21 @@ void TMXParser::ReadMapData()
 //
 // tmx file 에서 tile gid 값은 첫번째 tile이 비어있는 경우와 그렇지 않은경우에 차이가 있다. - log
 //
-void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName)
+void TMXParser::ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName, TMX_MAP_TYPE mapType)
 {
-	mapData.layers.push_back(MapLayerInfo());
+	mapData[mapType].layers.push_back(MapLayerInfo());
 	while (_element != nullptr)
 	{
 		if (strcmp(_element->Value(), "tile") == 0)
 		{	// tile atrribute gid 는 Map witdh , height 를 tile size로 나눈 값을 의미. 
-			mapData.layers[_layerIdx].tileGIDs.push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
-			mapData.layers[_layerIdx].name = _layerName;
+			mapData[mapType].layers[_layerIdx].tileGIDs.push_back(atoi(_element->Attribute("gid")) + tileGidOffset);
+			mapData[mapType].layers[_layerIdx].name = _layerName;
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();
 	}
 }
-void TMXParser::ReadColliderData(tinyxml2::XMLElement * _element)
+void TMXParser::ReadColliderData(tinyxml2::XMLElement * _element, TMX_MAP_TYPE mapType)
 {
 	while (_element != nullptr)
 	{
@@ -89,7 +100,7 @@ void TMXParser::ReadColliderData(tinyxml2::XMLElement * _element)
 			mapCollObj.y = atoi(_element->Attribute("y"));
 			mapCollObj.width = atoi(_element->Attribute("width"));
 			mapCollObj.height = atoi(_element->Attribute("height"));
-			mapData.collObjects.push_back(mapCollObj);
+			mapData[mapType].collObjects.push_back(mapCollObj);
 			_element = _element->NextSiblingElement();
 		}
 		else _element = _element->FirstChildElement();
@@ -98,7 +109,7 @@ void TMXParser::ReadColliderData(tinyxml2::XMLElement * _element)
 //
 // test func
 //
-void TMXParser::ReadCustomProperties()
+void TMXParser::ReadCustomProperties(tinyxml2::XMLDocument xmlDoc)
 {
 	const char* isFirstTileBlank = xmlDoc.RootElement()->FirstChildElement("properties")->FirstChildElement("property")->Attribute("value");
 	if (strcmp(isFirstTileBlank, "true") == 0) tileGidOffset = 0;

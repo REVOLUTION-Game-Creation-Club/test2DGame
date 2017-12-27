@@ -11,17 +11,15 @@ using namespace std;
 class GameMap
 {
 public:
-	GameMap(const char* _tmxFileName, IDirect3DDevice9* _d3dDevice,
-			char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight);
+	GameMap(TMX_MAP_TYPE mapType, IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight);
 	~GameMap();
 
 	void DrawMap();
 	void Move(FLOAT _x, FLOAT _y);
 private:
-	MapData* mapData;
-	TMXParser* tmxParser;
+	MapData mapData;
 	vector<GameMap2DSprite*> tileMapSprites;
-	int mapLayers;
+	int mapLayerCnt;
 
 	void DrawMapLyaers(const int _layerIdx);
 	RECT CalcRenderRect(const int _gid);

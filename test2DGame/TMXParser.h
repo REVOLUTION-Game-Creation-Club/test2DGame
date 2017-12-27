@@ -1,5 +1,6 @@
 #pragma once
 #include "TinyXML-2\tinyxml2.h"
+#include "FilePath.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -18,8 +19,7 @@ struct MapLayerInfo
 public:
 	string name;
 	vector<int> tileGIDs;
-	void Release()
-	{
+	~MapLayerInfo() {
 		tileGIDs.clear();
 	}
 };
@@ -42,27 +42,33 @@ public:
 		layers.clear();
 		collObjects.clear();
 	}
+	
 };
 
+enum TMX_MAP_TYPE
+{
+	GAME_MAP_0 = 0,
+	GAME_MAP_1 = 1,
+	MAP_TOTAL_NUM
+};
 //
 //Tiled Map Editor Version 1.0.3 의 tmx file 로 test 되었음을 알립니다. 
 //
 class TMXParser
 {
 public:
-	TMXParser(const char* _xmlFileName);
 	~TMXParser();
-
-	MapData* GetMapData();
-
+	MapData GetMapData(TMX_MAP_TYPE mapType);
+	static TMXParser* GetInstance();
 private:
-	tinyxml2::XMLDocument xmlDoc;
-	MapData mapData;
+	TMXParser();
+	MapData mapData[TMX_MAP_TYPE::MAP_TOTAL_NUM];
 	int tileGidOffset;
+	static TMXParser* instance;
 
-	void ReadMapData();
-	void ReadCustomProperties();
-	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName);
-	void ReadColliderData(tinyxml2::XMLElement* _element);
+	void ReadMapData(const char* _xmlFileName, TMX_MAP_TYPE mapType);
+	void ReadCustomProperties(tinyxml2::XMLDocument xmlDoc);
+	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName, TMX_MAP_TYPE mapType);
+	void ReadColliderData(tinyxml2::XMLElement* _element, TMX_MAP_TYPE mapType);
 };
 

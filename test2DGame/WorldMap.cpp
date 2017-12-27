@@ -5,11 +5,11 @@ WorldMap::WorldMap(IDirect3DDevice9* _device)
 	device = _device;
 	mapDefaultRect = { 0, 0, 0, 0 };
 
-	gameMaps[0] = new GameMap(FilePath::GetInstance()->tmxFile_0, device,
-		FilePath::GetInstance()->tileMap,
+	gameMaps[0] = new GameMap(TMX_MAP_TYPE::GAME_MAP_0, device,
+		FilePath::GetInstance()->tileMapSprite,
 		mapDefaultRect, 512, 512 );
-	gameMaps[1] = new GameMap(FilePath::GetInstance()->tmxFile_1, device,
-		FilePath::GetInstance()->tileMap,
+	gameMaps[1] = new GameMap(TMX_MAP_TYPE::GAME_MAP_1, device, 
+		FilePath::GetInstance()->tileMapSprite,
 		mapDefaultRect, 512, 512);
 	// 1번 맵과 2번맵의 offset 값 512 적용
 	// 이 값은 테스트용..
