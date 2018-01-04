@@ -22,13 +22,17 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 
 	// player offset 위치 적용.
 	// - view 크기의 정중앙값을 offset으로 사용.
-	playerObject->Move(Simple2DCamera::GetInstance()->GetViewWidth() / 2,
+	playerObject->Move(Simple2DCamera::GetInstance()->GetViewWidth() / 2 + 150.0f ,
 		Simple2DCamera::GetInstance()->GetViewHeight() / 2);
 
 	playerTestAni.SetSpriteObject(playerSprite);
 	playerTestAni.SetDrawInfos(DrawInfo{ 96, 128, 0, 32, 0, 0, 32, 200 });
 
 	worldMap = new WorldMap(_d3dDevice);
+
+	playerObject->GetAABB()->MakeAABB(D3DXVECTOR3(playerObject->GetObjectPosition()),
+		D3DXVECTOR3(playerObject->GetObjectPosition().x + 32.0f,
+			playerObject->GetObjectPosition().y + 32.0f, 0.0f));
 }
 
 void InGameState::Update()
@@ -36,6 +40,10 @@ void InGameState::Update()
 	worldMap->Update(); // order : 0
 	playerObject->Update(); // order : 1
 	playerTestAni.DrawFrames();
+
+	playerObject->GetAABB()->MakeAABB(D3DXVECTOR3(playerObject->GetObjectPosition()),
+		D3DXVECTOR3(playerObject->GetObjectPosition().x + 32.0f,
+			playerObject->GetObjectPosition().y + 32.0f, 0.0f));
 }
 
 void InGameState::Release()
@@ -71,10 +79,20 @@ void InGameState::InputUpdate(UINT msg, WPARAM wParam)
 			moveX = 0.0f;
 			moveY = 32.0f;
 		}
-		playerObject->Move(moveX, moveY);
-		Simple2DCamera::GetInstance()->FollowPlayer(
-			-moveX,
-			-moveY);
+
+		// test code...
+		Box2DCollider intersectTest;
+		D3DXVECTOR3 min = playerObject->GetAABB()->GetMinExtent();
+		D3DXVECTOR3 max = playerObject->GetAABB()->GetMaxExtent();
+		intersectTest.MakeAABB(D3DXVECTOR3(min.x + moveX, min.y + moveY, 0.0f),
+			D3DXVECTOR3(max.x + moveX, max.y + moveY, 0.0f));
+		if (ColliderManager::GetInstance()->
+			IsCollideWithMapObject(intersectTest) == false)
+		{
+			playerObject->Move(moveX, moveY);
+			Simple2DCamera::GetInstance()->FollowPlayer(-moveX, -moveY);
+		}
+		// test code...
 		break;
 	}
 }

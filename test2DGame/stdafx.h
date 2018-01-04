@@ -50,3 +50,6 @@
 
 //
 #include "KojeomD3DUtil.h"
+
+//
+#include "ColliderManager.h"

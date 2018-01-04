@@ -66,6 +66,8 @@ bool Setup()
 	//
 	GameStateManager::GetInstance()->InsertState(GAME_STATE::MAIN_MENU);
 	//
+	ColliderManager::GetInstance();
+	//
 	isGameSetupEnd = true;
 	return true;
 }
