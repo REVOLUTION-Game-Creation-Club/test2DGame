@@ -3,9 +3,6 @@
  <tileset firstgid="1" name="tileb" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="textures/tilemap/tileb.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="257" name="tilec" tilewidth="32" tileheight="32" tilecount="0" columns="8">
-  <image source="tilec.png" width="256" height="256"/>
- </tileset>
  <layer name="Base" width="16" height="16">
   <data>
    <tile gid="0"/>

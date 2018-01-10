@@ -16,13 +16,14 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
 	playerSprite = new Player2DSprite();
-	playerSprite->Init(_d3dDevice, FilePath::GetInstance()->chacracter01, RECT { 0, 0, 32, 42 },
-		384, 256);
+	playerSprite->Init(_d3dDevice, FilePath::GetInstance()->chacracter01, RECT { 0, 0, 32, 32 },
+		96, 128);
 	playerObject->SetSpriteObject(playerSprite);
 
 	// player offset 위치 적용.
 	// - view 크기의 정중앙값을 offset으로 사용.
-	playerObject->Move(Simple2DCamera::GetInstance()->GetViewWidth() / 2 + 150.0f ,
+	// 임시로 96.0f를 x 값에 더하여 위치를 정한다. ( 테스트용.)
+	playerObject->Move(Simple2DCamera::GetInstance()->GetViewWidth() / 2 + 96.0f ,
 		Simple2DCamera::GetInstance()->GetViewHeight() / 2);
 
 	playerTestAni.SetSpriteObject(playerSprite);

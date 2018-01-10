@@ -4,7 +4,8 @@
 #include <vector>
 using namespace std;
 
-#define MAP_COLLIDER_BOUND_OFFSET 1
+#define MAP_COLLIDER_BOUND_OFFSET 4.0f
+
 class ColliderManager
 {
 public:
