@@ -270,6 +270,7 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player2DSprite.h" />
+    <ClInclude Include="PlayerCharAnimation.h" />
     <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Simple2DCamera.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player2DSprite.cpp" />
+    <ClCompile Include="PlayerCharAnimation.cpp" />
     <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="Simple2DCamera.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -5,7 +5,7 @@
 #include "Player2DSprite.h"
 #include "Game2DSprite.h"
 #include "GameObjectFactory.h"
-#include "Animation.h"
+#include "PlayerCharAnimation.h"
 #include "Simple2DCamera.h"
 #include "KojeomGameUI.h"
 #include "ColliderManager.h"
@@ -30,6 +30,6 @@ private:
 	GameObjectFactory* playerFactory;
 	GameObject* playerObject;
 	// ani
-	Animation playerTestAni;
+	PlayerCharAnimation playerCharAnimation;
 };
 

@@ -48,7 +48,7 @@ void GameMap::DrawMapLyaers(const int _layerIdx)
 		{
 			gid = mapData.layers[_layerIdx].tileGIDs.at(tileIdx);
 			tileMapSprites[_layerIdx]->SetSpriteRect(CalcRenderRect(gid));
-			tileMapSprites[_layerIdx]->SetSpritePos(D3DXVECTOR3(x * mapData.tileWidth, y * mapData.tileHeight, 0));
+			tileMapSprites[_layerIdx]->SetSpritePos(D3DXVECTOR3(x * (float)mapData.tileWidth, y * (float)mapData.tileHeight, 0));
 			tileMapSprites[_layerIdx]->DrawSprite();
 			tileIdx++;
 		}

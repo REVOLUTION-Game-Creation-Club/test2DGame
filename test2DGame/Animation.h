@@ -15,17 +15,24 @@ struct DrawInfo
 	float frameTime; // miileseconds
 };
 
+enum CHARACTER_LOOK_ANIMATION {
+	FRONT = 0,
+	LEFT = 1,
+	RIGHT = 2,
+	BACK = 3
+};
+
 class Animation
 {
 public:
 	Animation();
-	~Animation();
+	virtual ~Animation();
 
-	void SetSpriteObject(Game2DSprite* _spriteObject);
-	void SetDrawInfos(DrawInfo _drawInfo);
-	void DrawFrames();
+	virtual void SetSpriteObject(Game2DSprite* _spriteObject) = 0;
+	virtual void SetDrawInfos(DrawInfo _drawInfo) = 0;
+	virtual void DrawFrames()= 0;
 	
-private:
+protected:
 	Game2DSprite* spriteObject;
 	RECT renderRect;
 

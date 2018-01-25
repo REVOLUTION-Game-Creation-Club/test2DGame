@@ -82,6 +82,9 @@
     <Filter Include="Source Files\File">
       <UniqueIdentifier>{c3d9c48b-794b-4b9d-aa86-be5bf474a28f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AnimationClass\base">
+      <UniqueIdentifier>{53462090-485c-4665-81b5-59f16278d72a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -122,9 +125,6 @@
     </ClInclude>
     <ClInclude Include="Simple2DCamera.h">
       <Filter>Source Files\CameraClass</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Source Files\AnimationClass</Filter>
     </ClInclude>
     <ClInclude Include="WorldMap.h">
       <Filter>Source Files\MapClass</Filter>
@@ -210,6 +210,12 @@
     <ClInclude Include="KojeomD3DUtil.h">
       <Filter>Source Files\Util</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerCharAnimation.h">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source Files\AnimationClass\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,9 +250,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files\AnimationClass</Filter>
     </ClCompile>
     <ClCompile Include="WorldMap.cpp">
       <Filter>Source Files\MapClass</Filter>
@@ -319,6 +322,12 @@
     </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\GameState\base</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharAnimation.cpp">
+      <Filter>Source Files\AnimationClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\AnimationClass\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

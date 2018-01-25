@@ -27,8 +27,8 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 	playerObject->Move(Simple2DCamera::GetInstance()->GetViewWidth() / 2 + 96.0f ,
 		Simple2DCamera::GetInstance()->GetViewHeight() / 2);
 
-	playerTestAni.SetSpriteObject(playerSprite);
-	playerTestAni.SetDrawInfos(DrawInfo{ 96, 128, 0, 32, 0, 0, 32, 200 });
+	playerCharAnimation.SetSpriteObject(playerSprite);
+	playerCharAnimation.SetDrawInfos(DrawInfo{ 96, 128, 0, 32, 0, 0, 32, 200 });
 
 	worldMap = new WorldMap(_d3dDevice);
 
@@ -48,7 +48,7 @@ void InGameState::Update()
 {
 	worldMap->Update(); // order : 0
 	playerObject->Update(); // order : 1
-	playerTestAni.DrawFrames();
+	playerCharAnimation.DrawFrames();
 
 	playerObject->GetAABB()->MakeAABB(D3DXVECTOR3(playerObject->GetObjectPosition()),
 		D3DXVECTOR3(playerObject->GetObjectPosition().x + 32.0f,
