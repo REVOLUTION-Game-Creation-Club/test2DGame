@@ -11,9 +11,9 @@ KojeomGameUI::~KojeomGameUI()
 {
 }
 
-void KojeomGameUI::Init(void* hwnd, IDirect3DDevice9* device)
+bool KojeomGameUI::Init(void* hwnd, IDirect3DDevice9* device)
 {
-	ImGui_ImplDX9_Init(hwnd, device);
+	return ImGui_ImplDX9_Init(hwnd, device);
 }
 
 void KojeomGameUI::ResetRendering()

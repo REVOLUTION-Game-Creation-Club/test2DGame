@@ -14,7 +14,7 @@ class KojeomGameUI
 public:
 	KojeomGameUI();
 	~KojeomGameUI();
-	static void Init(void* hwnd, IDirect3DDevice9* device);
+	static bool Init(void* hwnd, IDirect3DDevice9* device);
 	static void ResetRendering();
 	static void Release();
 	static void NewFrame();

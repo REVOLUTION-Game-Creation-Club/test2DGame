@@ -14,6 +14,7 @@
 #define __d3dUtilityH__
 
 #include "KojeomGameUI.h"
+#include "kojeomDebugLogger.h"
 #include <d3dx9.h>
 #include <string>
 namespace d3d

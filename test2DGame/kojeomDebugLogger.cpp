@@ -8,3 +8,4 @@ void kojeomDebugLogger::ConsoleLog(string logStr)
 {
 	// to do
 }
+

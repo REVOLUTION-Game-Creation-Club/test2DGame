@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <Windows.h>
+#include <assert.h>
 using namespace std;
 class kojeomDebugLogger
 {

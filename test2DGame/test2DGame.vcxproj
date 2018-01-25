@@ -265,6 +265,7 @@
     <ClInclude Include="InGameState.h" />
     <ClInclude Include="KojeomD3DUtil.h" />
     <ClInclude Include="kojeomDebugLogger.h" />
+    <ClInclude Include="KojeomDebugViewer.h" />
     <ClInclude Include="KojeomGameUI.h" />
     <ClInclude Include="KojeomGraphicUtil.h" />
     <ClInclude Include="MainMenuState.h" />
@@ -306,6 +307,7 @@
     <ClCompile Include="InGameState.cpp" />
     <ClCompile Include="KojeomD3DUtil.cpp" />
     <ClCompile Include="kojeomDebugLogger.cpp" />
+    <ClCompile Include="KojeomDebugViewer.cpp" />
     <ClCompile Include="KojeomGameUI.cpp" />
     <ClCompile Include="KojeomGraphicUtil.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

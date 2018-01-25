@@ -141,7 +141,10 @@ bool d3d::InitD3D(
 		}
 	}
 	// gui init..
-	KojeomGameUI::Init(hwnd, *device);
+	if (KojeomGameUI::Init(hwnd, *device)) {
+		// error.
+		kojeomDebugLogger::MessageBoxLog(L"KojeomGameUI Init failed");
+	}
 	
 	d3d9->Release(); // done with d3d9 object
 	return true;
