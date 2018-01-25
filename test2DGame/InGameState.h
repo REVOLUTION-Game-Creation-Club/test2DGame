@@ -18,6 +18,7 @@ public:
 
 	// Inherited via GameState
 	virtual void Init(IDirect3DDevice9 * _d3dDevice) override;
+	virtual void Start() override;
 	virtual void Update() override;
 	virtual void Release() override;
 	virtual void InputUpdate(UINT msg, WPARAM wParam) override;

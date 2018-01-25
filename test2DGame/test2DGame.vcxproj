@@ -296,6 +296,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameSoundManager.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />

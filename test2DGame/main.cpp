@@ -90,7 +90,7 @@ bool Display(float timeDelta)
 		Device->BeginScene();
 		// imgui test
 		KojeomGameUI::NewFrame();
-		GameState* curState = GameStateManager::GetInstance()->GetCurrentState();
+		GameState* const curState = GameStateManager::GetInstance()->GetCurrentState();
 		if (curState != nullptr) curState->Update();
 		KojeomGameUI::EndFrame();
 		KojeomGameUI::Render();

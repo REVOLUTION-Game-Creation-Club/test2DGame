@@ -19,7 +19,7 @@ public:
 	static GameStateManager* GetInstance();
 	void InsertState(GAME_STATE stateType);
 	void PopState();
-	GameState* const GetCurrentState();
+	GameState* GetCurrentState();
 private:
 	GameStateManager();
 	

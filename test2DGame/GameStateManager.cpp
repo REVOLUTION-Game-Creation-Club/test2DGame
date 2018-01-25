@@ -26,9 +26,11 @@ void GameStateManager::InsertState(GAME_STATE stateType)
 {
 	switch (stateType) {
 	case GAME_STATE::INGAME:
+		ingameState->Start();
 		gamestates.push(ingameState);
 		break;
 	case GAME_STATE::MAIN_MENU:
+		mainmenuState->Start();
 		gamestates.push(mainmenuState);
 		break;
 	case GAME_STATE::NONE:
@@ -44,7 +46,7 @@ void GameStateManager::PopState()
 	gamestates.pop();
 }
 
-GameState* const GameStateManager::GetCurrentState()
+GameState* GameStateManager::GetCurrentState()
 {
 	if(gamestates.size() > 0) return gamestates.top();
 	else return nullptr;

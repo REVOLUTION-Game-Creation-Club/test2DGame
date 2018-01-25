@@ -317,6 +317,9 @@
     <ClCompile Include="KojeomGraphicUtil.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\GameState\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test2DGame.rc">

@@ -13,6 +13,7 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::Init(IDirect3DDevice9* _d3dDevice)
 {
+	isStarted = false;
 	spr_bg.Init(_d3dDevice, FilePath::GetInstance()->mainmenu_bg,
 		RECT{0, 0, 1360, 800}, 1360, 800);
 	spr_foreGroundTrees.Init(_d3dDevice,
@@ -31,6 +32,12 @@ void MainMenuState::Init(IDirect3DDevice9* _d3dDevice)
 		FilePath::GetInstance()->mainmenu_title,
 		RECT {0, 0, 514, 105}, 514, 105);
 	spr_title.TranslateSprite(256.0f, 192.0f);
+}
+
+void MainMenuState::Start()
+{
+	if (isStarted) return;
+	isStarted = true;
 }
 
 void MainMenuState::Update()
@@ -58,6 +65,7 @@ void MainMenuState::Update()
 void MainMenuState::Release()
 {
 	// to do
+	isStarted = false;
 }
 
 void MainMenuState::InputUpdate(UINT msg, WPARAM wParam)

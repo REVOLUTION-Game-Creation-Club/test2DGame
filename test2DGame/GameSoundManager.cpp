@@ -53,3 +53,11 @@ void GameSoundManager::StopGameSound(GAME_SOUND_TYPE type)
 {
 	alSourceStop(sources[type]);
 }
+
+void GameSoundManager::StopAllGameSound()
+{
+	for (int idx = 0; idx < SOUND_TOTAL_NUM; idx++)
+	{
+		alSourceStop(sources[idx]);
+	}
+}

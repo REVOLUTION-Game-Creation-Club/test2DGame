@@ -19,6 +19,7 @@ public:
 
 	void PlayGameSound(GAME_SOUND_TYPE type, const float volume);
 	void StopGameSound(GAME_SOUND_TYPE type);
+	void StopAllGameSound();
 private:
 	ALCcontext* context = nullptr;
 	ALCdevice* device = nullptr;

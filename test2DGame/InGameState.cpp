@@ -13,6 +13,7 @@ InGameState::~InGameState()
 
 void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 {
+	isStarted = false;
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
 	playerSprite = new Player2DSprite();
@@ -36,6 +37,13 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 			playerObject->GetObjectPosition().y + 32.0f, 0.0f));
 }
 
+void InGameState::Start()
+{
+	if (isStarted) return;
+	isStarted = true;
+
+}
+
 void InGameState::Update()
 {
 	worldMap->Update(); // order : 0
@@ -49,9 +57,10 @@ void InGameState::Update()
 
 void InGameState::Release()
 {
-	delete worldMap;
-	delete playerObject;
-	delete playerFactory;
+	isStarted = false;
+	//delete worldMap;
+	//delete playerObject;
+	//delete playerFactory;
 }
 
 void InGameState::InputUpdate(UINT msg, WPARAM wParam)
