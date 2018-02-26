@@ -109,9 +109,6 @@ bool Display(float timeDelta)
 //
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	//ray 캐스팅 테스트용 변수.
-	float x, y;
-	Ray ray;
 	if (isGameSetupEnd)
 	{
 		// gui input process..

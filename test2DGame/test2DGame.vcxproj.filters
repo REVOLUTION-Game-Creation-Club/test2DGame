@@ -85,6 +85,9 @@
     <Filter Include="Source Files\AnimationClass\base">
       <UniqueIdentifier>{53462090-485c-4665-81b5-59f16278d72a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Util\Debug">
+      <UniqueIdentifier>{b8d82081-77f7-4f0d-97db-c74ec3729353}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -128,9 +131,6 @@
     </ClInclude>
     <ClInclude Include="WorldMap.h">
       <Filter>Source Files\MapClass</Filter>
-    </ClInclude>
-    <ClInclude Include="kojeomDebugLogger.h">
-      <Filter>Source Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="StringUtil.h">
       <Filter>Source Files\Util</Filter>
@@ -216,6 +216,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Source Files\AnimationClass\base</Filter>
     </ClInclude>
+    <ClInclude Include="kojeomDebugLogger.h">
+      <Filter>Source Files\Util\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="KojeomDebugViewer.h">
+      <Filter>Source Files\Util\Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,9 +259,6 @@
     </ClCompile>
     <ClCompile Include="WorldMap.cpp">
       <Filter>Source Files\MapClass</Filter>
-    </ClCompile>
-    <ClCompile Include="kojeomDebugLogger.cpp">
-      <Filter>Source Files\Util</Filter>
     </ClCompile>
     <ClCompile Include="StringUtil.cpp">
       <Filter>Source Files\Util</Filter>
@@ -328,6 +331,12 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\AnimationClass\base</Filter>
+    </ClCompile>
+    <ClCompile Include="kojeomDebugLogger.cpp">
+      <Filter>Source Files\Util\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="KojeomDebugViewer.cpp">
+      <Filter>Source Files\Util\Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

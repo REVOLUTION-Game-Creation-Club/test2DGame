@@ -25,7 +25,7 @@ void Box2DCollider::MakeAABB(D3DXVECTOR3 points[], unsigned int len)
 {
 	minExtent = points[0];
 	maxExtent = points[0];
-	for (int idx = 1; idx < len; idx++)
+	for (unsigned int idx = 1; idx < len; idx++)
 	{
 		if (points[idx].x < minExtent.x) minExtent.x = points[idx].x;
 		else if (points[idx].x > maxExtent.x) maxExtent.x = points[idx].x;

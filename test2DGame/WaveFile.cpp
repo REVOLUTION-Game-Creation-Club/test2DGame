@@ -1,12 +1,15 @@
 #include "WaveFile.h"
 
-
-
-WaveFile::WaveFile(const char* _filePath)
-{
-	FILE* opendWavFile = fopen(_filePath, "rb");
-	if (opendWavFile == nullptr)
-	{
+WaveFile::WaveFile(const char* _filePath){
+	FILE* opendWavFile;
+	auto fileErr = fopen_s(&opendWavFile, _filePath, "rb");
+	// ENOENT -> 파일이 없거나 디렉토리가 없다.
+	// 발생가능한 에러형태에 대한 에러처리 코드는 차후에 추가할 예정.
+	if (fileErr == ENOENT) {
+		// error
+		kojeomDebugLogger::MessageBoxLog(L"Not found file or directory.");
+		return;
+	}else if (opendWavFile == nullptr){
 		// error
 		kojeomDebugLogger::MessageBoxLog(L"Open Wave file Failed!!");
 		return;
@@ -24,29 +27,27 @@ WaveFile::WaveFile(const char* _filePath)
 	// 실제 오디오 데이터 사이즈도 0이거나 실제파일크기보다 큰 사이즈로 잡혀있는 경우도있다.
 	// 따라서, 이부분도 아래 코드로 예외처리.
 	if ((header.subChunk_2_size == 0) ||
-		(header.subChunk_2_size > header.chunkSize)) header.subChunk_2_size = dataSize;
+		(header.subChunk_2_size > header.chunkSize)) {
+		header.subChunk_2_size = dataSize;
+	}
 	rawData = new uint8_t[dataSize];
 	ReadAudioDataFromFile(opendWavFile, rawData);
 	fclose(opendWavFile);
 }
 
 
-WaveFile::~WaveFile()
-{
+WaveFile::~WaveFile(){
 	delete[] rawData;
 }
 
-uint8_t* WaveFile::GetData()
-{
+uint8_t* WaveFile::GetData(){
 	return rawData;
 }
 
-void WaveFile::ReadAudioDataFromFile(FILE* opendFile, uint8_t* dest)
-{
+void WaveFile::ReadAudioDataFromFile(FILE* opendFile, uint8_t* dest){
 	int idx = 0;
 	uint8_t buffer[1];
-	while (fread(&buffer, 1, 1, opendFile) > 0)
-	{
+	while (fread(&buffer, 1, 1, opendFile) > 0){
 		dest[idx] = buffer[0];
 		idx++;
 	}
