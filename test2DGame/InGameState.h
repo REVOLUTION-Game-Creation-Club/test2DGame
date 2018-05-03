@@ -29,7 +29,5 @@ private:
 	Game2DSprite* playerSprite;
 	GameObjectFactory* playerFactory;
 	GameObject* playerObject;
-	// ani
-	PlayerCharAnimation playerCharAnimation;
 };
 
