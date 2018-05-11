@@ -12,9 +12,9 @@ Player2DSprite::~Player2DSprite()
 	if (spriteObject != nullptr) spriteObject->Release();
 }
 
-void Player2DSprite::Init(IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight) {
+void Player2DSprite::Init(IDirect3DDevice9* _d3dDevice, string _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight) {
 	d3d9Device = _d3dDevice;
-	spriteName = _spriteFileName;
+	spriteName = std::make_unique<string>(_spriteFileName);
 	spriteRect = _rect;
 	spritePosition = { 0, 0, 0 };
 	spriteCenterPos = { 0, 0, 0 };
@@ -85,7 +85,7 @@ void Player2DSprite::CreateSprite()
 void Player2DSprite::CreateTexture2D()
 {
 	HRESULT hr = D3DXCreateTextureFromFileEx(d3d9Device,
-		StringUtil::ConvertCharToWchar(spriteName), texturePixelWidth,
+		StringUtil::ConvertCharToWchar(spriteName.get()), texturePixelWidth,
 		texturePixelHeight, 0, D3DUSAGE_RENDERTARGET, D3DFORMAT::D3DFMT_UNKNOWN,
 		D3DPOOL::D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &spriteTexture2D);
 	if (hr != S_OK) kojeomDebugLogger::MessageBoxLog(L"CreateTexture2D() - FAILED");

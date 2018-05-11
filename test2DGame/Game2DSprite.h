@@ -1,5 +1,5 @@
 #pragma once
-
+#include <memory>
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "kojeomDebugLogger.h"
@@ -13,7 +13,7 @@ public:
 	virtual ~Game2DSprite();
 
 	virtual void Init(IDirect3DDevice9* _d3dDevice,
-		char* _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight) = 0;
+		string _spriteFileName, RECT _rect, unsigned int textureWidth, unsigned int textureHeight) = 0;
 	virtual void DrawSprite() = 0;
 	virtual void TranslateSprite(FLOAT _x, FLOAT _y) = 0;
 	virtual void SetSpriteRect(RECT _spriteRect) = 0;
@@ -28,7 +28,7 @@ protected:
 	LPD3DXSPRITE spriteObject;
 	LPDIRECT3DTEXTURE9 spriteTexture2D;
 	IDirect3DDevice9* d3d9Device;
-	char* spriteName;
+	unique_ptr<string> spriteName;
 	RECT spriteRect;
 	D3DXVECTOR3 spritePosition;
 	D3DXVECTOR3 spriteCenterPos;
