@@ -6,11 +6,11 @@
 #include <stack>
 using namespace std;
 
-enum GAME_STATE 
+enum class GAME_STATE 
 {
-	NONE = 0,
-	MAIN_MENU = 1,
-	INGAME = 2
+	NONE,
+	MAIN_MENU,
+	INGAME
 };
 class GameStateManager
 {

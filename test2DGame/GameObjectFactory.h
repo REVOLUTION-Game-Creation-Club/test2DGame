@@ -2,12 +2,12 @@
 #include "GameObject.h"
 #include "Player.h"
 
-enum GAMEOBJECT_TYPE
+enum class GAMEOBJECT_TYPE
 { 
-	PLAYER = 0,
-	ENEMY = 1,
-	NPC = 2,
-	BUILDING = 3 
+	PLAYER,
+	ENEMY,
+	NPC,
+	BUILDING 
 };
 
 class GameObjectFactory

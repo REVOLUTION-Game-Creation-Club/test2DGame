@@ -33,11 +33,11 @@ public:
 	}
 };
 
-enum LOOK_DIRECTION {
-	forward = 0,
-	left = 1,
-	right = 2,
-	back = 3
+enum class LOOK_DIRECTION {
+	forward,
+	left,
+	right,
+	back
 };
 
 class Animation
