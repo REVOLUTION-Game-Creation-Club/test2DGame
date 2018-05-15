@@ -241,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BaseException.h" />
     <ClInclude Include="Box2DCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ColliderManager.h" />

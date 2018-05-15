@@ -88,6 +88,9 @@
     <Filter Include="Source Files\Util\Debug">
       <UniqueIdentifier>{b8d82081-77f7-4f0d-97db-c74ec3729353}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Exception">
+      <UniqueIdentifier>{121b3bbd-ab5f-43f1-a6cd-1954af0c8041}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -221,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="KojeomDebugViewer.h">
       <Filter>Source Files\Util\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseException.h">
+      <Filter>Exception</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
