@@ -130,13 +130,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories);.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;.\CustomKojeomLibs\includes;D:\[BOOST]_boost_1_66_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;AntTweakBar.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\TinyXML-2;.\AntTweakBar\lib;.\OpenAL\libs\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;AntTweakBar.lib;OpenAL32.lib;KojeomlibKoLogger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\TinyXML-2;.\AntTweakBar\lib;.\OpenAL\libs\Win32;.\CustomKojeomLibs\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
@@ -187,7 +187,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\AntTweakBar\include;E:\Programming_WorkSpace%28ALL%29\visualStudio_All_Projects\test2DGame\test2DGame\TinyXML-2;%(AdditionalIncludeDirectories);.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);.\TinyXML-2;.\AntTweakBar\include;.\OpenAL\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -88,6 +88,11 @@ void KojeomGameUI::UISetWindowSize(const ImVec2 & size, ImGuiCond cond)
 	ImGui::SetWindowSize(size, cond);
 }
 
+void KojeomGameUI::UIText(std::string text)
+{
+	ImGui::Text(text.c_str());
+}
+
 Ray KojeomGameUI::CalcPickingRay(int x, int y ,IDirect3DDevice9* device)
 {
 	float px = 0.0f;

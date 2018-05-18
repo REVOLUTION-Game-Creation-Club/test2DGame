@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "main.h"
+#include <boost/format.hpp>
 //
 // Globals
 //
@@ -7,6 +8,7 @@ IDirect3DDevice9* Device = 0;
 bool isGameSetupEnd = false;
 // camera
 Simple2DCamera* mainCamera;
+// test logger
 
 //
 // Framework Functions Prototype
@@ -14,6 +16,10 @@ Simple2DCamera* mainCamera;
 bool Setup();
 void Cleanup();
 bool Display(float timeDelta);
+//
+void DebugInfos(float timeDelta);
+
+// window procedure prototype func.
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 //
 // WinMain
@@ -83,18 +89,22 @@ bool Display(float timeDelta)
 {
 	if (Device) // Only use Device methods if we have a valid device.
 	{
+		
 		// Instruct the device to set each pixel on the back buffer black -
 		// D3DCLEAR_TARGET: 0x00000000 (black) - and to set each pixel on
 		// the depth buffer to a value of 1.0 - D3DCLEAR_ZBUFFER: 1.0f.
 		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
 		Device->BeginScene();
-		// imgui test
+		//ImGui
 		KojeomGameUI::NewFrame();
+		//
+		DebugInfos(timeDelta);
 		GameState* const curState = GameStateManager::GetInstance()->GetCurrentState();
 		if (curState != nullptr) curState->Update();
+		//
 		KojeomGameUI::EndFrame();
 		KojeomGameUI::Render();
-
+		//
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
@@ -102,6 +112,12 @@ bool Display(float timeDelta)
 		
 	}
 	return true;
+}
+
+void DebugInfos(float timeDelta) {
+	KojeomGameUI::UIBegin("[DEBUG]::timeDelta", 0, ImVec2(0, 0), 0.65f, 0);
+	KojeomGameUI::UIText(boost::str(boost::format("timeDelta : %f") % timeDelta));
+	KojeomGameUI::UIEnd();
 }
 
 //

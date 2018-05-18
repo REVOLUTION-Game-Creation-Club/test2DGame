@@ -1,5 +1,6 @@
 #pragma once
 #include <d3dx9.h>
+#include <string>
 #include "imgui\imgui_impl_dx9.h"
 struct Ray
 {
@@ -31,6 +32,7 @@ public:
 	static bool UIButton(const char* label, const ImVec2 size);
 	static void UISetWindowPos(const ImVec2& pos, ImGuiCond cond = 0);
 	static void UISetWindowSize(const ImVec2& size, ImGuiCond cond = 0);
+	static void UIText(std::string text);
 
 	Ray static CalcPickingRay(int x, int y, IDirect3DDevice9* device);
 };
