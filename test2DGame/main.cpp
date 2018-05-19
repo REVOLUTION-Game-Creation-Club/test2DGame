@@ -8,8 +8,6 @@ IDirect3DDevice9* Device = 0;
 bool isGameSetupEnd = false;
 // camera
 Simple2DCamera* mainCamera;
-// test logger
-
 //
 // Framework Functions Prototype
 //
@@ -18,6 +16,7 @@ void Cleanup();
 bool Display(float timeDelta);
 //
 void DebugInfos(float timeDelta);
+FPSManager fpsManager;
 
 // window procedure prototype func.
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -89,7 +88,7 @@ bool Display(float timeDelta)
 {
 	if (Device) // Only use Device methods if we have a valid device.
 	{
-		
+		fpsManager.CalcFPS();
 		// Instruct the device to set each pixel on the back buffer black -
 		// D3DCLEAR_TARGET: 0x00000000 (black) - and to set each pixel on
 		// the depth buffer to a value of 1.0 - D3DCLEAR_ZBUFFER: 1.0f.
@@ -108,8 +107,6 @@ bool Display(float timeDelta)
 		Device->EndScene();
 		// Swap the back and front buffers.
 		Device->Present(0, 0, 0, 0);
-
-		
 	}
 	return true;
 }
@@ -117,6 +114,7 @@ bool Display(float timeDelta)
 void DebugInfos(float timeDelta) {
 	KojeomGameUI::UIBegin("[DEBUG]::timeDelta", 0, ImVec2(0, 0), 0.65f, 0);
 	KojeomGameUI::UIText(boost::str(boost::format("timeDelta : %f") % timeDelta));
+	KojeomGameUI::UIText(boost::str(boost::format("FPS : %d") % fpsManager.GetFPS()));
 	KojeomGameUI::UIEnd();
 }
 
