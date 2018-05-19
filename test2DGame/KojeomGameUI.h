@@ -33,6 +33,8 @@ public:
 	static void UISetWindowPos(const ImVec2& pos, ImGuiCond cond = 0);
 	static void UISetWindowSize(const ImVec2& size, ImGuiCond cond = 0);
 	static void UIText(std::string text);
+	// imGui 라이브러리에서 제공하는 frameRate ( = fps )
+	static float GetImGuiFrameRate();
 
 	Ray static CalcPickingRay(int x, int y, IDirect3DDevice9* device);
 };

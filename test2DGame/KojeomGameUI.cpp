@@ -93,6 +93,11 @@ void KojeomGameUI::UIText(std::string text)
 	ImGui::Text(text.c_str());
 }
 
+float KojeomGameUI::GetImGuiFrameRate()
+{
+	return ImGui::GetIO().Framerate;
+}
+
 Ray KojeomGameUI::CalcPickingRay(int x, int y ,IDirect3DDevice9* device)
 {
 	float px = 0.0f;
