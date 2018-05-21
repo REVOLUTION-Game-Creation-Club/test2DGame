@@ -34,6 +34,9 @@ private:
 };
 // 60fps 에서 1프레임이 소모하는 millieSecond.
 #define MS_PER_FRAME 16
+// ref1 : http://data-forge.blogspot.kr/2013/09/fps.html
+// ref2 : http://skmagic.tistory.com/305
+// ref3: http://boycoding.tistory.com/112
 class GameFrameManager {
 public:
 	GameFrameManager() = default;
