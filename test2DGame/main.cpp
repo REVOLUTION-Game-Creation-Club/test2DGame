@@ -13,10 +13,12 @@ Simple2DCamera* mainCamera;
 //
 bool Setup();
 void Cleanup();
-bool Display(float timeDelta);
+bool Display(float deltaTime);
+void Update(float deltaTime);
 //
-void DebugInfos(float timeDelta);
+void DebugInfos(float deltaTime);
 FPSManager fpsManager;
+GameFrameManager gameFrameManager;
 
 // window procedure prototype func.
 LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -68,10 +70,9 @@ bool Setup()
 
 	//
 	KojeomD3DUtil::GetInstance()->SetD3DDevice(Device);
-	//
 	GameStateManager::GetInstance()->InsertState(GAME_STATE::MAIN_MENU);
-	//
 	ColliderManager::GetInstance();
+	gameFrameManager.SetUpdateStatement(Update);
 	//
 	isGameSetupEnd = true;
 	return true;
@@ -84,36 +85,36 @@ void Cleanup()
 	KojeomGameUI::Release();
 }
 
-bool Display(float timeDelta)
+bool Display(float deltaTime)
 {
 	if (Device) // Only use Device methods if we have a valid device.
 	{
 		fpsManager.CalcFPS();
-		// Instruct the device to set each pixel on the back buffer black -
-		// D3DCLEAR_TARGET: 0x00000000 (black) - and to set each pixel on
-		// the depth buffer to a value of 1.0 - D3DCLEAR_ZBUFFER: 1.0f.
-		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
-		Device->BeginScene();
-		//ImGui
-		KojeomGameUI::NewFrame();
-		//
-		DebugInfos(timeDelta);
-		GameState* const curState = GameStateManager::GetInstance()->GetCurrentState();
-		if (curState != nullptr) curState->Update();
-		//
-		KojeomGameUI::EndFrame();
-		KojeomGameUI::Render();
-		//
-		Device->EndScene();
-		// Swap the back and front buffers.
-		Device->Present(0, 0, 0, 0);
+		gameFrameManager.UpdateFrame(deltaTime);
 	}
 	return true;
 }
 
-void DebugInfos(float timeDelta) {
+void Update(float deltaTime) {
+	Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0x00000000, 1.0f, 0);
+	Device->BeginScene();
+	//ImGui
+	KojeomGameUI::NewFrame();
+	DebugInfos(deltaTime);
+	GameState* const curState = GameStateManager::GetInstance()->GetCurrentState();
+	if (curState != nullptr) curState->Update();
+	//
+	KojeomGameUI::EndFrame();
+	KojeomGameUI::Render();
+	//
+	Device->EndScene();
+	// Swap the back and front buffers.
+	Device->Present(0, 0, 0, 0);
+}
+
+void DebugInfos(float deltaTime) {
 	KojeomGameUI::UIBegin("[DEBUG]::timeDelta", 0, ImVec2(0, 0), 0.65f, 0);
-	KojeomGameUI::UIText(boost::str(boost::format("timeDelta : %f") % timeDelta));
+	KojeomGameUI::UIText(boost::str(boost::format("timeDelta : %f") % deltaTime));
 	KojeomGameUI::UIText(boost::str(boost::format("FPS : %d") % fpsManager.GetFPS()));
 	KojeomGameUI::UIEnd();
 }

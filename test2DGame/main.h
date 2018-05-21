@@ -32,3 +32,26 @@ private:
 	unsigned int frames;
 	std::chrono::time_point<chrono::system_clock> startTime;
 };
+// 60fps 에서 1프레임이 소모하는 millieSecond.
+#define MS_PER_FRAME 16
+class GameFrameManager {
+public:
+	GameFrameManager() = default;
+	~GameFrameManager() = default;
+	void SetUpdateStatement(void(*update)(float)) {
+		UpdateProcess = update;
+	}
+	void UpdateFrame(float deltaTime) {
+		auto startTime = std::chrono::system_clock::now();
+		UpdateProcess(deltaTime);
+		auto lastTime = std::chrono::system_clock::now();
+		auto interval = std::chrono::duration_cast<std::chrono::milliseconds>(lastTime - startTime);
+		auto intervalMillisec = interval.count();
+		auto delayMillieSec = MS_PER_FRAME - intervalMillisec;
+		if (delayMillieSec > 0) {
+			Sleep(delayMillieSec);
+		}
+	}
+private:
+	void(*UpdateProcess)(float);
+};
