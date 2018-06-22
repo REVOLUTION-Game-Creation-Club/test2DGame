@@ -5,8 +5,7 @@
 #include <vector>
 using namespace std;
 
-struct MapColliderObject
-{
+struct MapColliderObject{
 public:
 	int id;
 	string name;
@@ -14,14 +13,27 @@ public:
 	int width, height;
 };
 
-struct MapLayerInfo
-{
+struct MapLayerInfo{
 public:
 	string name;
 	vector<int> tileGIDs;
 	~MapLayerInfo() {
 		tileGIDs.clear();
 	}
+};
+
+struct WayOut {
+public:
+	int id;
+	string name;
+	int x, y;
+	int width, height;
+	string next_map_name;
+};
+
+struct MapWayOutInfo {
+public:
+	vector<WayOut> wayouts;
 };
 
 struct MapData
@@ -37,6 +49,8 @@ public:
 	vector<MapLayerInfo> layers;
 	// tmx 파일 맵의 콜리터 오브젝트의 정보를 가지고 있다.
 	vector<MapColliderObject> collObjects;
+	// 맵의 동서남북 wayout 정보.
+	MapWayOutInfo wayoutInfo;
 	void Release()
 	{
 		layers.clear();
@@ -47,8 +61,9 @@ public:
 
 enum TMX_MAP_TYPE
 {
-	GAME_MAP_0 = 0,
-	GAME_MAP_1 = 1,
+	MAIN_TOWN = 0,
+	GAME_MAP_0 = 1,
+	GAME_MAP_1 = 2,
 	MAP_TOTAL_NUM
 };
 //
@@ -59,6 +74,7 @@ class TMXParser
 public:
 	~TMXParser();
 	MapData GetMapData(TMX_MAP_TYPE mapType);
+	MapData* GetMapDataArray();
 	static TMXParser* GetInstance();
 private:
 	TMXParser();
@@ -70,5 +86,6 @@ private:
 	void ReadCustomProperties(tinyxml2::XMLDocument xmlDoc);
 	void ReadLayerData(tinyxml2::XMLElement* _element, int _layerIdx, string _layerName, TMX_MAP_TYPE mapType);
 	void ReadColliderData(tinyxml2::XMLElement* _element, TMX_MAP_TYPE mapType);
+	void ReadWayOutInfo(tinyxml2::XMLElement* _element, TMX_MAP_TYPE mapType);
 };
 

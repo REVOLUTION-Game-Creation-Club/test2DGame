@@ -38,14 +38,12 @@ void PlayerCharAnimation::Update() {
 
 void PlayerCharAnimation::DrawFrames(DrawInfo _drawInfo)
 {
-	//
 	aniTimeEnd = GetTickCount();
 	if ((aniTimeEnd - aniTimeBegin) > _drawInfo.frameTime) {
 		renderRect.left += _drawInfo.tileSize;
-
-		if (renderRect.left >= _drawInfo.imgWidth)
+		if (renderRect.left >= _drawInfo.imgWidth) {
 			renderRect.left = 0;
-
+		}
 		renderRect.right = renderRect.left + _drawInfo.tileSize;
 		aniTimeBegin = aniTimeEnd;
 	}

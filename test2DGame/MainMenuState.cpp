@@ -54,8 +54,7 @@ void MainMenuState::Update()
 		ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 	KojeomGameUI::UISetWindowPos(ImVec2(384, 480));
 	KojeomGameUI::UISetWindowSize(ImVec2(384, 128));
-	if (KojeomGameUI::UIButton("Game Start", ImVec2(384, 96)))
-	{
+	if (KojeomGameUI::UIButton("Game Start", ImVec2(384, 96))){
 		// to do
 		GameStateManager::GetInstance()->InsertState(GAME_STATE::INGAME);
 	};

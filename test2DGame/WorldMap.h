@@ -1,7 +1,7 @@
 #pragma once
 #include "GameMap.h"
 #include "FilePath.h"
-#define MAX_GAME_MAP 2
+#define MAX_GAME_MAP 3
 class WorldMap
 {
 public:
@@ -11,7 +11,7 @@ public:
 
 private:
 	IDirect3DDevice9* device;
-	GameMap* gameMaps[2];
+	GameMap* gameMaps[MAX_GAME_MAP];
 	RECT mapDefaultRect;
 };
 

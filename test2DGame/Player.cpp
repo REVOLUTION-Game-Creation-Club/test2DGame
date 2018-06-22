@@ -28,10 +28,10 @@ void Player::Init(Game2DSprite * _spriteObject)
 	if (_spriteObject != nullptr) spriteObject = _spriteObject;
 	// init animation.
 	animation.SetSpriteObject(spriteObject);
-	DrawInfo forward = { 96, 128, 0, 32, 0, 0, 32, 200 };
-	DrawInfo left = { 96, 128, 32, 64, 0, 0, 32, 200 };
-	DrawInfo right = { 96, 128, 64, 96, 0, 0, 32, 200 };
-	DrawInfo back = { 96, 128, 96, 128, 0, 0, 32, 200 };
+	DrawInfo forward = { 96, 128, 0, 32, 0, 0, 32, 300 };
+	DrawInfo left = { 96, 128, 32, 64, 0, 0, 32, 300 };
+	DrawInfo right = { 96, 128, 64, 96, 0, 0, 32, 300 };
+	DrawInfo back = { 96, 128, 96, 128, 0, 0, 32, 300 };
 	animation.SetDrawInfos(FourDirDrawInfo(left, right, back, forward));
 	// defualt direction setting.
 	curLookDir = LOOK_DIRECTION::forward;

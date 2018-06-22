@@ -13,11 +13,13 @@ public:
 	~ColliderManager();
 	void Update();
 	bool IsCollideWithMapObject(Box2DCollider box2DColl);
+	void SetCurrentMapType(TMX_MAP_TYPE mapType);
 private:
 	ColliderManager();
 	void CreateMapColliders();
 	static ColliderManager* instance;
 	//맵 오브젝트들은 고정적이기에, AABB도 변할일이 없다.
-	vector<Box2DCollider> mapColliders;
+	vector<Box2DCollider> mapColliders[TMX_MAP_TYPE::MAP_TOTAL_NUM];
+	TMX_MAP_TYPE curMapType;
 };
 

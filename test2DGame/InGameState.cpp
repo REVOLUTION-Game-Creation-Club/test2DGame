@@ -31,6 +31,8 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 		Simple2DCamera::GetInstance()->GetViewHeight() / 2);
 
 	worldMap = new WorldMap(_d3dDevice);
+	//test 임시 코드.
+	ColliderManager::GetInstance()->SetCurrentMapType(TMX_MAP_TYPE::MAIN_TOWN);
 }
 
 void InGameState::Start()
