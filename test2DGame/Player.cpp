@@ -51,15 +51,25 @@ void Player::Move(FLOAT _x, FLOAT _y)
 		D3DXVECTOR3(box2DColl.GetMaxExtent().x + _x, box2DColl.GetMaxExtent().y + _y, 0.0f));
 }
 
-Box2DCollider* Player::GetAABB()
+Box2DCollider Player::GetAABB()
 {
-	return &box2DColl;
+	return box2DColl;
 }
 
 void Player::SetLookDirection(LOOK_DIRECTION _lookDir)
 {
 	curLookDir = _lookDir;
 	animation.SetLookDir(_lookDir);
+}
+
+void Player::SetPositionedMapType(TMX_MAP_TYPE curMapType)
+{
+	curPositionedMapType = curMapType;
+}
+
+TMX_MAP_TYPE Player::GetCurMapType()
+{
+	return curPositionedMapType;
 }
 
 

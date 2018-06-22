@@ -25,9 +25,9 @@ FilePath::FilePath()
 	//
 	tileMapSprite = "GameResources//textures//tilemap//tileb.png";
 	//
-	mainTown = "GameResources//MAINTOWN.tmx";
-	map0 = "GameResources//0.tmx";
-	map1 = "GameResources//1.tmx";
+	mainTown = "GameResources//maintown.tmx";
+	town0 = "GameResources//town0.tmx";
+	town1 = "GameResources//town1.tmx";
 	//
 	
 };

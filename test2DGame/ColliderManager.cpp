@@ -10,7 +10,9 @@ ColliderManager * ColliderManager::GetInstance()
 
 ColliderManager::ColliderManager()
 {
+	//curMapType = PlayerSupervisor::GetInstance()->GetPlayerObject()->GetCurMapType();
 	CreateMapColliders();
+	CreateWayoutColliders();
 }
 
 void ColliderManager::CreateMapColliders()
@@ -33,25 +35,55 @@ void ColliderManager::CreateMapColliders()
 	}
 }
 
-
-ColliderManager::~ColliderManager()
-{
+void ColliderManager::CreateWayoutColliders(){
+	for (int idx = 0; idx < TMX_MAP_TYPE::MAP_TOTAL_NUM; idx++) {
+		auto mapType = (TMX_MAP_TYPE)idx;
+		auto wayoutInfo = TMXParser::GetInstance()->GetMapData(mapType).wayoutInfo;
+		for (auto wayout : wayoutInfo.wayouts) {
+			Box2DCollider box2dColl;
+			box2dColl.MakeAABB(D3DXVECTOR3(wayout.x + MAP_COLLIDER_BOUND_OFFSET,
+				wayout.y + MAP_COLLIDER_BOUND_OFFSET, 0.0f),
+				D3DXVECTOR3(wayout.x + wayout.width - MAP_COLLIDER_BOUND_OFFSET,
+					wayout.y + wayout.height - MAP_COLLIDER_BOUND_OFFSET, 0.0f));
+			//
+			WayoutCollider wayoutColl;
+			wayoutColl.box2dColl = box2dColl;
+			wayoutColl.next_map_name = wayout.next_map_name;
+			wayoutColliders[mapType].push_back(wayoutColl);
+		}
+	}
 }
 
-void ColliderManager::Update()
-{
+
+ColliderManager::~ColliderManager(){
 }
 
-bool ColliderManager::IsCollideWithMapObject(Box2DCollider box2DColl)
-{
-	for each (auto mapColl in mapColliders[curMapType])
-	{
+void ColliderManager::Update(){
+	if (PlayerSupervisor::GetInstance() != nullptr) {
+		curMapType = PlayerSupervisor::GetInstance()->GetPlayerObject()->GetCurMapType();
+	}
+}
+
+bool ColliderManager::IsCollideMapObject(Box2DCollider box2DColl){
+	for(auto mapColl : mapColliders[curMapType]){
 		if (mapColl.IsInterSectAABB(box2DColl)) return true;
 	}
 	return false;
 }
 
-void ColliderManager::SetCurrentMapType(TMX_MAP_TYPE mapType)
-{
+WayoutCollideResult ColliderManager::IsCollideWayOut(Box2DCollider box2DColl){
+	WayoutCollideResult result;
+	result.isCollide = false;
+	result.next_map_name = "NONE";
+	for (auto wayoutColl : wayoutColliders[curMapType]) {
+		if (wayoutColl.box2dColl.IsInterSectAABB(box2DColl)) {
+			result.isCollide = true;
+			result.next_map_name = wayoutColl.next_map_name;
+		}
+	}
+	return result;
+}
+
+void ColliderManager::SetCurrentMapType(TMX_MAP_TYPE mapType){
 	curMapType = mapType;
 }

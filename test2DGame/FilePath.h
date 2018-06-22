@@ -16,8 +16,8 @@ public:
 	char* tileMapSprite;
 	// test
 	char* mainTown;
-	char* map0;
-	char* map1;
+	char* town0;
+	char* town1;
 	~FilePath();
 private:
 	static FilePath* instance;

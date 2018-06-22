@@ -91,6 +91,9 @@
     <Filter Include="Exception">
       <UniqueIdentifier>{121b3bbd-ab5f-43f1-a6cd-1954af0c8041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Supervisor">
+      <UniqueIdentifier>{1ce10309-1e78-41a3-aa87-ab91bb45b0ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -228,6 +231,12 @@
     <ClInclude Include="BaseException.h">
       <Filter>Exception</Filter>
     </ClInclude>
+    <ClInclude Include="GameMapUtil.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSupervisor.h">
+      <Filter>Supervisor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -343,6 +352,9 @@
     </ClCompile>
     <ClCompile Include="KojeomDebugViewer.cpp">
       <Filter>Source Files\Util\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSupervisor.cpp">
+      <Filter>Supervisor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

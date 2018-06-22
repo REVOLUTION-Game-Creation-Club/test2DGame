@@ -8,8 +8,8 @@ TMXParser::TMXParser()
 	tileGidOffset = -1;
 	// °ÔÀÓ ¸Ê ·Îµå.
 	ReadMapData(FilePath::GetInstance()->mainTown, TMX_MAP_TYPE::MAIN_TOWN);
-	ReadMapData(FilePath::GetInstance()->map0, TMX_MAP_TYPE::GAME_MAP_0);
-	ReadMapData(FilePath::GetInstance()->map1, TMX_MAP_TYPE::GAME_MAP_1);
+	ReadMapData(FilePath::GetInstance()->town0, TMX_MAP_TYPE::TOWN_0);
+	ReadMapData(FilePath::GetInstance()->town1, TMX_MAP_TYPE::TOWN_1);
 }
 
 

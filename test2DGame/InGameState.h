@@ -9,6 +9,8 @@
 #include "Simple2DCamera.h"
 #include "KojeomGameUI.h"
 #include "ColliderManager.h"
+#include "PlayerSupervisor.h"
+#include "GameMapUtil.h"
 class InGameState :
 	public GameState
 {

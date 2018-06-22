@@ -251,6 +251,7 @@
     <ClInclude Include="GameCommonSprite.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMap2DSprite.h" />
+    <ClInclude Include="GameMapUtil.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameSoundManager.h" />
@@ -274,6 +275,7 @@
     <ClInclude Include="Player2DSprite.h" />
     <ClInclude Include="PlayerCharAnimation.h" />
     <ClInclude Include="PlayerFactory.h" />
+    <ClInclude Include="PlayerSupervisor.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Simple2DCamera.h" />
     <ClInclude Include="stdafx.h" />
@@ -316,6 +318,7 @@
     <ClCompile Include="Player2DSprite.cpp" />
     <ClCompile Include="PlayerCharAnimation.cpp" />
     <ClCompile Include="PlayerFactory.cpp" />
+    <ClCompile Include="PlayerSupervisor.cpp" />
     <ClCompile Include="Simple2DCamera.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

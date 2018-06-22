@@ -2,20 +2,17 @@
 
 
 
-InGameState::InGameState()
-{
+InGameState::InGameState(){
 }
 
 
-InGameState::~InGameState()
-{
+InGameState::~InGameState(){
 	delete worldMap;
 	delete playerObject;
 	delete playerFactory;
 }
 
-void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
-{
+void InGameState::Init(IDirect3DDevice9 * _d3dDevice){
 	isStarted = false;
 	playerFactory = new PlayerFactory();
 	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
@@ -23,6 +20,9 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 	playerSprite->Init(_d3dDevice, FilePath::GetInstance()->chacracter01, RECT { 0, 0, 32, 32 },
 		96, 128);
 	playerObject->Init(playerSprite);
+	playerObject->SetPositionedMapType(TMX_MAP_TYPE::MAIN_TOWN);
+	//
+	PlayerSupervisor::GetInstance()->SetPlayerObject(playerObject);
 
 	// player offset 위치 적용.
 	// - view 크기의 정중앙값을 offset으로 사용.
@@ -31,54 +31,45 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice)
 		Simple2DCamera::GetInstance()->GetViewHeight() / 2);
 
 	worldMap = new WorldMap(_d3dDevice);
-	//test 임시 코드.
-	ColliderManager::GetInstance()->SetCurrentMapType(TMX_MAP_TYPE::MAIN_TOWN);
 }
 
-void InGameState::Start()
-{
+void InGameState::Start(){
 	if (isStarted) return;
 	isStarted = true;
 
 }
 
-void InGameState::Update()
-{
+void InGameState::Update(){
 	worldMap->Update(); // order : 0
 	playerObject->Update(); // order : 1
+	ColliderManager::GetInstance()->Update();
 }
 
-void InGameState::Release()
-{
+void InGameState::Release(){
 	isStarted = false;
 }
 
-void InGameState::InputUpdate(UINT msg, WPARAM wParam)
-{
+void InGameState::InputUpdate(UINT msg, WPARAM wParam){
 	float moveX = 0.0f, moveY = 0.0f;
 	switch (msg)
 	{
 	case WM_KEYDOWN:
-		if (wParam == VK_LEFT)
-		{
+		if (wParam == VK_LEFT){
 			playerObject->SetLookDirection(LOOK_DIRECTION::left);
 			moveX = -32.0f;
 			moveY = 0.0f;
 		}
-		else if (wParam == VK_RIGHT)
-		{
+		else if (wParam == VK_RIGHT){
 			playerObject->SetLookDirection(LOOK_DIRECTION::right);
 			moveX = 32.0f;
 			moveY = 0.0f;
 		}
-		else if (wParam == VK_UP)
-		{
+		else if (wParam == VK_UP){
 			playerObject->SetLookDirection(LOOK_DIRECTION::back);
 			moveX = 0.0f;
 			moveY = -32.0f;
 		}
-		else if (wParam == VK_DOWN)
-		{
+		else if (wParam == VK_DOWN){
 			playerObject->SetLookDirection(LOOK_DIRECTION::forward);
 			moveX = 0.0f;
 			moveY = 32.0f;
@@ -86,17 +77,23 @@ void InGameState::InputUpdate(UINT msg, WPARAM wParam)
 
 		// test code...
 		Box2DCollider intersectTest;
-		D3DXVECTOR3 min = playerObject->GetAABB()->GetMinExtent();
-		D3DXVECTOR3 max = playerObject->GetAABB()->GetMaxExtent();
+		D3DXVECTOR3 min = playerObject->GetAABB().GetMinExtent();
+		D3DXVECTOR3 max = playerObject->GetAABB().GetMaxExtent();
 		intersectTest.MakeAABB(D3DXVECTOR3(min.x + moveX, min.y + moveY, 0.0f),
 			D3DXVECTOR3(max.x + moveX, max.y + moveY, 0.0f));
 		if (ColliderManager::GetInstance()->
-			IsCollideWithMapObject(intersectTest) == false)
-		{
+			IsCollideMapObject(intersectTest) == false){
 			playerObject->Move(moveX, moveY);
 			Simple2DCamera::GetInstance()->FollowPlayer(-moveX, -moveY);
 		}
 		// test code...
+		WayoutCollideResult wayoutCollResult = ColliderManager::GetInstance()->IsCollideWayOut(playerObject->GetAABB());
+		if (wayoutCollResult.isCollide) {
+			TMX_MAP_TYPE mapType = GameMapUtil::MapNameToType(wayoutCollResult.next_map_name);
+			if (mapType != TMX_MAP_TYPE::NONE) {
+				playerObject->SetPositionedMapType(mapType);
+			}
+		}
 		break;
 	}
 }

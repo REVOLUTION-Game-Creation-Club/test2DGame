@@ -61,9 +61,10 @@ public:
 
 enum TMX_MAP_TYPE
 {
+	NONE = -1,
 	MAIN_TOWN = 0,
-	GAME_MAP_0 = 1,
-	GAME_MAP_1 = 2,
+	TOWN_0 = 1,
+	TOWN_1 = 2,
 	MAP_TOTAL_NUM
 };
 //
