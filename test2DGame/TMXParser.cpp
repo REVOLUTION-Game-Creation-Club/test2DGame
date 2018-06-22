@@ -118,8 +118,30 @@ void TMXParser::ReadWayOutInfo(tinyxml2::XMLElement * _element, TMX_MAP_TYPE map
 			wayout.y = atoi(_element->Attribute("y"));
 			wayout.width = atoi(_element->Attribute("width"));
 			wayout.height = atoi(_element->Attribute("height"));
-			auto next_map_name = _element->FirstChildElement("properties")->FirstChildElement("property")->Attribute("value");
-			wayout.next_map_name = next_map_name;
+			// set properties..
+			auto propertiesElement = _element->FirstChildElement("properties")->FirstChildElement("property");
+			while (propertiesElement != nullptr) {
+				auto attrName = propertiesElement->Attribute("name");
+				auto attrValue = propertiesElement->Attribute("value");
+				if (string("next_map_name").compare(attrName) == 0) {
+					wayout.next_map_name = attrValue;
+				}
+				else if (string("toDirection").compare(attrName) == 0) {
+					wayout.toDirection = attrValue;
+				}
+				propertiesElement = propertiesElement->NextSiblingElement("property");
+			}
+			/* - sameple - 
+			// https://stackoverflow.com/questions/12150465/tinyxml-looping-over-elements
+			TiXmlElement* root = _waveDoc.FirstChildElement("root");
+
+			for(TiXmlElement* e = root->FirstChildElement("wave_manager"); e != NULL; e = e->NextSiblingElement("wave_manager"))
+			{
+			string wmName = e->Attribute("name");
+
+			}
+			*/
+			//
 			mapData[mapType].wayoutInfo.wayouts.push_back(wayout);
 			//
 			_element = _element->NextSiblingElement();

@@ -537,17 +537,20 @@
  <objectgroup name="wayout">
   <object id="32" name="wayout_north" x="192" y="64" width="32" height="32">
    <properties>
-    <property name="next_map_name" value="NONE"/>
+    <property name="next_map_name" value="maintown"/>
+    <property name="toDirection" value="NORTH"/>
    </properties>
   </object>
   <object id="33" name="wayout_west" x="480" y="256" width="32" height="32">
    <properties>
     <property name="next_map_name" value="NONE"/>
+    <property name="toDirection" value="WEST"/>
    </properties>
   </object>
   <object id="34" name="wayout_east" x="0" y="256" width="32" height="32">
    <properties>
     <property name="next_map_name" value="NONE"/>
+    <property name="toDirection" value="EAST"/>
    </properties>
   </object>
  </objectgroup>

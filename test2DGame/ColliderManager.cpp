@@ -10,7 +10,6 @@ ColliderManager * ColliderManager::GetInstance()
 
 ColliderManager::ColliderManager()
 {
-	//curMapType = PlayerSupervisor::GetInstance()->GetPlayerObject()->GetCurMapType();
 	CreateMapColliders();
 	CreateWayoutColliders();
 }
@@ -21,8 +20,7 @@ void ColliderManager::CreateMapColliders()
 		auto mapType = (TMX_MAP_TYPE)idx;
 		auto colls = TMXParser::GetInstance()->
 			GetMapData(mapType).collObjects;
-		for each (auto coll in colls)
-		{
+		for (auto coll : colls){
 			// 플레이어와 맵 지형간의 충돌 처리에 편리함을 위해
 			// 맵툴에서 만든 tile의 collider 크기보다 box2d를 작게 설정한다.
 			Box2DCollider box2dColl;
@@ -41,14 +39,14 @@ void ColliderManager::CreateWayoutColliders(){
 		auto wayoutInfo = TMXParser::GetInstance()->GetMapData(mapType).wayoutInfo;
 		for (auto wayout : wayoutInfo.wayouts) {
 			Box2DCollider box2dColl;
-			box2dColl.MakeAABB(D3DXVECTOR3(wayout.x + MAP_COLLIDER_BOUND_OFFSET,
-				wayout.y + MAP_COLLIDER_BOUND_OFFSET, 0.0f),
-				D3DXVECTOR3(wayout.x + wayout.width - MAP_COLLIDER_BOUND_OFFSET,
-					wayout.y + wayout.height - MAP_COLLIDER_BOUND_OFFSET, 0.0f));
+			box2dColl.MakeAABB(D3DXVECTOR3(wayout.x + WAYOUT_COLLIDER_BOUND_OFFSET,
+				wayout.y + WAYOUT_COLLIDER_BOUND_OFFSET, 0.0f),
+				D3DXVECTOR3(wayout.x + wayout.width - WAYOUT_COLLIDER_BOUND_OFFSET,
+					wayout.y + wayout.height - WAYOUT_COLLIDER_BOUND_OFFSET, 0.0f));
 			//
 			WayoutCollider wayoutColl;
 			wayoutColl.box2dColl = box2dColl;
-			wayoutColl.next_map_name = wayout.next_map_name;
+			wayoutColl.wayoutInfo = wayout;
 			wayoutColliders[mapType].push_back(wayoutColl);
 		}
 	}
@@ -74,11 +72,11 @@ bool ColliderManager::IsCollideMapObject(Box2DCollider box2DColl){
 WayoutCollideResult ColliderManager::IsCollideWayOut(Box2DCollider box2DColl){
 	WayoutCollideResult result;
 	result.isCollide = false;
-	result.next_map_name = "NONE";
+	result.wayoutInfo.toDirection = "NONE";
 	for (auto wayoutColl : wayoutColliders[curMapType]) {
 		if (wayoutColl.box2dColl.IsInterSectAABB(box2DColl)) {
 			result.isCollide = true;
-			result.next_map_name = wayoutColl.next_map_name;
+			result.wayoutInfo = wayoutColl.wayoutInfo;
 		}
 	}
 	return result;

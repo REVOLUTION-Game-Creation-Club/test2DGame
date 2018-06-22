@@ -3,6 +3,7 @@
 #include "FilePath.h"
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 struct MapColliderObject{
@@ -22,6 +23,12 @@ public:
 	}
 };
 
+enum WayOutToDirection {
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+};
 struct WayOut {
 public:
 	int id;
@@ -29,6 +36,7 @@ public:
 	int x, y;
 	int width, height;
 	string next_map_name;
+	string toDirection;
 };
 
 struct MapWayOutInfo {

@@ -43,32 +43,33 @@ D3DXVECTOR3 Player::GetObjectPosition()
 	return spriteObject->GetSpritePos();
 }
 
-void Player::Move(FLOAT _x, FLOAT _y)
-{
-	spriteObject->TranslateSprite(_x, _y);
-	box2DColl.MakeAABB(
-		D3DXVECTOR3(box2DColl.GetMinExtent().x + _x, box2DColl.GetMinExtent().y + _y, 0.0f),
-		D3DXVECTOR3(box2DColl.GetMaxExtent().x + _x, box2DColl.GetMaxExtent().y + _y, 0.0f));
+void Player::SetObjectPosition(FLOAT x, FLOAT y) {
+	spriteObject->SetSpritePos(D3DXVECTOR3(x, y, 0.0f));
+}
+void Player::SetObjectPosition(D3DXVECTOR3 vec) {
+	spriteObject->SetSpritePos(vec);
 }
 
-Box2DCollider Player::GetAABB()
-{
+void Player::Move(FLOAT _x, FLOAT _y){
+	spriteObject->TranslateSprite(_x, _y);
+}
+void Player::Move(D3DXVECTOR3 vec) {
+	spriteObject->TranslateSprite(vec.x, vec.y);
+}
+Box2DCollider Player::GetAABB(){
 	return box2DColl;
 }
 
-void Player::SetLookDirection(LOOK_DIRECTION _lookDir)
-{
+void Player::SetLookDirection(LOOK_DIRECTION _lookDir){
 	curLookDir = _lookDir;
 	animation.SetLookDir(_lookDir);
 }
 
-void Player::SetPositionedMapType(TMX_MAP_TYPE curMapType)
-{
+void Player::SetPositionedMapType(TMX_MAP_TYPE curMapType){
 	curPositionedMapType = curMapType;
 }
 
-TMX_MAP_TYPE Player::GetCurMapType()
-{
+TMX_MAP_TYPE Player::GetCurMapType(){
 	return curPositionedMapType;
 }
 

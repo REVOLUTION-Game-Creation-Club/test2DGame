@@ -277,11 +277,13 @@
   <object id="30" name="wayout_west" x="480" y="192" width="32" height="32">
    <properties>
     <property name="next_map_name" value="town1"/>
+    <property name="toDirection" value="WEST"/>
    </properties>
   </object>
   <object id="31" name="wayout_south" x="128" y="480" width="32" height="32">
    <properties>
     <property name="next_map_name" value="town0"/>
+    <property name="toDirection" value="SOUTH"/>
    </properties>
   </object>
  </objectgroup>

@@ -6,17 +6,17 @@
 using namespace std;
 
 #define MAP_COLLIDER_BOUND_OFFSET 4.0f
-
+#define WAYOUT_COLLIDER_BOUND_OFFSET 10.0f
 struct WayoutCollider {
 public:
 	Box2DCollider box2dColl;
-	string next_map_name;
+	WayOut wayoutInfo;
 };
 
 struct WayoutCollideResult {
 public:
 	bool isCollide;
-	string next_map_name;
+	WayOut wayoutInfo;
 };
 
 class ColliderManager

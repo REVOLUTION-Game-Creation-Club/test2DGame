@@ -25,3 +25,15 @@ void WorldMap::Update(){
 	auto mapType = PlayerSupervisor::GetInstance()->GetPlayerObject()->GetCurMapType();
 	gameMaps[mapType]->DrawMap();
 }
+
+WayOut WorldMap::GetWayoutInfo(WayOutToDirection dir){
+	WayOut wayoutInfo;
+	auto mapType = PlayerSupervisor::GetInstance()->GetPlayerObject()->GetCurMapType();
+	GameMap* curMap = gameMaps[mapType];
+	for (auto wayout : curMap->GetMapData().wayoutInfo.wayouts) {
+		if (GameMapUtil::DirNameToEnum(wayout.toDirection) == dir) {
+			wayoutInfo = wayout;
+		}
+	}
+	return wayoutInfo;
+}

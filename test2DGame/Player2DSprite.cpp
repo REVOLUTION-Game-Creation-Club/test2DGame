@@ -62,6 +62,11 @@ void Player2DSprite::SetSpriteRect(RECT _spriteRect)
 
 void Player2DSprite::SetSpritePos(D3DXVECTOR3 _pos)
 {
+	D3DXMATRIX move;
+	D3DXMatrixTranslation(&move, _pos.x, _pos.y, 0);
+	transMatrix = move;
+	HRESULT hr = spriteObject->SetTransform(&transMatrix);
+	if (hr != S_OK) kojeomDebugLogger::MessageBoxLog(L"TransformSprite() - FAILED");
 	spritePosition = _pos;
 }
 

@@ -32,6 +32,10 @@ void GameMap::Move(FLOAT _x, FLOAT _y)
 	}
 }
 
+MapData GameMap::GetMapData(){
+	return mapData;
+}
+
 void GameMap::DrawMap()
 {
 	for (int idx = 0; idx < mapLayerCnt; ++idx)

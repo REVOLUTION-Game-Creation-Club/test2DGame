@@ -16,6 +16,7 @@ public:
 
 	void DrawMap();
 	void Move(FLOAT _x, FLOAT _y);
+	MapData GetMapData();
 private:
 	MapData mapData;
 	vector<GameMap2DSprite*> tileMapSprites;

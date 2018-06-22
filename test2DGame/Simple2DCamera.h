@@ -7,7 +7,9 @@ class Simple2DCamera
 {
 public:
 	void Move(FLOAT _x, FLOAT _y);
+	void Move(D3DXVECTOR3 vec);
 	void FollowPlayer(FLOAT playerX, FLOAT playerY);
+	void FollowPlayer(D3DXVECTOR3 vec);
 	void SetDevice(IDirect3DDevice9* _device);
 	void Init(float _viewWidth, float _viewHeight);
 	static Simple2DCamera* GetInstance();
