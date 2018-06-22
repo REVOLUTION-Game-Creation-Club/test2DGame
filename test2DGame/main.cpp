@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "main.h"
 #include <boost/format.hpp>
+#include "GameFontLoader.h"
 //
 // Globals
 //
@@ -75,6 +76,8 @@ bool Setup()
 	gameFrameManager.SetUpdateStatement(Update);
 	//
 	isGameSetupEnd = true;
+
+	GameFontLoader::GetInstance();
 	return true;
 }
 

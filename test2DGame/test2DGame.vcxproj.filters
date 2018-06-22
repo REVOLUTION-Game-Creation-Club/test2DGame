@@ -94,6 +94,9 @@
     <Filter Include="Supervisor">
       <UniqueIdentifier>{1ce10309-1e78-41a3-aa87-ab91bb45b0ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Font">
+      <UniqueIdentifier>{cafb0d4d-709f-4e51-846b-87e495ed7159}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="PlayerSupervisor.h">
       <Filter>Supervisor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFontLoader.h">
+      <Filter>Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
