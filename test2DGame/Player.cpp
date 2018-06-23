@@ -1,26 +1,22 @@
 #include "Player.h"
 
 
-Player::Player()
-{
+Player::Player(){
 }
 
 
-Player::~Player()
-{
+Player::~Player(){
 	delete spriteObject;
 }
 
-void Player::Update()
-{
+void Player::Update(){
 	// draw sprite
 	spriteObject->DrawSprite();
 	// animaiton playing.
 	animation.Update();
 }
 
-void Player::Init(Game2DSprite * _spriteObject)
-{
+void Player::Init(Game2DSprite * _spriteObject){
 	if (_spriteObject != nullptr) spriteObject = _spriteObject;
 	// init animation.
 	animation.SetSpriteObject(spriteObject);
@@ -34,8 +30,7 @@ void Player::Init(Game2DSprite * _spriteObject)
 	animation.SetLookDir(LOOK_DIRECTION::forward);
 }
 
-D3DXVECTOR3 Player::GetObjectPosition()
-{
+D3DXVECTOR3 Player::GetObjectPosition(){
 	return spriteObject->GetSpritePos();
 }
 

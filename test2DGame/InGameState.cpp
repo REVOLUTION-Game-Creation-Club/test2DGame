@@ -52,8 +52,7 @@ void InGameState::Release(){
 
 void InGameState::InputUpdate(UINT msg, WPARAM wParam){
 	float moveX = 0.0f, moveY = 0.0f;
-	switch (msg)
-	{
+	switch (msg){
 	case WM_KEYDOWN:
 		if (wParam == VK_LEFT){
 			playerObject->SetLookDirection(LOOK_DIRECTION::left);

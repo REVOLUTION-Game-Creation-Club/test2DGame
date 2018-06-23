@@ -25,5 +25,6 @@ protected:
 	Box2DCollider box2DColl;
 	LOOK_DIRECTION curLookDir;
 	TMX_MAP_TYPE curPositionedMapType;
+	virtual void UpdateAABB() = 0;
 };
 
