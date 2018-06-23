@@ -17,10 +17,6 @@ void Player::Update()
 	spriteObject->DrawSprite();
 	// animaiton playing.
 	animation.Update();
-	// make aabb
-	box2DColl.MakeAABB(D3DXVECTOR3(spriteObject->GetSpritePos()),
-		D3DXVECTOR3(spriteObject->GetSpritePos().x + 32.0f,
-			spriteObject->GetSpritePos().y + 32.0f, 0.0f));
 }
 
 void Player::Init(Game2DSprite * _spriteObject)
@@ -45,16 +41,20 @@ D3DXVECTOR3 Player::GetObjectPosition()
 
 void Player::SetObjectPosition(FLOAT x, FLOAT y) {
 	spriteObject->SetSpritePos(D3DXVECTOR3(x, y, 0.0f));
+	UpdateAABB();
 }
 void Player::SetObjectPosition(D3DXVECTOR3 vec) {
 	spriteObject->SetSpritePos(vec);
+	UpdateAABB();
 }
 
 void Player::Move(FLOAT _x, FLOAT _y){
 	spriteObject->TranslateSprite(_x, _y);
+	UpdateAABB();
 }
 void Player::Move(D3DXVECTOR3 vec) {
 	spriteObject->TranslateSprite(vec.x, vec.y);
+	UpdateAABB();
 }
 Box2DCollider Player::GetAABB(){
 	return box2DColl;
@@ -71,6 +71,13 @@ void Player::SetPositionedMapType(TMX_MAP_TYPE curMapType){
 
 TMX_MAP_TYPE Player::GetCurMapType(){
 	return curPositionedMapType;
+}
+
+void Player::UpdateAABB(){
+	// make aabb
+	box2DColl.MakeAABB(D3DXVECTOR3(spriteObject->GetSpritePos()),
+		D3DXVECTOR3(spriteObject->GetSpritePos().x + 32.0f,
+			spriteObject->GetSpritePos().y + 32.0f, 0.0f));
 }
 
 

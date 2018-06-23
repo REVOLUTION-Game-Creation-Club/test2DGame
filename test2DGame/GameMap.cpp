@@ -1,13 +1,11 @@
 #include "GameMap.h"
 
 
-GameMap::GameMap(TMX_MAP_TYPE mapType, IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight)
-{
+GameMap::GameMap(TMX_MAP_TYPE mapType, IDirect3DDevice9* _d3dDevice, char* _spriteFileName, RECT _defaultRect, unsigned int textureWidth, unsigned int textureHeight){
 	mapData = TMXParser::GetInstance()->GetMapData(mapType);
 	mapLayerCnt = mapData.layers.size();
 	// tmx map layers 갯수 만큼 map sprite 생성.
-	for (int idx = 1; idx <= mapLayerCnt; ++idx)
-	{
+	for (int idx = 1; idx <= mapLayerCnt; ++idx){
 		GameMap2DSprite* spr = new GameMap2DSprite();
 		spr->Init(_d3dDevice, _spriteFileName, _defaultRect, textureWidth, textureHeight);
 		tileMapSprites.push_back(spr);
@@ -15,19 +13,15 @@ GameMap::GameMap(TMX_MAP_TYPE mapType, IDirect3DDevice9* _d3dDevice, char* _spri
 }
 
 
-GameMap::~GameMap()
-{
-	for each (auto map2dSprite in tileMapSprites)
-	{
+GameMap::~GameMap(){
+	for each (auto map2dSprite in tileMapSprites){
 		map2dSprite->~GameMap2DSprite();
 	}
 	tileMapSprites.clear();
 }
 
-void GameMap::Move(FLOAT _x, FLOAT _y)
-{
-	for (int idx = 0; idx < mapLayerCnt; ++idx)
-	{
+void GameMap::Move(FLOAT _x, FLOAT _y){
+	for (int idx = 0; idx < mapLayerCnt; ++idx){
 		tileMapSprites[idx]->TranslateSprite(_x, _y);
 	}
 }
@@ -36,14 +30,12 @@ MapData GameMap::GetMapData(){
 	return mapData;
 }
 
-void GameMap::DrawMap()
-{
+void GameMap::DrawMap(){
 	for (int idx = 0; idx < mapLayerCnt; ++idx)
 		DrawMapLyaers(idx);
 }
 // layer 별로 sprite를 만들어 각각의 내용을 그려서 중첩시킨다.
-void GameMap::DrawMapLyaers(const int _layerIdx)
-{
+void GameMap::DrawMapLyaers(const int _layerIdx){
 	tileMapSprites[_layerIdx]->BeginDraw();
 	int gid = 0;
 	int tileIdx = 0;
@@ -60,8 +52,7 @@ void GameMap::DrawMapLyaers(const int _layerIdx)
 }
 	
 
-RECT GameMap::CalcRenderRect(const int _gid)
-{
+RECT GameMap::CalcRenderRect(const int _gid){
 	RECT renderRect = { 0,0,0,0 };
 	int tileIntervalX = mapData.imageWidth / mapData.tileWidth;
 	int tileIntervalY = mapData.imageWidth / mapData.tileHeight;

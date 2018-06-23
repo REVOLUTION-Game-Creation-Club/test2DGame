@@ -49,10 +49,10 @@ void Simple2DCamera::SetDevice(IDirect3DDevice9* _device)
 }
 
 //test func ( 아직 수정이 필요하다. )
-void Simple2DCamera::Move(FLOAT _x, FLOAT _y)
+void Simple2DCamera::Move(FLOAT x, FLOAT y)
 {
 	D3DXMATRIX setTransMat;
-	D3DXMatrixTranslation(&setTransMat, _x, _y, 0.0f);
+	D3DXMatrixTranslation(&setTransMat, x, y, 0.0f);
 	device->SetTransform(D3DTS_VIEW, &setTransMat);
 
 	D3DXMATRIX getTransMat;
@@ -72,20 +72,22 @@ void Simple2DCamera::Move(D3DXVECTOR3 vec){
 	cameraPosition += D3DXVECTOR3(getTransMat._41, getTransMat._42, 0.0f);
 }
 
-void Simple2DCamera::FollowPlayer(FLOAT playerX, FLOAT playerY){
-	cameraPosition += D3DXVECTOR3(playerX, playerY, 0.0f);
+void Simple2DCamera::FollowObject(FLOAT x, FLOAT y){
+	cameraPosition = D3DXVECTOR3(x, y, 0.0f);
 
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, cameraPosition.x, cameraPosition.y, 0.0f);
-	
+	D3DXMatrixTranslation(&matLookAt, -x + viewWidth / 2,
+		-y + viewHeight / 2, 0.0f);
+
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }
 
-void Simple2DCamera::FollowPlayer(D3DXVECTOR3 vec){
-	cameraPosition += vec;
+void Simple2DCamera::FollowObject(D3DXVECTOR3 vec){
+	cameraPosition = vec;
 
 	D3DXMATRIX matLookAt;
-	D3DXMatrixTranslation(&matLookAt, cameraPosition.x, cameraPosition.y, 0.0f);
+	D3DXMatrixTranslation(&matLookAt, -vec.x + viewWidth / 2,
+		-vec.y + viewHeight / 2, 0.0f);
 
 	device->SetTransform(D3DTS_VIEW, &matLookAt);
 }

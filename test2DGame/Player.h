@@ -19,5 +19,6 @@ public:
 	virtual TMX_MAP_TYPE GetCurMapType() override;
 private:
 	PlayerCharAnimation animation;
+	void UpdateAABB();
 };
 

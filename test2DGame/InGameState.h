@@ -31,5 +31,7 @@ private:
 	Game2DSprite* playerSprite;
 	GameObjectFactory* playerFactory;
 	GameObject* playerObject;
+	void PlayerMoveUpdate(float moveX, float moveY);
+	void WayoutColliderUpdate();
 };
 

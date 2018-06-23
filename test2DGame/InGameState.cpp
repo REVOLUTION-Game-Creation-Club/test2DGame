@@ -75,49 +75,53 @@ void InGameState::InputUpdate(UINT msg, WPARAM wParam){
 			moveX = 0.0f;
 			moveY = 32.0f;
 		}
-
-		// test code...
-		Box2DCollider intersectTest;
-		D3DXVECTOR3 min = playerObject->GetAABB().GetMinExtent();
-		D3DXVECTOR3 max = playerObject->GetAABB().GetMaxExtent();
-		intersectTest.MakeAABB(D3DXVECTOR3(min.x + moveX, min.y + moveY, 0.0f),
-			D3DXVECTOR3(max.x + moveX, max.y + moveY, 0.0f));
-		if (ColliderManager::GetInstance()->
-			IsCollideMapObject(intersectTest) == false){
-			playerObject->Move(moveX, moveY);
-			Simple2DCamera::GetInstance()->FollowPlayer(-moveX, -moveY);
-		}
-		// test code...
-		WayoutCollideResult wayoutCollResult = ColliderManager::GetInstance()->IsCollideWayOut(playerObject->GetAABB());
-		if (wayoutCollResult.isCollide) {
-			//
-			TMX_MAP_TYPE newMapType = GameMapUtil::MapNameToType(wayoutCollResult.wayoutInfo.next_map_name);
-			playerObject->SetPositionedMapType(newMapType);
-			// repositioning player for new map.
-			WayOutToDirection toDir = GameMapUtil::DirNameToEnum(wayoutCollResult.wayoutInfo.toDirection);
-			WayOut wayout;
-			switch (toDir)
-			{
-			case WayOutToDirection::NORTH:
-				wayout = worldMap->GetWayoutInfo(WayOutToDirection::SOUTH);
-				playerObject->SetObjectPosition(wayout.x, wayout.y - 32.0f);
-				break;
-			case WayOutToDirection::SOUTH:
-				wayout = worldMap->GetWayoutInfo(WayOutToDirection::NORTH);
-				playerObject->SetObjectPosition(wayout.x, wayout.y + 32.0f);
-				break;
-			case WayOutToDirection::WEST:
-				wayout = worldMap->GetWayoutInfo(WayOutToDirection::EAST);
-				playerObject->SetObjectPosition(wayout.x + 32.0f, wayout.y);
-				break;
-			case WayOutToDirection::EAST:
-				wayout = worldMap->GetWayoutInfo(WayOutToDirection::WEST);
-				playerObject->SetObjectPosition(wayout.x - 32.0f, wayout.y);
-				break;
-			default:
-				break;
-			}
-		}
+		PlayerMoveUpdate(moveX, moveY);
+		WayoutColliderUpdate();
+		Simple2DCamera::GetInstance()->FollowObject(playerObject->GetObjectPosition());
 		break;
+	}
+}
+
+void InGameState::PlayerMoveUpdate(float moveX, float moveY){
+	Box2DCollider intersectTest;
+	D3DXVECTOR3 min = playerObject->GetAABB().GetMinExtent();
+	D3DXVECTOR3 max = playerObject->GetAABB().GetMaxExtent();
+	intersectTest.MakeAABB(D3DXVECTOR3(min.x + moveX, min.y + moveY, 0.0f),
+		D3DXVECTOR3(max.x + moveX, max.y + moveY, 0.0f));
+	if (ColliderManager::GetInstance()->
+		IsCollideMapObject(intersectTest) == false) {
+		playerObject->Move(moveX, moveY);
+	}
+}
+
+void InGameState::WayoutColliderUpdate(){
+	WayoutCollideResult wayoutCollResult = ColliderManager::GetInstance()->IsCollideWayOut(playerObject->GetAABB());
+	if (wayoutCollResult.isCollide) {
+		//
+		TMX_MAP_TYPE newMapType = GameMapUtil::MapNameToType(wayoutCollResult.wayoutInfo.next_map_name);
+		playerObject->SetPositionedMapType(newMapType);
+		// repositioning player for new map.
+		WayOutToDirection toDir = GameMapUtil::DirNameToEnum(wayoutCollResult.wayoutInfo.toDirection);
+		WayOut wayout;
+		switch (toDir){
+		case WayOutToDirection::NORTH:
+			wayout = worldMap->GetWayoutInfo(WayOutToDirection::SOUTH);
+			playerObject->SetObjectPosition(wayout.x, wayout.y - 32.0f);
+			break;
+		case WayOutToDirection::SOUTH:
+			wayout = worldMap->GetWayoutInfo(WayOutToDirection::NORTH);
+			playerObject->SetObjectPosition(wayout.x, wayout.y + 32.0f);
+			break;
+		case WayOutToDirection::WEST:
+			wayout = worldMap->GetWayoutInfo(WayOutToDirection::EAST);
+			playerObject->SetObjectPosition(wayout.x + 32.0f, wayout.y);
+			break;
+		case WayOutToDirection::EAST:
+			wayout = worldMap->GetWayoutInfo(WayOutToDirection::WEST);
+			playerObject->SetObjectPosition(wayout.x - 32.0f, wayout.y);
+			break;
+		default:
+			break;
+		}
 	}
 }
