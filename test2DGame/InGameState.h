@@ -11,6 +11,7 @@
 #include "ColliderManager.h"
 #include "PlayerSupervisor.h"
 #include "GameMapUtil.h"
+#include <memory>
 class InGameState :
 	public GameState
 {
@@ -26,11 +27,11 @@ public:
 	virtual void InputUpdate(UINT msg, WPARAM wParam) override;
 private:
 	// map
-	WorldMap* worldMap;
+	std::unique_ptr<WorldMap> worldMap;
 	//object
-	Game2DSprite* playerSprite;
-	GameObjectFactory* playerFactory;
-	GameObject* playerObject;
+	std::unique_ptr<Game2DSprite> playerSprite;
+	std::unique_ptr<GameObjectFactory> playerFactory;
+	std::unique_ptr<GameObject> playerObject;
 	void PlayerMoveUpdate(float moveX, float moveY);
 	void WayoutColliderUpdate();
 };

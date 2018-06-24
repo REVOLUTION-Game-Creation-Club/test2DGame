@@ -7,22 +7,20 @@ InGameState::InGameState(){
 
 
 InGameState::~InGameState(){
-	delete worldMap;
-	delete playerObject;
-	delete playerFactory;
+
 }
 
 void InGameState::Init(IDirect3DDevice9 * _d3dDevice){
 	isStarted = false;
-	playerFactory = new PlayerFactory();
-	playerObject = playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER);
-	playerSprite = new Player2DSprite();
-	playerSprite->Init(_d3dDevice, FilePath::GetInstance()->chacracter01, RECT { 0, 0, 32, 32 },
+	playerFactory = std::unique_ptr<GameObjectFactory>(new PlayerFactory());
+	playerObject = std::unique_ptr<GameObject>(playerFactory->ProduceGameObject(GAMEOBJECT_TYPE::PLAYER));
+	playerSprite = std::unique_ptr<Player2DSprite>(new Player2DSprite());
+	playerSprite.get()->Init(_d3dDevice, FilePath::GetInstance()->chacracter01, RECT { 0, 0, 32, 32 },
 		96, 128);
-	playerObject->Init(playerSprite);
+	playerObject->Init(playerSprite.get());
 	playerObject->SetPositionedMapType(TMX_MAP_TYPE::MAIN_TOWN);
 	//
-	PlayerSupervisor::GetInstance()->SetPlayerObject(playerObject);
+	PlayerSupervisor::GetInstance()->SetPlayerObject(playerObject.get());
 
 	// player offset 위치 적용.
 	// - view 크기의 정중앙값을 offset으로 사용.
@@ -32,7 +30,7 @@ void InGameState::Init(IDirect3DDevice9 * _d3dDevice){
 	vec.y = Simple2DCamera::GetInstance()->GetViewHeight() / 2;
 	playerObject->Move(vec);
 
-	worldMap = new WorldMap(_d3dDevice);
+	worldMap = std::make_unique<WorldMap>(_d3dDevice);
 }
 
 void InGameState::Start(){

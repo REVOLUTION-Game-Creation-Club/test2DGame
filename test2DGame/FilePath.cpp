@@ -1,18 +1,15 @@
 #include "FilePath.h"
 
-FilePath* FilePath::GetInstance()
-{
+FilePath* FilePath::GetInstance(){
 	if (instance == nullptr) instance = new FilePath();
 	return instance;
 }
 FilePath* FilePath::instance = nullptr;
 
-FilePath::~FilePath()
-{
+FilePath::~FilePath(){
 }
 
-FilePath::FilePath()
-{
+FilePath::FilePath(){
 	//
 	mainmenu_bg = "GameResources//textures//mainmenu//bg.png";
 	mainmenu_foregroundTrees = "GameResources//textures//mainmenu//foreground-trees.png";

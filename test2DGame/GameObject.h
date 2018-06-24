@@ -3,8 +3,7 @@
 #include "Box2DCollider.h"
 #include "Animation.h"
 #include "TMXParser.h"
-class GameObject
-{
+class GameObject{
 public:
 	GameObject();
 	virtual ~GameObject();

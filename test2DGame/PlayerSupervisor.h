@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include <memory>
 class PlayerSupervisor{
 public:
 	static PlayerSupervisor* GetInstance();
